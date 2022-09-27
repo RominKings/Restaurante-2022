@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'users',     #USUARIOS
     'categorias', #PARA LAS CATEGORIAS
-    'productos' # PARA LOS PRODUCTOS
+    'productos', # PARA LOS PRODUCTOS
+    'tables'
 ]
 
 MIDDLEWARE = [
@@ -83,10 +84,10 @@ WSGI_APPLICATION = 'rs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'restorantxxi',
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'restorantxxi',
         'USER':'root',
-        'PASSWORD': '',
+        'PASSWORD':'',
         'HOST':'127.0.0.1',
         'PORT':'3306'
     }
