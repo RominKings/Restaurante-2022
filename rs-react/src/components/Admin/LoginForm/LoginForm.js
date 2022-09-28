@@ -27,7 +27,7 @@ export function LoginForm() {
     });
 //FORMULARIO LOGIN HECHO CON BOOTSTRAP-------------------------------------------
   return (
-    <Form className='login-form-admin' onSubmit={formik.handleSubmit} >
+    <Form className='login-form-admin col-8' onSubmit={formik.handleSubmit} >
         <Form.Group className="email" controlId="email">
         <Form.Label>Dirección de correo electrónico</Form.Label>
         <Form.Control 
