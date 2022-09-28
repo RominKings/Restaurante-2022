@@ -3,9 +3,9 @@ import { map } from "lodash";
 import { Table, Button, Image } from 'react-bootstrap';
 import { FiEdit3 } from "react-icons/fi";
 import {FaTrashAlt} from "react-icons/fa";
-import QRCode from "qrcode.react";
-import { ModalBasic } from "../../../Common";
-import "./TableTablesAdmin.scss";
+//import QRCode from "qrcode.react";
+//import { ModalBasic } from "../../../Common";
+import "./TableTablesAdmin.css";
 
 
 export function TableTablesAdmin(props) {
@@ -21,8 +21,6 @@ export function TableTablesAdmin(props) {
       <tbody>
         {map(tables, (table, index) => (
           <tr key={index}>
-            <td width={2}>
-            </td>
             <td>{table.number} </td>
             <Action table={table}/>
         </tr>
