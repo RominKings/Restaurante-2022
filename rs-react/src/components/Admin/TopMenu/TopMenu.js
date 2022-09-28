@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "../../../hooks";
 import "./TopMenu.css";
-import { Button, Nav, Navbar, Container } from 'react-bootstrap';
+import { Button, Nav, Navbar, Container, Offcanvas } from 'react-bootstrap';
 import { useLocation} from "react-router-dom";
 import {AiOutlinePoweroff} from "react-icons/ai";
 import {GiShoppingCart, GiTable} from "react-icons/gi"; 
@@ -25,29 +25,39 @@ export function TopMenu(props) {
   };
 
   return (
-    <><Navbar bg="light" expand="lg" className="navbar" pathname={pathname}>
-      <Container>
-        <Navbar.Brand href="#home"> <MdWork/> Hola, {renderName()} </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-{/**--------AL PRESIONAR PADIDOS QUEDA MARCADO PORQUE ESTAMOS EN LA PAGINA CORRESPONDIENTE----------------*/}
-            <Nav.Link href="/admin" active={pathname === "/admin"}> <HiOutlineStar/> Pedidos  </Nav.Link>
-            <Nav.Link href="/admin/tables" active={pathname === "/admin/tables"}> <GiTable/> Mesas  </Nav.Link>
-            <Nav.Link href="/admin/history" active={pathname === "/admin/history"}> <BiBookBookmark/> Historico  </Nav.Link>
-            <Nav.Link href="/admin/categories" active={pathname === "/admin/categories"}> <BiCategoryAlt/> Categorias  </Nav.Link>
-            <Nav.Link href="/admin/products" active={pathname === "/admin/products"}> <GiShoppingCart/> Productos </Nav.Link>
-{/**--------NO TODOS LOS USUARIOS PUEDEN VER ESTA SECCION, CON ESTO SOLO EL STAFF O EL SUPERUSUARIO PUEDE VERLO----------------*/}
-            {auth.me.is_staff && (
-            <Nav.Link href="/admin/users" active={pathname === "/admin/users"}> <HiOutlineUserGroup/> Usuarios  </Nav.Link>)}
-          </Nav>
-          <Button variant="danger" size="sm" onClick={logout}>
-            <AiOutlinePoweroff/>
-          </Button>
+    <>
+      {[false].map((expand) => (
+        <Navbar key={expand} bg="light" expand={expand} className="mb-3">
+          <Container fluid>
+            <Navbar.Brand href="#home"> <MdWork/> Hola, {renderName()} </Navbar.Brand>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+                  Restaurante Siglo XXI
+                </Offcanvas.Title>
+              </Offcanvas.Header>
+              <Offcanvas.Body>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  {/**--------AL PRESIONAR PADIDOS QUEDA MARCADO PORQUE ESTAMOS EN LA PAGINA CORRESPONDIENTE----------------*/}
+                  <Nav.Link href="/admin" active={pathname === "/admin"}> <HiOutlineStar/> Pedidos  </Nav.Link>
+                  <Nav.Link href="/admin/tables" active={pathname === "/admin/tables"}> <GiTable/> Mesas  </Nav.Link>
+                  <Nav.Link href="/admin/history" active={pathname === "/admin/history"}> <BiBookBookmark/> Historico  </Nav.Link>
+                  <Nav.Link href="/admin/categories" active={pathname === "/admin/categories"}> <BiCategoryAlt/> Categorias  </Nav.Link>
+                  <Nav.Link href="/admin/products" active={pathname === "/admin/products"}> <GiShoppingCart/> Productos </Nav.Link>
+                  {auth.me.is_staff && (<Nav.Link href="/admin/users" active={pathname === "/admin/users"}> <HiOutlineUserGroup/> Usuarios  </Nav.Link>)}
+                </Nav>
+                  <Button variant="danger" size="sm" onClick={logout}><AiOutlinePoweroff/></Button>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar> 
+      ))}
 
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
     <div className="contenedor">
     <Container>{children}</Container>
     </div></>

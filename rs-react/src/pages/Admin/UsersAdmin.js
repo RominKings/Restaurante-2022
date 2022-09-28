@@ -7,7 +7,7 @@ import { useUser } from '../../hooks';
 export function UsersAdmin() {
   const {/*loading,*/ users, getUsers} = useUser();
 
-  useEffect(() => getUsers(), [ getUsers]);
+  useEffect(() => getUsers(), []);
 
   return (
     <>

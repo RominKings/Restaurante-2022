@@ -87,8 +87,8 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'restorantxxi',
         'USER':'root',
-        'PASSWORD':'',
-        'HOST':'127.0.0.1',
+        'PASSWORD':'123456789',
+        'HOST':'restorantxxi.ce4e2wrnp99a.sa-east-1.rds.amazonaws.com',
         'PORT':'3306'
     }
 }
