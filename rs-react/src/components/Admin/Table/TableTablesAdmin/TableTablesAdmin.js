@@ -15,13 +15,13 @@ export function TableTablesAdmin(props) {
        <Table striped bordered hover className='table-tables-admin'>
       <thead>
         <tr>
-          <th>Mesa Numero</th>
+          <th textAlign="center">Mesa Numero</th>
         </tr>
       </thead>
       <tbody>
         {map(tables, (table, index) => (
-          <tr key={index}>
-            <td>{table.number} </td>
+          <tr textalign="center" key={index}>
+            <td  >{table.number} </td>
             <Action table={table}/>
         </tr>
         ))}

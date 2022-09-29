@@ -22,8 +22,7 @@ export function TablaCategoriasAdmin(props) {
         {map(categories, (categoria, index) => (
           <tr key={index}>
             <td width={2}>
-              <Image src={categoria.image} bsPrefix rounded fluid />
-            </td>
+              <Image src={categoria.image} bsPrefix rounded fluid /></td>
             <td>{categoria.title} </td>
             <Action categoria={categoria}/>
         </tr>

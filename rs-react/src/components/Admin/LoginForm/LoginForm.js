@@ -27,37 +27,41 @@ export function LoginForm() {
     });
 //FORMULARIO LOGIN HECHO CON BOOTSTRAP-------------------------------------------
   return (
-    <Form className='login-form-admin col-8' onSubmit={formik.handleSubmit} >
+    <Form className='login-form-admin' onSubmit={formik.handleSubmit} >
         <Form.Group className="email" controlId="email">
-        <Form.Label>Dirección de correo electrónico</Form.Label>
-        <Form.Control 
-          type="email" 
-          placeholder="Ingresa tu email"
-          value={formik.values.email} 
-          onChange={formik.handleChange} 
-          error="true" //error={formik.errors.email}
-        />
-        <Form.Text className="text-muted">
-        Nunca compartiremos tu correo electrónico con nadie más.
-        </Form.Text>
-      </Form.Group>
+          <Form.Label>Dirección de correo electrónico</Form.Label>
+          <Form.Control 
+            type="email" 
+            placeholder="Ingresa tu email"
+            value={formik.values.email} 
+            onChange={formik.handleChange} 
+            error="true" //error={formik.errors.email}
+          />
+          <Form.Text className="text-muted">
+          Nunca compartiremos tu correo electrónico con nadie más.
+          </Form.Text>
+        </Form.Group>
 
-      <Form.Group className="password" controlId="password">
-        <Form.Label>Contraseña</Form.Label>
-        <Form.Control 
-          type="password" 
-          placeholder="Contraseña" 
-          value={formik.values.password} 
-          onChange={formik.handleChange}
-          error="true" 
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Échame un vistazo" />
-      </Form.Group>
-      <Button variant="dark" type="submit">
-        Enviar
-      </Button>
+        <Form.Group className="password" controlId="password">
+          <Form.Label>Contraseña</Form.Label>
+          <Form.Control 
+            type="password" 
+            placeholder="Contraseña" 
+            value={formik.values.password} 
+            onChange={formik.handleChange}
+            error="true" 
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" label="Échame un vistazo" />
+        </Form.Group>
+        <hr/>
+        <div className='row'>
+        <Button variant="dark" type="submit" >
+          Enviar
+        </Button>
+        </div>
     </Form>
   );
 }
