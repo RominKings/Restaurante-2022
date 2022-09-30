@@ -3,15 +3,16 @@ import "./AddEditTableForm.css";
 import { useFormik, validateYupSchema } from 'formik';
 import * as Yup from 'yup';
 import { Button, Form } from 'react-bootstrap';
-import { initial } from "lodash";
 import {useTable}from "../../../../hooks"
+
+
 export function AddEditTableForm(props){
+    const {onClose, onRefetch, table}=props;
+    const { addTable } = useTable();
+    console.log(table);
 
-    const {onClose,onRefetch}=props;
-    const {addTable}=useTable()
-
-    const formik=useFormik({
-        initialValues: initialValues(),
+    const formik = useFormik({
+        initialValues: initialValues(table),
         validationSchema: Yup.object(validationSchema()),
         validateOnChange:false,
         onSubmit:async (formValue)=>{
@@ -27,14 +28,15 @@ export function AddEditTableForm(props){
             
             <h1>Agregar mesa</h1>
             <hr/>
-            <Form className='login-form-admin' onSubmit={formik.handleSubmit} method="post" >
+            <Form className='login-form-admin' onSubmit={formik.handleSubmit}>
                 <Form.Group className="numMesa" controlId="numMesa">
                     <Form.Label>Numero de mesa</Form.Label>
 
                     <Form.Control 
                         type="number" 
-                        name="number"
+                        name="number" 
                         placeholder="Ingrese un Numero de mesa"
+                        value ={formik.values.number}
                         error={formik.errors.number} //error={formik.errors.email}
                         onChange={formik.handleChange}
                     />
@@ -42,19 +44,19 @@ export function AddEditTableForm(props){
                         Recuerda que no debes ingresar numeros decimales o ...
                     </Form.Text>
                 </Form.Group>
-                <button className="btn-form" variant="" type="submit" >
+                <Button className="btn-form" variant="" type="submit"  content={table ? "Actualizar" : "Crear"} >
                     Crear
-                </button>
+                </Button>
                 
             </Form>
         </div>
     );
 }
 
-function initialValues(){
+function initialValues(data){
     return {
-        number:""
-    }
+        number: data.number || "",
+    };
 }
 function validationSchema(){
     return {

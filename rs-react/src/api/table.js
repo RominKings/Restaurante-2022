@@ -19,7 +19,7 @@ export async function getTablesApi(token) {
 
 export async function addTableApi(data, token) {
   try {
-    const url = `${BASE_API}/api/table/`;
+    const url = `${BASE_API}/api/tables/`;
     const params = {
       method: "POST",
       headers: {

@@ -1,16 +1,17 @@
 import React from 'react'
 import "./TableUsers.css";
 import { map } from "lodash";
-import { Table } from 'react-bootstrap';
-//import {CgCheckO, AiOutlineCloseCircle} from "react-icons/ai";
+import { Table, Button } from 'react-bootstrap';
+import {FcCheckmark, FcCancel} from 'react-icons/fc';
+import { FiEdit3 } from "react-icons/fi";
+import {FaTrashAlt} from "react-icons/fa";
 
 export function TableUsers(props) {
     const {users} = props;
   return (
-    <Table striped className='table-users-admin'>
+    <Table striped bordered hover className='table-users-admin'>
       <thead>
         <tr>
-          <th></th>
           <th>Username</th>
           <th>Email</th>
           <th>Nombre</th>
@@ -25,14 +26,26 @@ export function TableUsers(props) {
             <tr key={index}>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
-                <td>{user.firt_name}</td>
+                <td>{user.first_name}</td>
                 <td>{user.last_name}</td>
-                <td> 0 Active</td>
-                <td> 0 Staff</td>
-                <td> 0 Actions</td>
+                <td> {user.is_active ? <FcCheckmark/> : <FcCancel/> }</td>
+                <td> {user.is_staff ? <FcCheckmark/> : <FcCancel/> }</td>
+                <Actions user={user}/>
             </tr>
         ))}
       </tbody>
     </Table>
+  )
+}
+
+function Actions(props) {
+  const {user} = props;
+  return(
+    <td textAlign="right" >
+      <Button variant='warning' onClick={ () => console.log(`Actulizar usuario ${user.email}` )}>
+        <FiEdit3 />
+      </Button>
+      <Button variant='danger' onClick={ () => console.log('Eliminar usuario')}><FaTrashAlt/> </Button>
+    </td>
   )
 }
