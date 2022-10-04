@@ -9,30 +9,36 @@ export function useTable() {
   const [tables, setTables] = useState(null);
   const [table, setTable] = useState(null);
 
-  const { auth } = useAuth();
+    const getTables = async () => {
+        try {
+            setLoading(true);
+            const response= await getTablesApi(auth.token);
+            setLoading(false);
+            setTables(response);
+        }catch (error) {
+            setLoading(false);
+            setError(error)
+        }
+    };
 
-  const getTables = async () => {
-    try {
-      setLoading(true);
-      const response = await getTablesApi(auth.token);
-      setLoading(false);
-      setTables(response);
-    } catch (error) {
-      setLoading(false);
-      setError(error);
-    }
-  };
+    const addTable = async (data) => {
+      try {
+        setLoading(true);
+        await addTableApi(data, auth.token);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        setError(error);
+      }
+    };
 
-  const addTable = async (data) => {
-    try {
-      setLoading(true);
-      await addTableApi(data, auth.token);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      setError(error);
-    }
-  };
+    return {
+        loading,
+        error,
+        tables,
+        getTables,
+        addTable,
+    };
 
   const updateTable = async (id, data) => {
     try {

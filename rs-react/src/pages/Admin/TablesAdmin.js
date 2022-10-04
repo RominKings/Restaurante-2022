@@ -1,9 +1,7 @@
-import { ErrorMessage } from "formik";
 import React, { useEffect , useState} from "react";
 import { HeaderPage, TableTablesAdmin, AddEditTableForm } from "../../components/Admin";
 import { useTable } from "../../hooks";
-import {Modal,Button} from 'react-bootstrap/';
-import { divide } from "lodash";
+import { ModalBasic } from "../../components/Admin";
 
 export function TablesAdmin(props){
 
@@ -11,18 +9,19 @@ export function TablesAdmin(props){
     const [titleModal, setTitleModal] = useState(null);
     const [contentModal, setContentModal] = useState(null);
     const [refetch,setRefetch]=useState(false);
+
     const {loading,tables,getTables}=useTable();
 
     useEffect(() => getTables() ,[]);
     
-    const openCloseModal = (CloseEvent, num) => setShowModal ((prev) => !prev );
-    const onRefetch=()=>setRefetch((prev)=>!prev);
+    const openCloseModal = () => setShowModal((prev) => !prev);
+    const onRefetch = () => setRefetch((prev) => !prev);
 
     //funcion para crear nuevas mesas 
     const addTable = () => {
         setTitleModal("Crear mesa");
         setContentModal(
-          <AddEditTableForm onClose={openCloseModal} onRefetch={onRefetch}/>
+          <AddEditTableForm onClose={openCloseModal} onRefetch={onRefetch} />
         );
         openCloseModal();
       };
@@ -45,8 +44,15 @@ export function TablesAdmin(props){
            
             <HeaderPage title="Mesas" btnTitle="Crear nueva mesa" btnClick={addTable}/>
             <TableTablesAdmin tables={tables} updateTable={updateTable}/>
-        <>
-            <Modal id="modal" show={showModal} >
+            <ModalBasic
+                    show={showModal}
+                    onClose={openCloseModal}
+                    title={titleModal}
+                    children={contentModal}
+            />
+
+
+            {/* <Modal id="modal" show={showModal} >
                 <Modal.Title  title={titleModal}></Modal.Title>
                 <Modal.Body children={contentModal}></Modal.Body>
                 <Modal.Footer>
@@ -54,8 +60,10 @@ export function TablesAdmin(props){
                         Close
                     </button>
                 </Modal.Footer>
-            </Modal>              
-        </>
+            </Modal>       */}
+
+        
+        
         </>
         
     )

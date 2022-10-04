@@ -22,7 +22,7 @@ export function TableTablesAdmin(props) {
         {map(tables, (table, index) => (
           <tr textalign="center" key={index}>
             <td  >{table.number} </td>
-            <Action table={table} updateTable={updateTable} />
+            <Action table={table} updateTable={updateTable}/>
         </tr>
         ))}
       </tbody>
@@ -31,7 +31,7 @@ export function TableTablesAdmin(props) {
 }
 
 function Action(props) {
-  const {table,updateTable} = props;
+  const {table, updateTable} = props;
 
   return (
     <td textAlign="right" >
