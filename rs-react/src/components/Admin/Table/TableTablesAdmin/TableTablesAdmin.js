@@ -9,7 +9,7 @@ import "./TableTablesAdmin.css";
 
 
 export function TableTablesAdmin(props) {
-  const { tables, updateTable, deleteTable } = props;
+  const { tables,updateTable, deleteTable } = props;
 
   return (
        <Table striped bordered hover className='table-tables-admin'>

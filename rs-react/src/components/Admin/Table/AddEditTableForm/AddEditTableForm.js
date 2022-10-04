@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { Button, Form } from 'react-bootstrap';
 import {useTable}from "../../../../hooks"
 
-
 export function AddEditTableForm(props){
     const {onClose, onRefetch, table}=props;
     const { addTable } = useTable();
@@ -16,13 +15,14 @@ export function AddEditTableForm(props){
         validationSchema: Yup.object(validationSchema()),
         validateOnChange:false,
         onSubmit:async (formValue)=>{
-            await addTable(formValue);
+            if (table) await updateTable(table.id,formValue);
+            else await addTable(formValue);
 
             onRefetch();
             onClose();
         },
-    })
-        
+    });
+    console.log(table)
     return (
         <div>
             
@@ -38,10 +38,8 @@ export function AddEditTableForm(props){
                         value ={formik.values.number}
                         error={formik.errors.number} //error={formik.errors.email}
                         onChange={formik.handleChange}
+                        value={formik.values.number}
                     />
-                    <Form.Text className="text-muted">
-                        Recuerda que no debes ingresar numeros decimales o ...
-                    </Form.Text>
                 </Form.Group>
                 <Button className="btn-form" variant="" type="submit"  content={table ? "Actualizar" : "Crear"} >
                     Crear
@@ -59,6 +57,7 @@ function initialValues(data){
 }
 function validationSchema(){
     return {
-        number:Yup.number().required(true)
-    }
-}
+      number: Yup.number().required(true),
+    };
+  }
+  

@@ -1,13 +1,13 @@
-import{useState}from "react";
-import { getTablesApi, addTableApi } from "../api/table";
-import { useAuth } from ".";
+import { useState } from "react";
+import { size } from "lodash";
+import {getTablesApi,addTableApi,updateTableApi,} from "../api/table";
+import { useAuth } from "./";
 
-export function useTable(){
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [tables, setTables] =useState(null);
-
-    const {auth}=useAuth();
+export function useTable() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [tables, setTables] = useState(null);
+  const [table, setTable] = useState(null);
 
     const getTables = async () => {
         try {
@@ -40,4 +40,26 @@ export function useTable(){
         addTable,
     };
 
+  const updateTable = async (id, data) => {
+    try {
+      setLoading(true);
+      await updateTableApi(id, data, auth.token);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
+
+  return {
+    loading,
+    error,
+    tables,
+    table,
+    getTables,
+    addTable,
+    updateTable,
+    
+  };
 }

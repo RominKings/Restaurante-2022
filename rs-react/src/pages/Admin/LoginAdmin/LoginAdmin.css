@@ -10,7 +10,8 @@
 }
 
 .login-admin-content{
-    background-color: white;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.397);
     padding: 50px 50px;
     border-radius: 20px;
     width: 500px;
@@ -26,4 +27,3 @@ h1{
     margin-bottom: 50px;
 }
 
-.login-admin{    background-color: rgba(240, 248, 255, 0.301);}
