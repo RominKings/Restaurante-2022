@@ -3,7 +3,7 @@ import { HeaderPage, TableTablesAdmin, AddEditTableForm } from "../../components
 import { useTable } from "../../hooks";
 import { ModalBasic } from "../../components/Admin";
 
-export function TablesAdmin(props){
+export function TablesAdmin(){
 
     const [showModal, setShowModal] = useState(false);      
     const [titleModal, setTitleModal] = useState(null);
@@ -12,7 +12,7 @@ export function TablesAdmin(props){
 
     const {loading,tables,getTables}=useTable();
 
-    useEffect(() => getTables() ,[]);
+    useEffect(() => getTables() ,[refetch]);
     
     const openCloseModal = () => setShowModal((prev) => !prev);
     const onRefetch = () => setRefetch((prev) => !prev);

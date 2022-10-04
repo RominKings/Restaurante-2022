@@ -26,10 +26,9 @@ export function AddEditTableForm(props){
     return (
         <div>
             
-            <h1>Agregar mesa</h1>
             <hr/>
             <Form className='login-form-admin' onSubmit={formik.handleSubmit}>
-                <Form.Group className="numMesa" controlId="numMesa">
+                <Form.Group className="number" controlId="number">
                     <Form.Label>Numero de mesa</Form.Label>
 
                     <Form.Control 
