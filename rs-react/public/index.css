@@ -1,0 +1,12 @@
+@font-face {
+    font-family:montserrat ;
+    src: url(Montserrat-Regular.ttf);
+  }
+  @font-face {
+    font-family:montserratbold ;
+    src: url(Montserrat-Bold.ttf);
+  }
+.body{
+    font-family: montserrat;
+    color: white;
+}

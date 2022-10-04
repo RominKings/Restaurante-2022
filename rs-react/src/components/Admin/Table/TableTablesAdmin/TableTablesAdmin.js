@@ -9,7 +9,7 @@ import "./TableTablesAdmin.css";
 
 
 export function TableTablesAdmin(props) {
-  const { tables, updateTable, deleteTable } = props;
+  const { tables,updateTable, deleteTable } = props;
 
   return (
        <Table striped bordered hover className='table-tables-admin'>
@@ -22,7 +22,7 @@ export function TableTablesAdmin(props) {
         {map(tables, (table, index) => (
           <tr textalign="center" key={index}>
             <td  >{table.number} </td>
-            <Action table={table}/>
+            <Action table={table} updateTable={updateTable} />
         </tr>
         ))}
       </tbody>
@@ -31,11 +31,11 @@ export function TableTablesAdmin(props) {
 }
 
 function Action(props) {
-  const {table} = props;
+  const {table,updateTable} = props;
 
   return (
     <td textAlign="right" >
-      <Button variant='warning'  onClick={ () => console.log("Editar mesa")} >
+      <Button variant='warning'  onClick={ () => updateTable(table)} >
         <FiEdit3 />
       </Button>
       <Button variant='danger' onClick={ () => console.log('Eliminar categoria')}>  <FaTrashAlt/> </Button>

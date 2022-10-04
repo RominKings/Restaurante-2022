@@ -28,25 +28,33 @@ export function TablesAdmin(props){
       };
 
     //Actualizar mesas
-    
+    const updateTable=(data)=> {
+        setTitleModal("Actualizar mesa");
+        setContentModal(
+            <AddEditTableForm
+                onClose={openCloseModal}
+                onRefetch={onRefetch}
+                table={data}
+            />
+        );
+        openCloseModal();
+    }
     console.log(tables)
     return (
         <>
            
             <HeaderPage title="Mesas" btnTitle="Crear nueva mesa" btnClick={addTable}/>
-            <TableTablesAdmin tables={tables}/>
+            <TableTablesAdmin tables={tables} updateTable={updateTable}/>
         <>
             <Modal id="modal" show={showModal} >
                 <Modal.Title  title={titleModal}></Modal.Title>
                 <Modal.Body children={contentModal}></Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={CloseEvent => openCloseModal(CloseEvent, 100)}>
+                    <button variant="danger" onClick={CloseEvent => openCloseModal(CloseEvent, 100)}>
                         Close
-                    </Button>
+                    </button>
                 </Modal.Footer>
-            </Modal>      
-
-        
+            </Modal>              
         </>
         </>
         

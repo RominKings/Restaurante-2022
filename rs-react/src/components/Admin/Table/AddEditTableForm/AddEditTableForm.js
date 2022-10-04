@@ -3,31 +3,32 @@ import "./AddEditTableForm.css";
 import { useFormik, validateYupSchema } from 'formik';
 import * as Yup from 'yup';
 import { Button, Form } from 'react-bootstrap';
-import { initial } from "lodash";
 import {useTable}from "../../../../hooks"
+
 export function AddEditTableForm(props){
 
-    const {onClose,onRefetch}=props;
-    const {addTable}=useTable()
+    const {onClose,onRefetch,table}=props;
+    const {addTable,updateTable}=useTable()
 
     const formik=useFormik({
-        initialValues: initialValues(),
+        initialValues: initialValues(table),
         validationSchema: Yup.object(validationSchema()),
         validateOnChange:false,
         onSubmit:async (formValue)=>{
-            await addTable(formValue);
+            if (table) await updateTable(table.id,formValue);
+            else await addTable(formValue);
 
             onRefetch();
             onClose();
         },
-    })
-        
+    });
+    console.log(table)
     return (
         <div>
             
             <h1>Agregar mesa</h1>
             <hr/>
-            <Form className='login-form-admin' onSubmit={formik.handleSubmit} method="post" >
+            <Form className='' onSubmit={formik.handleSubmit} method="post" >
                 <Form.Group className="numMesa" controlId="numMesa">
                     <Form.Label>Numero de mesa</Form.Label>
 
@@ -35,29 +36,28 @@ export function AddEditTableForm(props){
                         type="number" 
                         name="number"
                         placeholder="Ingrese un Numero de mesa"
-                        error={formik.errors.number} //error={formik.errors.email}
+                        error={formik.errors.number} 
                         onChange={formik.handleChange}
+                        value={formik.values.number}
                     />
-                    <Form.Text className="text-muted">
-                        Recuerda que no debes ingresar numeros decimales o ...
-                    </Form.Text>
                 </Form.Group>
-                <button className="btn-form" variant="" type="submit" >
-                    Crear
-                </button>
+                <Button className="btn-form" variant="" type="submit" content={table ? "Actualizar":"Crear" }>
+                </Button>
                 
             </Form>
         </div>
     );
 }
 
-function initialValues(){
+function initialValues(data) {
     return {
-        number:""
-    }
-}
-function validationSchema(){
+        number: data?.number || "",
+    };
+  }
+  
+  function validationSchema() {
     return {
-        number:Yup.number().required(true)
-    }
-}
+      number: Yup.number().required(true),
+    };
+  }
+  
