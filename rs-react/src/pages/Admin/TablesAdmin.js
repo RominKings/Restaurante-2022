@@ -2,6 +2,7 @@ import React, { useEffect , useState} from "react";
 import { HeaderPage, TableTablesAdmin, AddEditTableForm } from "../../components/Admin";
 import { useTable } from "../../hooks";
 import { ModalBasic } from "../../components/Admin/Common";
+import { Spinner } from "react-bootstrap";
 
 export function TablesAdmin(){
 
@@ -10,7 +11,7 @@ export function TablesAdmin(){
     const [contentModal, setContentModal] = useState(null);
     const [refetch,setRefetch]=useState(false);
 
-    const {loading,tables,getTables}=useTable();
+    const {loading,tables,getTables,deleteTable}=useTable();
 
     useEffect(() => getTables() ,[refetch]);
     
@@ -38,12 +39,26 @@ export function TablesAdmin(){
         );
         openCloseModal();
     }
+    //Eliminar
+    const onDeleteTable = async (data) => {
+        const result = window.confirm(`¿Eliminar mesa ${data.number}?`);
+        if (result) {
+          await deleteTable(data.id);
+          onRefetch();
+        }
+      };
     console.log(tables)
     return (
         <>
            
             <HeaderPage title="Mesas" btnTitle="Crear nueva mesa" btnClick={addTable}/>
-            <TableTablesAdmin tables={tables} updateTable={updateTable}/>
+                {loading? (
+                    <Spinner  active inline="centered">
+                        Cargando...
+                    </Spinner>) 
+                : (
+                    <TableTablesAdmin tables={tables} updateTable={updateTable} deleteTable={deleteTable}/>)
+                }
             <ModalBasic
                     show={showModal}
                     onClose={openCloseModal}

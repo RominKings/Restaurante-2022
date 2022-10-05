@@ -52,7 +52,7 @@ export function AddEditTableForm(props){
 
 function initialValues(data){
     return {
-       // number: data?.number || "" ,
+        number: data.number || "", 
     };
 }
 function validationSchema(){

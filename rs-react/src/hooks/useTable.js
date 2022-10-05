@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { size } from "lodash";
-import {getTablesApi,addTableApi,updateTableApi,} from "../api/table";
+import {getTablesApi,addTableApi,updateTableApi,deleteTableApi} from "../api/table";
 import { useAuth } from "./";
 
 export function useTable() {
@@ -43,7 +43,17 @@ export function useTable() {
       setError(error);
     }
   };
-
+  
+  const deleteTable = async (id) => {
+    try {
+      setLoading(true);
+      await deleteTableApi(id, auth.token);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
 
   return {
     loading,
@@ -53,6 +63,7 @@ export function useTable() {
     getTables,
     addTable,
     updateTable,
+    deleteTable,
     
   };
 }

@@ -22,7 +22,7 @@ export function TableTablesAdmin(props) {
         {map(tables, (table, index) => (
           <tr textalign="center" key={index}>
             <td  >{table.number} </td>
-            <Action table={table} updateTable={updateTable}/>
+            <Action table={table} updateTable={updateTable } deleteTable={deleteTable}/>
         </tr>
         ))}
       </tbody>
@@ -31,14 +31,14 @@ export function TableTablesAdmin(props) {
 }
 
 function Action(props) {
-  const {table, updateTable} = props;
+  const {table, updateTable,deleteTable} = props;
 
   return (
     <td textAlign="right" >
       <Button variant='warning'  onClick={ () => updateTable(table)} >
-        <FiEdit3 />
+      <FiEdit3 />
       </Button>
-      <Button variant='danger' onClick={ () => console.log('Eliminar categoria')}>  <FaTrashAlt/> </Button>
+      <Button variant='danger' onClick={ () => deleteTable(table)}>  <FaTrashAlt/> </Button>
 
     </td>
   );
