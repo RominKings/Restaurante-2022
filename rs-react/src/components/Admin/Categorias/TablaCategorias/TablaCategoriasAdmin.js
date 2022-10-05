@@ -4,6 +4,7 @@ import { Table, Button, Image } from 'react-bootstrap';
 import "./TablaCategoriaAdmin.css";
 import { FiEdit3 } from "react-icons/fi";
 import {FaTrashAlt} from "react-icons/fa";
+import { useAuth } from '../../../../hooks';
 
 
 export function TablaCategoriasAdmin(props) {
