@@ -8,6 +8,7 @@ export function useTable() {
   const [error, setError] = useState(null);
   const [tables, setTables] = useState(null);
   const [table, setTable] = useState(null);
+  const { auth } = useAuth();
 
     const getTables = async () => {
         try {
@@ -30,14 +31,6 @@ export function useTable() {
         setLoading(false);
         setError(error);
       }
-    };
-
-    return {
-        loading,
-        error,
-        tables,
-        getTables,
-        addTable,
     };
 
   const updateTable = async (id, data) => {

@@ -7,8 +7,7 @@ import {useTable}from "../../../../hooks"
 
 export function AddEditTableForm(props){
     const {onClose, onRefetch, table}=props;
-    const { addTable } = useTable();
-    console.log(table);
+    const { addTable,updateTable } = useTable();
 
     const formik = useFormik({
         initialValues: initialValues(table),
@@ -26,10 +25,9 @@ export function AddEditTableForm(props){
     return (
         <div>
             
-            <h1>Agregar mesa</h1>
-            <hr/>
+            
             <Form className='login-form-admin' onSubmit={formik.handleSubmit}>
-                <Form.Group className="numMesa" controlId="numMesa">
+
                     <Form.Label>Numero de mesa</Form.Label>
 
                     <Form.Control 
@@ -39,12 +37,13 @@ export function AddEditTableForm(props){
                         value ={formik.values.number}
                         error={formik.errors.number} //error={formik.errors.email}
                         onChange={formik.handleChange}
-                        value={formik.values.number}
+                        
                     />
-                </Form.Group>
-                <Button className="btn-form" variant="" type="submit"  content={table ? "Actualizar" : "Crear"} >
-                    Crear
-                </Button>
+           
+                <Button 
+                    className="btn"
+                    type="submit"
+                    content={table ? "Actualizar" : "Crear"}/>
                 
             </Form>
         </div>
@@ -53,7 +52,7 @@ export function AddEditTableForm(props){
 
 function initialValues(data){
     return {
-        number: data.number || "",
+       // number: data?.number || "" ,
     };
 }
 function validationSchema(){

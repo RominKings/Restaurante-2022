@@ -57,6 +57,7 @@ export async function updateTableApi(id, data, token) {
   }
 }
 
+
 export async function deleteTableApi(id, token) {
   try {
     const url = `${BASE_API}/api/tables/${id}/`;

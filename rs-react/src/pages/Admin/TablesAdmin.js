@@ -1,7 +1,7 @@
 import React, { useEffect , useState} from "react";
 import { HeaderPage, TableTablesAdmin, AddEditTableForm } from "../../components/Admin";
 import { useTable } from "../../hooks";
-import { ModalBasic } from "../../components/Admin";
+import { ModalBasic } from "../../components/Admin/Common";
 
 export function TablesAdmin(props){
 
