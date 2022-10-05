@@ -8,7 +8,7 @@ import {FaTrashAlt} from "react-icons/fa";
 
 
 export function TableUsers(props) {
-    const {users, updateUser, onDeleteUser} = props;
+    const {users, updateUser, deleteUser} = props;
   return (
     <Table striped bordered hover className='table-users-admin'>
       <thead>
@@ -31,7 +31,7 @@ export function TableUsers(props) {
                 <td>{user.last_name}</td>
                 <td> {user.is_active ? <FcCheckmark/> : <FcCancel/> }</td>
                 <td> {user.is_staff ? <FcCheckmark/> : <FcCancel/> }</td>
-                <Actions user={user} updateUser={updateUser} onDeleteUser={onDeleteUser}/>
+                <Actions user={user} updateUser={updateUser} deleteUser={deleteUser}/>
             </tr>
         ))}
       </tbody>
@@ -40,11 +40,11 @@ export function TableUsers(props) {
 }
 
 function Actions(props) {
-  const {user, updateUser, onDeleteUser} = props;
+  const {user, updateUser, deleteUser} = props;
   return(
     <td textalign="right" >
       <Button variant='warning' onClick={ () => updateUser(user)}><FiEdit3/></Button>
-      <Button variant='danger' onClick={ () => onDeleteUser(user)}><FaTrashAlt/></Button>
+      <Button variant='danger' onClick={ () => deleteUser(user)}><FaTrashAlt/></Button>
     </td>
   )
 }

@@ -21,9 +21,7 @@ export function TablesAdmin(){
     //funcion para crear nuevas mesas 
     const addTable = () => {
         setTitleModal("Crear mesa");
-        setContentModal(
-          <AddEditTableForm onClose={openCloseModal} onRefetch={onRefetch} />
-        );
+        setContentModal(<AddEditTableForm onClose={openCloseModal} onRefetch={onRefetch} />);
         openCloseModal();
       };
 
@@ -53,11 +51,11 @@ export function TablesAdmin(){
            
             <HeaderPage title="Mesas" btnTitle="Crear nueva mesa" btnClick={addTable}/>
                 {loading? (
-                    <Spinner  active inline="centered">
-                        Cargando...
+                    <Spinner  active inline="centered" animation="border" role="status">
+                         <span className="visually-hidden">Cargando...</span>
                     </Spinner>) 
                 : (
-                    <TableTablesAdmin tables={tables} updateTable={updateTable} deleteTable={deleteTable}/>)
+                    <TableTablesAdmin tables={tables} updateTable={updateTable} deleteTable={onDeleteTable}/>)
                 }
             <ModalBasic
                     show={showModal}

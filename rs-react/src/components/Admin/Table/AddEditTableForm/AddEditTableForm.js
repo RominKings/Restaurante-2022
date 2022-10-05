@@ -2,9 +2,8 @@ import React from "react";
 import "./AddEditTableForm.css";
 import { useFormik, validateYupSchema } from 'formik';
 import * as Yup from 'yup';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Container, Form } from 'react-bootstrap';
 import {useTable}from "../../../../hooks"
-
 export function AddEditTableForm(props){
     const {onClose, onRefetch, table}=props;
     const { addTable,updateTable } = useTable();
@@ -22,15 +21,15 @@ export function AddEditTableForm(props){
         },
     });
     console.log(table)
-    return (
-        <div>
-            
-            
-            <Form className='login-form-admin' onSubmit={formik.handleSubmit}>
+    return (           
+            <Container>
+            <Form id="formularioMesas" className='row login-form-admin' onSubmit={formik.handleSubmit}>
 
-                    <Form.Label>Numero de mesa</Form.Label>
+                    <Form.Label className="text-center">Numero de mesa</Form.Label>
 
                     <Form.Control 
+                        id="numMesa"
+                        className="input-formulario row mx-auto"
                         type="number" 
                         name="number" 
                         placeholder="Ingrese un Numero de mesa"
@@ -38,21 +37,22 @@ export function AddEditTableForm(props){
                         error={formik.errors.number} //error={formik.errors.email}
                         onChange={formik.handleChange}
                         
-                    />
-           
-                <Button 
-                    className="btn"
+                    ></Form.Control>
+                
+                <button 
+                    
+                    className="btn btn-primary btn-formulario mx-auto col-4 "
                     type="submit"
-                    content={table ? "Actualizar" : "Crear"}/>
+                   > Confirmar </button>
                 
             </Form>
-        </div>
+            </Container>
     );
 }
 
 function initialValues(data){
     return {
-        number: data.number || "", 
+        number: ""
     };
 }
 function validationSchema(){

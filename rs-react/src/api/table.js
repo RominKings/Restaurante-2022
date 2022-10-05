@@ -1,5 +1,6 @@
 import { BASE_API } from "../utils/constants";
 
+
 export async function getTablesApi(token) {
   try {
     const url = `${BASE_API}/api/tables/`;

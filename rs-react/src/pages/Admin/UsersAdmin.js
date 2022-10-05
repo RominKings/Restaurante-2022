@@ -45,7 +45,7 @@ export function UsersAdmin() {
   return (
     <>
       <HeaderPage title="Usuarios" btnTitle="Nuevo Usuario" btnClick={addUser}/>
-      <TableUsers users ={users} updateUser={updateUser} onDeleteUser={onDeleteUser}/>
+      <TableUsers users ={users} updateUser={updateUser} deleteUser={onDeleteUser}/>
       <ModalBasic
         show={showModal}
         onClose={openCloseModal}
