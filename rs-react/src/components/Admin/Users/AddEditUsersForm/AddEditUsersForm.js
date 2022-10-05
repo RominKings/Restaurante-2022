@@ -4,17 +4,21 @@ import { useFormik } from 'formik';
 import * as Yup from "yup";
 import { useUser } from '../../../../hooks';
 
-export function AddEditUsersForm() {
-    const {addUser} = useUser();
+export function AddEditUsersForm(props) {
+    const { onClose, onRefetch, user } = props;
+    const { addUser, updateUser } = useUser();
 
     const formik = useFormik({
-        initialValues: initialValues(),
-        validatiOnSchema: Yup.object(newSchema()),
+        initialValues: initialValues(), //(user),
+        validatiOnSchema: Yup.object(user ? updateSchema() : newSchema()),
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try{
-                await addUser(formValue)
-                console.log("Usuario creado correctamente");
+                if (user) await updateUser(user.id, formValue)
+                else await addUser(formValue);
+
+                onRefetch();
+                onClose();
             } catch(error) {
                 console.error(error)
             }
@@ -25,7 +29,7 @@ export function AddEditUsersForm() {
     <Form onSubmit={formik.handleSubmit} >
       <Row>
         <Col>
-          <Form.Control name="username" placeholder="Nombre de usuario" 
+          <Form.Control id="username" name="username" placeholder="Nombre de usuario" 
           value={formik.values.username} onChange={formik.handleChange} error={formik.errors.username}/>
         </Col>
         <Col>
@@ -72,23 +76,23 @@ export function AddEditUsersForm() {
       />
         </Col>
       </Row>
-      <Button type="submit" >Crear</Button>
+      <Button type="submit" fluid content={user ? "Actualizar" : "Crear"}>Todo listo</Button>
     </Form>
   )
 }
 
-function initialValues(){
+function initialValues(data) {
     return{
-        username: "",
-        email: "",
-        first_name: "",
-        last_name: "",
+        username: "", //data?.username || "" ,
+        email:"", //data?.email || "",
+        first_name: "", //data?.first_name || "",
+        last_name: "", //data?.last_name || "",
         is_active: true,
         is_staff: false,
         password: "",
 
-    }
-}
+    };
+};
 
 function newSchema() {
     return{
@@ -101,4 +105,17 @@ function newSchema() {
         password: Yup.string().required(true),
 
     }
+}
+
+function updateSchema() {
+  return{
+    username: Yup.string().required(true) ,
+    email: Yup.string().email(true).required(true) ,
+    first_name: Yup.string(),
+    last_name: Yup.string(),
+    is_active: Yup.bool().required(true),
+    is_staff: Yup.bool().required(true),
+    password: Yup.string(),
+
+  }
 }

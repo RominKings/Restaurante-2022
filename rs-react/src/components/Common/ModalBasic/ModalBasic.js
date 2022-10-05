@@ -11,12 +11,13 @@ export function ModalBasic(props) {
           {title && <Modal.Title>{title}</Modal.Title>}
         </Modal.Header>
         <Modal.Body>{children}</Modal.Body>
-        <Modal.Footer>
+        {/* <Modal.Footer>
           <Button variant="secondary" onClick={onClose}>
             Cerrar
           </Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   )
 }
+

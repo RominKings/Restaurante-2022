@@ -6,8 +6,9 @@ import {FcCheckmark, FcCancel} from 'react-icons/fc';
 import { FiEdit3 } from "react-icons/fi";
 import {FaTrashAlt} from "react-icons/fa";
 
+
 export function TableUsers(props) {
-    const {users} = props;
+    const {users, updateUser, onDeleteUser} = props;
   return (
     <Table striped bordered hover className='table-users-admin'>
       <thead>
@@ -30,7 +31,7 @@ export function TableUsers(props) {
                 <td>{user.last_name}</td>
                 <td> {user.is_active ? <FcCheckmark/> : <FcCancel/> }</td>
                 <td> {user.is_staff ? <FcCheckmark/> : <FcCancel/> }</td>
-                <Actions user={user}/>
+                <Actions user={user} updateUser={updateUser} onDeleteUser={onDeleteUser}/>
             </tr>
         ))}
       </tbody>
@@ -39,13 +40,11 @@ export function TableUsers(props) {
 }
 
 function Actions(props) {
-  const {user} = props;
+  const {user, updateUser, onDeleteUser} = props;
   return(
-    <td textAlign="right" >
-      <Button variant='warning' onClick={ () => console.log(`Actulizar usuario ${user.email}` )}>
-        <FiEdit3 />
-      </Button>
-      <Button variant='danger' onClick={ () => console.log('Eliminar usuario')}><FaTrashAlt/> </Button>
+    <td textalign="right" >
+      <Button variant='warning' onClick={ () => updateUser(user)}><FiEdit3/></Button>
+      <Button variant='danger' onClick={ () => onDeleteUser(user)}><FaTrashAlt/></Button>
     </td>
   )
 }

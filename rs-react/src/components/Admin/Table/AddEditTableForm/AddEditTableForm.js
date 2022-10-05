@@ -7,7 +7,7 @@ import {useTable}from "../../../../hooks"
 
 export function AddEditTableForm(props){
     const {onClose, onRefetch, table}=props;
-    const { addTable } = useTable();
+    const { addTable, updateTable } = useTable();
     console.log(table);
 
     const formik = useFormik({
