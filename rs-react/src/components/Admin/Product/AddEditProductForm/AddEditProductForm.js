@@ -4,16 +4,16 @@ import { map } from 'lodash';
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik"
 import * as Yup from "yup";
-import { useCategorias, useProduct } from "../../../../hooks";
+import { useCategory, useProduct } from "../../../../hooks";
 
 export function AddEditProductForm() {
     const [categoriesFormat, setCategoriesFormat] = useState([]);
     const [previewImage, setPreviewImage] = useState(null)
   // HOOK DE CATEGORIAS========================
-    const { categorias, getCategorias } = useCategorias();
+    const { categorias, getCategories } = useCategory();
     const { addProduct } = useProduct();
     
-    useEffect(() => {getCategorias()}, []);
+    useEffect(() => {getCategories()}, []);
     useEffect(() => {setCategoriesFormat(formatDropdownData(categorias))},[])
 
     const onDrop = useCallback( async (acceptedFile) => {

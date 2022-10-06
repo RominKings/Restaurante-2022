@@ -5,10 +5,10 @@ export function ModalBasic(props) {
     const {children, title, show, onClose} = props;
 
   return (
-    <>
+    
       <Modal className='row container-fluid' show={show} onHide={onClose}>
-        <Modal.Header className='row text-center' closeButton>
-          {title && <Modal.Title>{title}</Modal.Title>}
+        <Modal.Header className=' row' closeButton>
+          {title && <Modal.Title className='row'>{title}</Modal.Title>}
         </Modal.Header>
         <Modal.Body className='row '>{children}</Modal.Body>
         {/* <Modal.Footer>
@@ -17,7 +17,7 @@ export function ModalBasic(props) {
           </Button>
         </Modal.Footer> */}
       </Modal>
-    </>
+   
   )
 }
 

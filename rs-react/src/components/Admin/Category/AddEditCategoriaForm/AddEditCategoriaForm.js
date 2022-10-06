@@ -6,23 +6,23 @@ import * as Yup from "yup";
 import { useCategory } from "../../../../hooks";
 
 export function AddEditCategoriaForm(props) {
-
-  const { onClose, onRefetch, category } = props;
-  const [previewImage, setPreviewImage] = useState(category.image || null);
+  const { onClose,onRefetch,category  } = props;
+  const [previewImage, setPreviewImage] = useState(category);
   const { addCategory, updateCategory } = useCategory();
 
+
+  console.log(category)
   const formik = useFormik({
     initialValues: initialValues(category),
     validationSchema: Yup.object(category ? updateSchema() : newSchema()),
     validateOnChange: false,
-    
     onSubmit: async (formValue) => {
       try {
         if (category) await updateCategory(category.id, formValue);
         else await addCategory(formValue);
-
-        onRefetch();
+        onRefetch()
         onClose();
+        console.log(formValue)
       } catch (error) {
         console.error(error);
       }
@@ -33,6 +33,7 @@ export function AddEditCategoriaForm(props) {
     const file = acceptedFile[0];
     await formik.setFieldValue("image", file);
     setPreviewImage(URL.createObjectURL(file));
+    console.log(file)
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -43,31 +44,33 @@ export function AddEditCategoriaForm(props) {
   });
   return (
     
-    <Form  onSubmit={formik.handleSubmit} >
-          <Form.Control 
-            name="title"
-            placeholder="Nombre de la categoria"
-            value={formik.values.title}
-            onChange={formik.handleChange}
-            error={formik.errors.title}
-          />
+    <Form onSubmit={formik.handleSubmit}>
+        <Form.Control 
+          name="title"
+          placeholder="Nombre de la categoria"
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          error={formik.errors.title}
+        />
       <br></br>
-      
+      <Container className='row'>
         <Button 
+          fluid
           className='col-5' 
           type="button"   
           {...getRootProps()}>
           Subir imagen
         </Button>
         <input {...getInputProps()} />
-      <Image src={previewImage} fluid />
+      <Image src={previewImage} className="fluid" />
         <Button className='col-5' type="submit" >Crear</Button>
+      </Container>
     </Form>
   )
 }
 function initialValues(data) {
   return {
-    title: "",
+    title:  "",
     image: "",
   };
 }
