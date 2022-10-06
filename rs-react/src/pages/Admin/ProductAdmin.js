@@ -27,7 +27,11 @@ export function ProductAdmin() {
         <HeaderPage title="Productos" btnTitle="Nuevo Producto" btnClick={addProduct}/>
         {loading ?(<Spinner animation="border" variant="success" />) : (
         <TableProductAdmin products={products}/>)}
-        <ModalBasic show={showModal} onClose={openCloseModal} title={titleModal} children={contentModal}/>
+        <ModalBasic 
+          show={showModal} 
+          onClose={openCloseModal} 
+          title={titleModal} 
+          children={contentModal}/>
     </>
   );
 }

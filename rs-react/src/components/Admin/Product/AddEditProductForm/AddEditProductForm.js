@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {Form, Image, Button, Row, Col} from "react-bootstrap";
+import {Form, Image, Button, Row, Col,Dropdown} from "react-bootstrap";
 import { map } from 'lodash';
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik"
@@ -12,6 +12,8 @@ export function AddEditProductForm() {
   // HOOK DE CATEGORIAS========================
     const { categorias, getCategories } = useCategory();
     const { addProduct } = useProduct();
+
+    console.log(categoriesFormat)
     
     useEffect(() => {getCategories()}, []);
     useEffect(() => {setCategoriesFormat(formatDropdownData(categorias))},[])
@@ -43,13 +45,20 @@ export function AddEditProductForm() {
       <Row>
 
         <Col>
-          <Form.Control name="title" placeholder="Nombre del producto"
-          value={formik.values.title} onChange={formik.handleChange}/>
+          <Form.Control 
+            name="title" 
+            placeholder="Nombre del producto"
+            value={formik.values.title} 
+            onChange={formik.handleChange}/>
         </Col>
 
         <Col>
-          <Form.Control name="price" type="number" placeholder="Precio"
-          value={formik.values.price} onChange={formik.handleChange}/>
+          <Form.Control 
+            name="price" 
+            type="number" 
+            placeholder="Precio"
+            value={formik.values.price} 
+            onChange={formik.handleChange}/>
         </Col>
 
       </Row>
@@ -71,10 +80,10 @@ export function AddEditProductForm() {
 
         <Col>
         <Form.Check 
-        type="switch"
-        id="custom-switch"
-        label="Producto activo"
-        checked={formik.values.active} onChange={(_, ...data) => formik.setFieldValue('active', ...data.checked)}
+          type="switch"
+          id="custom-switch"
+          label="Producto activo"
+          checked={formik.values.active} onChange={(_, ...data) => formik.setFieldValue('active', ...data.checked)}
         />
         </Col>
 
@@ -94,7 +103,7 @@ export function AddEditProductForm() {
 
       <br></br>
       
-      <div className="d-grid gap-2"><Button variant="success" size="lg">Guardar</Button></div>
+      <div className="d-grid gap-2"><Button variant="success" size="lg" type='submit'>Guardar</Button></div>
     </Form>
   )
 }

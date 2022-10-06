@@ -28,7 +28,7 @@ export function TableProductAdmin(props) {
             <td>{product.title} </td>
             <td>{product.price} $</td>
             {/* ALGO PASO PORQUE ME MOSTRABA LA CATEGORY_DATA.TITLE Y AHORA NO ME DEJA */}
-            <td>{product.category_data}</td>  
+            <td>{product.category_data.title}</td>  
             <td>{product.active ? <FcCheckmark/> : <FcCancel/>} </td>
             <Actions product={product}/>
         </tr>
