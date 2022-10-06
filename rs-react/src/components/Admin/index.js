@@ -3,6 +3,6 @@ export * from "./TopMenu";
 export * from "./HeaderPage";
 
 export * from "./Users";
-export * from "./Categorias";
+export * from "./Category";
 export * from "./Table";
 export * from "./Product";

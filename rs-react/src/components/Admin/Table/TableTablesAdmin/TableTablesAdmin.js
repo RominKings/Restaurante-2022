@@ -15,7 +15,7 @@ export function TableTablesAdmin(props) {
        <Table striped bordered hover className='table-tables-admin'>
       <thead>
         <tr>
-          <th textAlign="center">Mesa Numero</th>
+          <th textalign="center">Mesa Numero</th>
         </tr>
       </thead>
       <tbody>
