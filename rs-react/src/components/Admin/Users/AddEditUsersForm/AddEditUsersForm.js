@@ -63,7 +63,7 @@ export function AddEditUsersForm(props) {
         id="is_active"
         label="Usuario Activo"
         checked={formik.values.is_active}
-        onChange={( data) => formik.setFieldValue("is_active", data.checked)} //NO FUNCIONA
+        onChange={(_, ...data) => formik.setFieldValue("is_active", data.checked)} //NO FUNCIONA
       />
         </Col>
         <Col>
@@ -72,11 +72,12 @@ export function AddEditUsersForm(props) {
         id="is_staff"
         label="Usuario Administrador"
         checked={formik.values.is_staff}
-        onChange={( data) => formik.setFieldValue("is_staff", data.checked)} // NO FUNCIONA
+        onChange={(_, ...data) => formik.setFieldValue("is_staff", data.checked)} // NO FUNCIONA
       />
         </Col>
       </Row>
-      <Button type="submit" fluid content={user ? "Actualizar" : "Crear"}>Todo listo</Button>
+      <br></br>
+      <div className="d-grid gap-2"><Button type="submit" variant='success' sixe="lg" content={user ? "Actualizar" : "Crear"}>Todo listo</Button></div>
     </Form>
   )
 }
@@ -87,7 +88,7 @@ function initialValues(data) {
         email:"", //data?.email || "",
         first_name: "", //data?.first_name || "",
         last_name: "", //data?.last_name || "",
-        is_active: true,
+        is_active: false,
         is_staff: false,
         password: "",
 

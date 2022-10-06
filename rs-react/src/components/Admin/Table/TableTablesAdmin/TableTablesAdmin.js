@@ -34,7 +34,7 @@ function Action(props) {
   const {table, updateTable,deleteTable} = props;
 
   return (
-    <td textAlign="right" >
+    <td textalign="right" >
       <Button variant='warning'  onClick={ () => updateTable(table)} >
       <FiEdit3 />
       </Button>

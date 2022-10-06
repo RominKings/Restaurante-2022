@@ -27,7 +27,7 @@ export function TopMenu(props) {
   return (
     <>
       {[false].map((expand) => (
-        <Navbar key={expand} bg="ligth" expand={expand} className="mb-3">
+        <Navbar key={expand} bg="light" expand={expand} className="mb-3">
           <Container fluid>
             <Navbar.Brand href="#home" className="color-dark"> <MdWork/> Hola, {renderName()} </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

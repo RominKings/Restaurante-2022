@@ -1,52 +1,99 @@
-import React, {useEffect, useState} from 'react'
-import {Form, Image, Button, Row, Col, Dropdown, DropdownButton} from "react-bootstrap";
+import React, {useCallback, useEffect, useState} from 'react'
+import {Form, Image, Button, Row, Col} from "react-bootstrap";
 import { map } from 'lodash';
-import { useCategorias } from "../../../../hooks";
+import { useDropzone } from "react-dropzone";
+import { useFormik } from "formik"
+import * as Yup from "yup";
+import { useCategorias, useProduct } from "../../../../hooks";
 
 export function AddEditProductForm() {
-    const [categoriesFormat, setcategoriesFormat] = useState([]);
+    const [categoriesFormat, setCategoriesFormat] = useState([]);
+    const [previewImage, setPreviewImage] = useState(null)
+  // HOOK DE CATEGORIAS========================
     const { categorias, getCategorias } = useCategorias();
+    const { addProduct } = useProduct();
     
     useEffect(() => {getCategorias()}, []);
-    useEffect(() => {setcategoriesFormat(formatDropdownData(categorias))},[])
+    useEffect(() => {setCategoriesFormat(formatDropdownData(categorias))},[])
+
+    const onDrop = useCallback( async (acceptedFile) => {
+      const file = acceptedFile[0];
+      await formik.setFieldValue('image', file);
+      setPreviewImage(URL.createObjectURL(file))
+    }, []);
+
+    const formik = useFormik({ 
+      initialValues: initialValues(),
+      validationSchema: Yup.object(newSchema()),
+      validationOnChange: false,
+      onSubmit: async (formValue) => {
+        await addProduct(formValue)
+      }
+    })
+
+    const { getRootProps, getInputProps} = useDropzone({
+      accept: "image/jpeg, image/png",
+      noKeyboard: true,
+      multiple: false,
+      onDrop,
+    });
 
   return (
-    <Form>
+    <Form onSubmit={formik.handleSubmit}>
       <Row>
+
         <Col>
-          <Form.Control name="title" placeholder="Nombre del producto"/>
+          <Form.Control name="title" placeholder="Nombre del producto"
+          value={formik.values.title} onChange={formik.handleChange}/>
         </Col>
+
         <Col>
-          <Form.Control name="price" type="number" placeholder="Precio"/>
+          <Form.Control name="price" type="number" placeholder="Precio"
+          value={formik.values.price} onChange={formik.handleChange}/>
         </Col>
+
       </Row>
+
       <br></br>
+
       <Row>
+
         <Col>
-        <DropdownButton id="dropdown-basic-button" title="Categorias">
-            <Dropdown.Item href="#/action-1">{categoriesFormat}</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </DropdownButton>
-        {/* <Form.Group as={Col} controlId="formGridState" >
-          <Form.Select defaultValue="Categoria" option={categoriesFormat }>
-            <option>Categoria</option>
+        <Form.Group controlId="formGridState" 
+        value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}
+        >
+          <Form.Select defaultValue="Categoria" option={categoriesFormat}>
+            <option>{categoriesFormat}</option>
+
           </Form.Select>
-        </Form.Group> */}
+        </Form.Group>
         </Col>
+
         <Col>
         <Form.Check 
         type="switch"
         id="custom-switch"
-        label="Producto activo"/>
+        label="Producto activo"
+        checked={formik.values.active} onChange={(_, ...data) => formik.setFieldValue('active', ...data.checked)}
+        />
         </Col>
+
       </Row>
+
       <br></br>
-      <Form.Group controlId="formFile" className="mb-3">
+
+      <Form.Group controlId="formFile" className="mb-3" fluid="true" {...getRootProps()}
+      // color={formik.errors.image && red}
+      >
+        {previewImage ? "Cambiar imagen" : "Subir imagen"}
         <Form.Label>Imagen</Form.Label>
-        <Form.Control type="file" />
+        <Form.Control type="file" {...getInputProps()} />
       </Form.Group>
+
+      <Image src={previewImage}></Image>
+
       <br></br>
+      
       <div className="d-grid gap-2"><Button variant="success" size="lg">Guardar</Button></div>
     </Form>
   )
@@ -58,4 +105,24 @@ function formatDropdownData(data) {
         title: item.title,
         value: item.id,
     }))
+}
+
+function initialValues() {
+  return {
+    title: "",
+    price: "",
+    category: "",
+    active: false,
+    image: "",
+  };
+}
+
+function newSchema() {
+  return {
+    title: Yup.string().required(true),
+    price: Yup.number().required(true),
+    category: Yup.number(). required(true),
+    active: Yup.boolean(). required(true),
+    image: Yup.string().required(true)
+  }
 }
