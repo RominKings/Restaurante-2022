@@ -57,7 +57,7 @@ export function useUser() {
   const deleteUser = async (id) => {
     try {
       setLoading(true);
-      await updateUserApi(id, auth.token);
+      await deleteUser(id, auth.token);
       setLoading(false)
     } catch (error) {
       setLoading(false);

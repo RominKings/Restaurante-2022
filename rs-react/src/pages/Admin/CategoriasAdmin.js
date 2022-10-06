@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { HeaderPage, TablaCategoriasAdmin, AddEditUsersForm } from '../../components/Admin' 
+import { HeaderPage, TablaCategoriasAdmin, AddEditCategoria } from '../../components/Admin' 
 import { useCategorias } from '../../hooks'
 import { ModalBasic } from '../../components/Common'
 
@@ -16,7 +16,7 @@ export function CategoriasAdmin() {
 
     const addCategoria = () => {
       setTitleModal ("Nueva Categoria");
-      setContentModal (<AddEditUsersForm/>)
+      setContentModal (<AddEditCategoria/>)
       openCloseModal()
     }
 

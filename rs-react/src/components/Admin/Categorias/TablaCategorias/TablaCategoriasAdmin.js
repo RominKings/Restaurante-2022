@@ -37,7 +37,7 @@ function Action(props) {
   const {categoria} = props;
 
   return (
-    <td textAlign="right" >
+    <td textalign="right" >
       <Button variant='warning'  onClick={ () => console.log("Actulizar categoria")} >
         <FiEdit3 />
       </Button>
