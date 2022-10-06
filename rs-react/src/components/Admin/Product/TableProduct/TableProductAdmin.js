@@ -4,7 +4,7 @@ import { map } from "lodash";
 import {FcCheckmark, FcCancel} from 'react-icons/fc';
 import { FiEdit3 } from "react-icons/fi";
 import {FaTrashAlt} from "react-icons/fa";
-
+import "./TableProductAdmin.css"
 export function TableProductAdmin(props) {
   const { products } = props;
 

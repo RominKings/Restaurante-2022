@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {Form, Image, Button, Row, Col, Dropdown, DropdownButton} from "react-bootstrap";
 import { map } from 'lodash';
-import { useCategorias } from "../../../../hooks";
+import { useCategory } from "../../../../hooks";
 
 export function AddEditProductForm() {
     const [categoriesFormat, setcategoriesFormat] = useState([]);
-    const { categorias, getCategorias } = useCategorias();
+    const { categorias, getCategories } = useCategory();
     
-    useEffect(() => {getCategorias()}, []);
+    useEffect(() => {getCategories()}, []);
     useEffect(() => {setcategoriesFormat(formatDropdownData(categorias))},[])
 
   return (

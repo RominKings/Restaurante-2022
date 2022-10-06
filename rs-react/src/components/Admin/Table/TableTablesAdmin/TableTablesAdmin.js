@@ -15,7 +15,7 @@ export function TableTablesAdmin(props) {
        <Table striped bordered hover className='table-tables-admin'>
       <thead>
         <tr>
-          <th textAlign="center">Mesa Numero</th>
+          <th textalign="center">Mesa Numero</th>
         </tr>
       </thead>
       <tbody>
@@ -34,7 +34,7 @@ function Action(props) {
   const {table, updateTable,deleteTable} = props;
 
   return (
-    <td textAlign="right" >
+    <td textalign="right" >
       <Button variant='warning'  onClick={ () => updateTable(table)} >
       <FiEdit3 />
       </Button>

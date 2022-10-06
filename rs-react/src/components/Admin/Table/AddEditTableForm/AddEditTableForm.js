@@ -1,12 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import "./AddEditTableForm.css";
 import { useFormik, validateYupSchema } from 'formik';
 import * as Yup from 'yup';
 import { Button, Container, Form } from 'react-bootstrap';
 import {useTable}from "../../../../hooks"
 export function AddEditTableForm(props){
+    
     const {onClose, onRefetch, table}=props;
     const { addTable,updateTable } = useTable();
+    const [validated, setValidated] = useState(false);
+    
+
+
 
     const formik = useFormik({
         initialValues: initialValues(table),
@@ -23,11 +28,12 @@ export function AddEditTableForm(props){
     console.log(table)
     return (           
             <Container>
-            <Form id="formularioMesas" className='row login-form-admin' onSubmit={formik.handleSubmit}>
+            <Form noValidate validated={validated}  id="formularioMesas" className='row login-form-admin' onSubmit={formik.handleSubmit}>
 
                     <Form.Label className="text-center">Numero de mesa</Form.Label>
 
                     <Form.Control 
+                        
                         id="numMesa"
                         className="input-formulario row mx-auto"
                         type="number" 
@@ -38,7 +44,7 @@ export function AddEditTableForm(props){
                         onChange={formik.handleChange}
                         
                     ></Form.Control>
-                
+               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 <button 
                     
                     className="btn btn-primary btn-formulario mx-auto col-4 "

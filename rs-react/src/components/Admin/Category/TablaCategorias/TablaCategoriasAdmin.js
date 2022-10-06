@@ -1,15 +1,13 @@
 import React from 'react'
 import { map } from 'lodash';
 import { Table, Button, Image } from 'react-bootstrap';
-import "./TablaCategoriaAdmin.css";
+import "./TablaCategoriasForm.css";
 import { FiEdit3 } from "react-icons/fi";
 import {FaTrashAlt} from "react-icons/fa";
-import { useAuth } from '../../../../hooks';
 
 
 export function TablaCategoriasAdmin(props) {
-  const { categories } = props;
-
+  const { categories , updateCategory, deleteCategory  } = props;
   return (
     <Table striped bordered hover className='tabla-categoria-admin'>
       <thead>
@@ -25,7 +23,11 @@ export function TablaCategoriasAdmin(props) {
             <td width={2}>
               <Image src={categoria.image} bsPrefix rounded fluid /></td>
             <td>{categoria.title} </td>
-            <Action categoria={categoria}/>
+            <Action 
+            categoria={categoria}
+            updateCategory={updateCategory}
+            deleteCategory={deleteCategory}
+              />
         </tr>
         ))}
       </tbody>
@@ -34,14 +36,14 @@ export function TablaCategoriasAdmin(props) {
 }
 
 function Action(props) {
-  const {categoria} = props;
+  const {categoria, updateCategory, deleteCategory } = props;
 
   return (
     <td textalign="right" >
-      <Button variant='warning'  onClick={ () => console.log("Actulizar categoria")} >
+      <Button variant='warning'  onClick={ () => updateCategory(categoria)} >
         <FiEdit3 />
       </Button>
-      <Button variant='danger' onClick={ () => console.log('Eliminar categoria')}>  <FaTrashAlt/> </Button>
+      <Button variant='danger' onClick={ () => deleteCategory(categoria)}>  <FaTrashAlt/> </Button>
 
     </td>
   )
