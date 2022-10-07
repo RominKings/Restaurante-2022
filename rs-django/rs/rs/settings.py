@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'users',     #USUARIOS
     'categorias', #PARA LAS CATEGORIAS
     'products',
-    'tables' # PARA LOS PRODUCTOS
+    'tables',
+    'orders'
 ]
 
 MIDDLEWARE = [

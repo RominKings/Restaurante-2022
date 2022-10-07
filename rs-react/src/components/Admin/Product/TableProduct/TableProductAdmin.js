@@ -5,8 +5,10 @@ import {FcCheckmark, FcCancel} from 'react-icons/fc';
 import { FiEdit3 } from "react-icons/fi";
 import {FaTrashAlt} from "react-icons/fa";
 import "./TableProductAdmin.css"
+
 export function TableProductAdmin(props) {
-  const { products } = props;
+  const { products, updateProduct, deleteProduct } = props;
+  console.log(products)
 
   return (
     <Table striped bordered hover className='tabla-product-admin'>
@@ -15,7 +17,7 @@ export function TableProductAdmin(props) {
           <th>Imagen</th>
           <th>Producto</th>
           <th>Precio</th>
-          <th>categoria</th>
+          <th>Categoria</th>
           <th>Activo</th>
           <th></th>
         </tr>
@@ -25,12 +27,11 @@ export function TableProductAdmin(props) {
           <tr key={index}>
             <td width={2}>
               <Image src={product.image} bsPrefix rounded fluid /></td>
-            <td>{product.title} </td>
-            <td>{product.price} $</td>
-            {/* ALGO PASO PORQUE ME MOSTRABA LA CATEGORY_DATA.TITLE Y AHORA NO ME DEJA */}
+            <td>{product.title}</td>
+            <td> $ {product.price}</td>
             <td>{product.category_data.title}</td>  
             <td>{product.active ? <FcCheckmark/> : <FcCancel/>} </td>
-            <Actions product={product}/>
+            <Actions product={product} updateProduct={updateProduct} deleteProduct={deleteProduct}/>
         </tr>
         ))}
       </tbody>
@@ -39,12 +40,12 @@ export function TableProductAdmin(props) {
 }
 
 function Actions(props) {
-  const {product} = props;
+  const {product, updateProduct, deleteProduct} = props;
 
   return (
     <td textalign="right" >
-      <Button variant='warning' onClick={ () => console.log("Actulizar producto")}><FiEdit3 /></Button>
-      <Button variant='danger' onClick={ () => console.log('Eliminar producto')}>  <FaTrashAlt/> </Button>
+      <Button variant='warning' onClick={ () => updateProduct(product)}><FiEdit3 /></Button>
+      <Button variant='danger' onClick={ () => deleteProduct(product)}>  <FaTrashAlt/> </Button>
     </td>
   )
 }

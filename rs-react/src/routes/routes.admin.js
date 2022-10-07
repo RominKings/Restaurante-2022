@@ -1,12 +1,12 @@
 //RUTAS DE TODAS LAS PAGINAS DEL FRONT DE ADMIN
 import {AdminLoyout} from "../Layouts";
-import {HomeAdmin, UsersAdmin, CategoriesAdmin,TablesAdmin,ProductAdmin} from "../pages/Admin";
+import {OrdersAdmin, UsersAdmin, CategoriesAdmin,TablesAdmin,ProductAdmin} from "../pages/Admin";
 
 const routesAdmin = [
     {
         path: "/admin",
         layout: AdminLoyout,
-        component: HomeAdmin,
+        component: OrdersAdmin,
     },
 
     {

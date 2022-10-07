@@ -6,17 +6,18 @@ import { useFormik } from "formik"
 import * as Yup from "yup";
 import { useCategory, useProduct } from "../../../../hooks";
 
-export function AddEditProductForm() {
+export function AddEditProductForm(props) {
+    const { product, onClose, onRefetch } = props;
     const [categoriesFormat, setCategoriesFormat] = useState([]);
-    const [previewImage, setPreviewImage] = useState(null)
-  // HOOK DE CATEGORIAS========================
-    const { categorias, getCategories } = useCategory();
-    const { addProduct } = useProduct();
+    const [previewImage, setPreviewImage] = useState(product ? product.image : null)
+
+    const { categories, getCategories } = useCategory();
+    const { addProduct, updateProduct } = useProduct();
 
     console.log(categoriesFormat)
     
     useEffect(() => {getCategories()}, []);
-    useEffect(() => {setCategoriesFormat(formatDropdownData(categorias))},[])
+    useEffect(() => {setCategoriesFormat(formatDropdownData(categories));}, [categories]);
 
     const onDrop = useCallback( async (acceptedFile) => {
       const file = acceptedFile[0];
@@ -25,20 +26,24 @@ export function AddEditProductForm() {
     }, []);
 
     const formik = useFormik({ 
-      initialValues: initialValues(),
-      validationSchema: Yup.object(newSchema()),
+      initialValues: initialValues(product),
+      validationSchema: Yup.object(newSchema(product ? updateSchema() : newSchema())),
       validationOnChange: false,
       onSubmit: async (formValue) => {
-        await addProduct(formValue)
+        if(product) await updateProduct(product.id, formValue)
+        else await addProduct(formValue);
+
+        onRefetch();
+        onClose();
       }
     })
 
-    const { getRootProps, getInputProps} = useDropzone({
-      accept: "image/jpeg, image/png",
-      noKeyboard: true,
-      multiple: false,
-      onDrop,
-    });
+   const { getRootProps, getInputProps } = useDropzone({
+    accept: "image/jpeg, image/png",
+    noKeyboard: true,
+    multiple: false,
+    onDrop,
+  });
 
   return (
     <Form onSubmit={formik.handleSubmit}>
@@ -68,20 +73,32 @@ export function AddEditProductForm() {
       <Row>
 
         <Col>
-        <Form.Group controlId="formGridState" 
+        
+        <Dropdown value={formik.values.category} onChange={(_, ...data)=>console.log(...data)} >
+          <Dropdown.Toggle variant="success" id="dropdown-basic">
+            Categorias
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu show={categories}>
+            <Dropdown.Item></Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        {/* <Form.Group name="" controlId="category" 
         value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}
         >
           <Form.Select defaultValue="Categoria" option={categoriesFormat}>
             <option>{categoriesFormat}</option>
 
           </Form.Select>
-        </Form.Group>
+        </Form.Group> */}
         </Col>
 
         <Col>
         <Form.Check 
+          name="active"
           type="switch"
-          id="custom-switch"
+          id="active"
           label="Producto activo"
           checked={formik.values.active} onChange={(_, ...data) => formik.setFieldValue('active', ...data.checked)}
         />
@@ -109,19 +126,19 @@ export function AddEditProductForm() {
 }
 
 function formatDropdownData(data) {
-    return map(data, (item) => ({
-        key: item.id,
-        title: item.title,
-        value: item.id,
-    }))
+  return map(data, (item) => ({
+    key: item.id,
+    text: item.title,
+    value: item.id,
+  }));
 }
 
-function initialValues() {
+function initialValues(data) {
   return {
     title: "",
     price: "",
     category: "",
-    active: false,
+    active: true,
     image: "",
   };
 }
@@ -130,8 +147,18 @@ function newSchema() {
   return {
     title: Yup.string().required(true),
     price: Yup.number().required(true),
-    category: Yup.number(). required(true),
-    active: Yup.boolean(). required(true),
+    category: Yup.number().required(true),
+    active: Yup.boolean().required(true),
     image: Yup.string().required(true)
+  }
+}
+
+function updateSchema() {
+  return {
+    title: Yup.string().required(true),
+    price: Yup.number().required(true),
+    category: Yup.number().required(true),
+    active: Yup.boolean().required(true),
+    image: Yup.string(),
   }
 }
