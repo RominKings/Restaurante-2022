@@ -2,3 +2,25 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+#reload {
+    margin: 0;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+
+#check-reload {
+    position:absolute !important;
+    top: 5px;
+    right: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.span-reload {
+    position: absolute !important;
+    top: 4px;
+    right: 95px;
+    display: flex;
+}
