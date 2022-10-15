@@ -15,6 +15,7 @@ export function LoginForm() {
     const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object(validationSchema()),
+        validateOnChange:false,
         onSubmit: async (formValue) => {
           try {
             const response = await loginApi(formValue)
@@ -27,19 +28,29 @@ export function LoginForm() {
     });
 //FORMULARIO LOGIN HECHO CON BOOTSTRAP-------------------------------------------
   return (
-    <Form className='login-form-admin' onSubmit={formik.handleSubmit} >
+    <Form noValidate className='login-form-admin' onSubmit={formik.handleSubmit} >
         <Form.Group className="email" controlId="email">
           <Form.Label>Dirección de correo electrónico</Form.Label>
           <Form.Control 
+            required
             type="email" 
             placeholder="Ingresa tu email"
             value={formik.values.email} 
+            isValid={formik.touched.email}
+            isInvalid={!!formik.errors.email}
             onChange={formik.handleChange} 
-            error="true" //error={formik.errors.email}
+            
           />
-          <Form.Text className="text-muted">
-          Nunca compartiremos tu correo electrónico con nadie más.
-          </Form.Text>
+          <Form.Control.Feedback
+          >
+             
+          </Form.Control.Feedback>
+          
+          <Form.Control.Feedback 
+              className="txtError"
+              type="invalid">
+              {formik.errors.email}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="password" controlId="password">
@@ -49,13 +60,16 @@ export function LoginForm() {
             placeholder="Contraseña" 
             value={formik.values.password} 
             onChange={formik.handleChange}
-            error="true" 
+            isInvalid={!!formik.errors.password}
+           
           />
+          <Form.Control.Feedback 
+              className="txtError"
+              type="invalid">
+              {formik.errors.password}
+          </Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Échame un vistazo" />
-        </Form.Group>
         <hr/>
         <div className='row'>
         <Button variant="dark" type="submit" >
@@ -69,14 +83,14 @@ export function LoginForm() {
 //PARTE DE LA FUNCION DE ARRIBA, PARA QUE QUEDE MAS ORDENADO--------------------------
 function initialValues(){
     return {
-        email: "",
+        email:"",
         password: "",
     }
 }
 
 function validationSchema(){
     return{
-        email: Yup.string().email(true).required(true),
-        password: Yup.string().required(true)
-    }
+        email: Yup.string().email("Debe ingresar un email valido").required("Debe ingresar un email"),
+        password: Yup.string().required("Debe ingresar una contraseña valida")
+    };
 }

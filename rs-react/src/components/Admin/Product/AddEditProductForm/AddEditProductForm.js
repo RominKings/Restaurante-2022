@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {Form, Image, Button, Row, Col,Dropdown} from "react-bootstrap";
+import {Form, Image, Button, Row, Col,Dropdown, DropdownButton} from "react-bootstrap";
+import { } from "semantic-ui-react";
 import { map } from 'lodash';
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik"
@@ -72,27 +73,23 @@ export function AddEditProductForm(props) {
 
       <Row>
 
-        <Col>
+      <Col>
+      <DropdownButton
         
-        <Dropdown value={formik.values.category} onChange={(_, ...data)=>console.log(...data)} >
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Categorias
-          </Dropdown.Toggle>
+>
+      <Dropdown.Item>
+          <Dropdown.Item ></Dropdown.Item>
+      </Dropdown.Item>
+      </DropdownButton>
+      {/* <Form.Group name="" controlId="category" 
+      value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}
+      >
+        <Form.Select defaultValue="Categoria" option={categoriesFormat}>
+          <option>{categoriesFormat}</option>
 
-          <Dropdown.Menu show={categories}>
-            <Dropdown.Item></Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-
-        {/* <Form.Group name="" controlId="category" 
-        value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}
-        >
-          <Form.Select defaultValue="Categoria" option={categoriesFormat}>
-            <option>{categoriesFormat}</option>
-
-          </Form.Select>
-        </Form.Group> */}
-        </Col>
+        </Form.Select>
+      </Form.Group> */}
+      </Col>
 
         <Col>
         <Form.Check 

@@ -70,8 +70,8 @@ export function AddEditCategoriaForm(props) {
 }
 function initialValues(data) {
   return {
-    title:  "",
-    image: "",
+    title: data ? data.title : "",
+    image: data ? data.image :  "",
   };
 }
 

@@ -20,14 +20,17 @@ export function TableAdmin(props) {
   }, [])
 
   return (
-    <div className='table-admin'>
-      {size(orders) > 0 ? (
-        <Card bsPrefix='card' bg='warning'><Card.Body>{size(orders)}</Card.Body></Card>
-      ) : null }
+
+    <div className='table-admin col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2 '>
+      <div className='div-in container-fluid'>
       <h1><IcTable id="mesa" className={classNames({
         pending: size(orders) > 0,
       })} /></h1>
       <p>Mesa {table.number}</p>
+      {size(orders) > 0 ? (
+        <Card  bsPrefix='card' bg='warning'><Card.Body>{size(orders)}</Card.Body></Card>
+      ) : null }
+    </div>
     </div>
   )
 }

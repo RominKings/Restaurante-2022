@@ -10,17 +10,19 @@ export function TableListAdmin(props) {
     const { tables } = props;
 
   return (
-    <div className='table-admin'>
+    <div className=''>
       <Button variant="info" id='reload' onClick={() => console.log('OnRefetchReload')}><FiRefreshCcw/></Button>
         
         <div className='reload-toggle' >
           <span id='span-reload'>Reload automatico</span>
           <Form.Check aria-label="option 1" id='check-reload' toggle="true" onChange={(_, ...data) => console.log(data.checked)} />
         </div>
-        
+        <hr></hr>
+        <div className="row">
         {map(tables, (table) => (
-            <TableAdmin key={table.number} table={table}/>
+            <TableAdmin  key={table.number} table={table}/>
         ))}
+        </div>
     </div>
   )
 }
