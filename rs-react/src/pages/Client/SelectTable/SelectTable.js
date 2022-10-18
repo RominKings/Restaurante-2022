@@ -1,49 +1,29 @@
-import React, {useState} from 'react';
-import { Form, Button } from "react-bootstrap";
-import "./SelectTable.css"
+import React, { useState } from "react";
+import { useTable } from "../../../hooks";
+import "./SelectTable.css";
+import { Form, Button } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom"; 
+import { size } from "lodash";
+ 
+    export function SelectTable(){
 
-export  function SelectTable() {
-  const [tableNum, setTableNum] = useState(null)
-  const [error, setError] = useState(null)
+    let navigate = useNavigate();   
+   
+    const [tableNum, setTableNum] = useState(null);
+    const [error, setError] = useState(null);
+    const { isExistTable } = useTable();
+    console.log(navigate);
 
-  const onSubmit = () => {
-    setError(null)
-    if(!tableNum) {
-      setError("No has introducido ninguna mesa")
-    } else {
-      console.log("Entrando...")
-    }
-  }
+    const onSubmit = async () => { setError(null);     
+        if (!tableNum) {
+            setError("No has introducido nunguna mesa");     
+        }   else {       
+            const exist = await isExistTable(tableNum);       
+            if (exist) navigate(`/client/${tableNum}`);       
+            else setError("La mesa introducida no existe"); 
+        }
+        };
 
-<<<<<<< HEAD
-  return (
-    <div className='client-content'>
-      <div className='select-table'>
-        <h1>Bienvenidos a Restaurante Siglo XXI</h1>
-
-          <Form onSubmit={onSubmit}>
-            <Form.Group className="email" controlId="email">
-              <Form.Label>Ingresa numero de mesa</Form.Label>
-                <Form.Control 
-                  type="number"
-                  className='tableNum'
-                  placeholder="Por ejemplo: 99, 55, 45"
-                  onChange={ data => { console.log("data.target.value", data.target.value);
-                setTableNum(data.target.value);}}
-                />
-            </Form.Group>
-            <br></br>
-          <div className="d-grid gap-2">
-            <Button variant="primary" size="lg">Entrar</Button>
-          </div>
-          <p>{error}</p>
-          </Form>
-          
-          
-      </div>
-    </div>
-  )
-=======
     return (
         <div className="text-center continer-fluid select-table">
             <div className="div-login">
@@ -60,7 +40,7 @@ export  function SelectTable() {
                     <br></br>
                     
                     <div className="d-grid gap-2">
-                    <Button className="btn btn-primary" variant="primary">Entrar</Button>
+                    <Button className="btn btn-primary">Entrar</Button>
                     </div>
                     <p> {error}</p>
                     
@@ -70,5 +50,4 @@ export  function SelectTable() {
             
         </div>
     )
->>>>>>> parent of a2334e1 (2.6)
 }
