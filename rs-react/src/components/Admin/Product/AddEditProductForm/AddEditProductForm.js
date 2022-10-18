@@ -17,6 +17,7 @@ export function AddEditProductForm(props) {
     console.log(categoriesFormat)
     
     useEffect(() => {getCategories()}, []);
+    console.log(categories)
     useEffect(() => {setCategoriesFormat(formatDropdownData(categories));}, [categories]);
 
     const onDrop = useCallback( async (acceptedFile) => {
@@ -74,24 +75,25 @@ export function AddEditProductForm(props) {
 
         <Col>
         
-        <Dropdown value={formik.values.category} onChange={(_, ...data)=>console.log(...data)} >
+        {/* <Dropdown value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Categorias
-          </Dropdown.Toggle>
+          </Dropdown.Toggle >
 
-          <Dropdown.Menu show={categories}>
+          <Dropdown.Menu onSelect={categoriesFormat}>
             <Dropdown.Item></Dropdown.Item>
           </Dropdown.Menu>
-        </Dropdown>
+        </Dropdown> */}
 
         {/* <Form.Group name="" controlId="category" 
         value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}
-        >
-          <Form.Select defaultValue="Categoria" option={categoriesFormat}>
-            <option>{categoriesFormat}</option>
+        > */}
+          <Form.Select placeholder='Categoria' option={categoriesFormat} 
+        value={formik.values.category} onChange={(_, ...data)=>console.log(...data)} >
+          <option option={categoriesFormat}></option>
 
           </Form.Select>
-        </Form.Group> */}
+        {/* </Form.Group> */}
         </Col>
 
         <Col>

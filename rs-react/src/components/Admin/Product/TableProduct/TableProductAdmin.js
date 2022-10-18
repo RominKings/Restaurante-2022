@@ -17,7 +17,7 @@ export function TableProductAdmin(props) {
           <th>Imagen</th>
           <th>Producto</th>
           <th>Precio</th>
-          <th>Categoria</th>
+          <th>Categoría</th>
           <th>Activo</th>
           <th></th>
         </tr>

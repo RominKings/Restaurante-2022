@@ -13,7 +13,7 @@ export function TablaCategoriasAdmin(props) {
       <thead>
         <tr>
           <th>Imagen</th>
-          <th>Categoria</th>
+          <th>Categoría</th>
           <th>Acciones</th>
         </tr>
       </thead>

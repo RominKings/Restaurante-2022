@@ -4,23 +4,23 @@
 }
 
 #reload {
-    margin: 0;
+    margin: 50;
     position: absolute;
-    top: 0px;
-    right: 10px;
+    top: 100px;
+    right: 50px;
 }
 
 #check-reload {
     position:absolute !important;
-    top: 5px;
-    right: 70px;
+    top: 105px;
+    right: 105px;
     display: flex;
     align-items: center;
 }
 
-.span-reload {
+#span-reload {
     position: absolute !important;
-    top: 4px;
-    right: 95px;
+    top: 103px;
+    right: 130px;
     display: flex;
 }
