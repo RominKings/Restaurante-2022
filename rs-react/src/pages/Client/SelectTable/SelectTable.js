@@ -15,6 +15,7 @@ export  function SelectTable() {
     }
   }
 
+<<<<<<< HEAD
   return (
     <div className='client-content'>
       <div className='select-table'>
@@ -42,4 +43,32 @@ export  function SelectTable() {
       </div>
     </div>
   )
+=======
+    return (
+        <div className="text-center continer-fluid select-table">
+            <div className="div-login">
+                <h1> Bienvenido a Restoran XXI</h1>
+                <hr></hr>
+                <h2> Introduce un numero de mesa</h2>
+                <Form noValidate onSubmit={onSubmit}>
+                    <br></br>
+                    <Form.Input                        
+                        placeholder="Numero de mesa" 
+                        type="number"
+                        onChange={(data) => setTableNum(data.target.value)}
+                    />
+                    <br></br>
+                    
+                    <div className="d-grid gap-2">
+                    <Button className="btn btn-primary" variant="primary">Entrar</Button>
+                    </div>
+                    <p> {error}</p>
+                    
+                </Form>
+                
+            </div>
+            
+        </div>
+    )
+>>>>>>> parent of a2334e1 (2.6)
 }
