@@ -7,7 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 //import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css'       
 //import { AdminLoyout, ClientLayout } from "./Layouts";
-
+import ReactDOM from 'react-dom';
 export default function App(){
   return (
     <AuthProvider>

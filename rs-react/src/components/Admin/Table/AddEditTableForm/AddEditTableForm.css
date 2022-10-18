@@ -1,15 +1,12 @@
 .btn-formulario{
     border-radius:10%;
-    background-color: aquamarine;
+    margin-top:15px ;
+    
 }
 .input-formulario{
-    margin-bottom: 15px;
-}
+    margin-top: 15px;
 
-label.error {
-    color: red;
-    width: 100%;
-    font-size: 0.8em;
-    margin-top: -5px;
-    margin-bottom: 10px;
+}
+.txtError{
+    margin-bottom: 15px;
 }

@@ -8,11 +8,7 @@ export function AddEditTableForm(props){
     
     const {onClose, onRefetch, table}=props;
     const { addTable,updateTable } = useTable();
-    const [validated, setValidated] = useState(false);
-    
-
-
-
+   
     const formik = useFormik({
         initialValues: initialValues(table),
         validationSchema: Yup.object(validationSchema()),
@@ -28,28 +24,37 @@ export function AddEditTableForm(props){
     console.log(table)
     return (           
             <Container>
-            <Form noValidate validated={validated}  id="formularioMesas" className='row login-form-admin' onSubmit={formik.handleSubmit}>
+            <Form noValidate   id="formularioMesas" className='row login-form-admin' onSubmit={formik.handleSubmit}>
 
                     <Form.Label className="text-center">Numero de mesa</Form.Label>
 
                     <Form.Control 
-                        
+                        required
                         id="numMesa"
                         className="input-formulario row mx-auto"
                         type="number" 
                         name="number" 
                         placeholder="Ingrese un Numero de mesa"
                         value ={formik.values.number}
-                        error={formik.errors.number} //error={formik.errors.email}
+                       
+                        isValid={formik.touched.number } //error={formik.errors.email}
+                        isInvalid={!!formik.errors.number}
                         onChange={formik.handleChange}
                         
                     ></Form.Control>
-               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                <button 
-                    
-                    className="btn btn-primary btn-formulario mx-auto col-4 "
-                    type="submit"
-                   > Confirmar </button>
+                
+                    <Form.Control.Feedback 
+                        className="txtError"
+                        type="invalid">
+                        {formik.errors.number}
+                    </Form.Control.Feedback>
+                    <br></br>
+                    <button 
+                        className="btn btn-primary row btn-formulario mx-auto col-4 "
+                        type="submit"
+                    > 
+                        Confirmar 
+                    </button>
                 
             </Form>
             </Container>
@@ -58,12 +63,12 @@ export function AddEditTableForm(props){
 
 function initialValues(data){
     return {
-        number: ""
+        number: data ? data.number : "",
     };
 }
 function validationSchema(){
     return {
-      number: Yup.number().required(true),
+      number: Yup.number("Debe ingresar un numero").required("Este Campo debe estar relleno y debe ser un entero"),
     };
   }
   
