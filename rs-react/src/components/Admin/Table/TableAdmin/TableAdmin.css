@@ -33,6 +33,11 @@
     text-align: center;
 } 
 
-.table-admin svg .pending{
-    fill:blueviolet;
+.table-admin .busy{
+    fill: rgb(255, 94, 0);
 }
+
+.table-admin .pending{
+    fill: rgb(43, 226, 141);
+}
+
