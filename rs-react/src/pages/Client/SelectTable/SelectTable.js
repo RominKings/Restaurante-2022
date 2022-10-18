@@ -40,7 +40,7 @@ import { size } from "lodash";
                     <br></br>
                     
                     <div className="d-grid gap-2">
-                    <Button className="btn btn-primary" variant="primary">Entrar</Button>
+                    <Button className="btn btn-primary">Entrar</Button>
                     </div>
                     <p> {error}</p>
                     
