@@ -1,6 +1,6 @@
 //RUTAS DE TODAS LAS PAGINAS DEL FRONT DE ADMIN
 import {AdminLoyout} from "../Layouts";
-import {OrdersAdmin, UsersAdmin, CategoriesAdmin,TablesAdmin,ProductAdmin, TableDetailsAdmin} from "../pages/Admin";
+import {OrdersAdmin, UsersAdmin, CategoriesAdmin,TablesAdmin,ProductAdmin, TableDetailsAdmin, PaymentsHistory} from "../pages/Admin";
 
 const routesAdmin = [
     {
@@ -41,6 +41,14 @@ const routesAdmin = [
         component: TableDetailsAdmin,
         exact: true, 
     },
+
+    {
+        path:"/admin/history",
+        layout: AdminLoyout,
+        component: PaymentsHistory,
+        exact: true, 
+    },
+
 ];
 
 export default routesAdmin;
