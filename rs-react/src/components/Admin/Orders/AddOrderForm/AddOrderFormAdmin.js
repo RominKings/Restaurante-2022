@@ -6,7 +6,7 @@ export function AddOrderFormAdmin(props) {
     const {idTable, OpenCloseModal} =props;
   return (
     <Form>
-        <Form.Select placeholder='Productos' fluid selection search>
+        <Form.Select placeholder='Productos'>
             <option>Large select</option>
 
             <div className='add-order-form'></div>
