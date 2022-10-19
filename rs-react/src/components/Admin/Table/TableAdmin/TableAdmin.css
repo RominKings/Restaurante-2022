@@ -29,7 +29,7 @@
     width: 40px;
     align-items: center;
     border-radius: 60px;
-    background-color: rgb(236, 111, 111);
+    background-color: rgb(100, 206, 218);
     text-align: center;
 } 
 
@@ -38,6 +38,6 @@
 }
 
 .table-admin .pending{
-    fill: rgb(43, 226, 141);
+    fill: rgb(226, 223, 43);
 }
 

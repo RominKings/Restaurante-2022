@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Image, Button } from "react-bootstrap";
+import {IoMdClose} from "react-icons/io"
 import { map, forEach } from "lodash";
 import { useParams, useNavigate} from "react-router-dom";
 import { useOrder, useTable } from "../../../hooks";
@@ -19,7 +20,7 @@ export function ListProductCart(props) {
     forEach(products, (product) => {
       totalTemp += Number(product.price);
     });
-    setTotal(totalTemp.toFixed(2));
+    setTotal(totalTemp.toFixed(4));
   }, [products]);
 
   const removeProduct = (index) => {
@@ -42,19 +43,29 @@ export function ListProductCart(props) {
   return (
     <div className="list-product-cart">
       {map(products, (product, index) => (
-        <div key={index} className="">
-          <div>
-            <Image src={product.image} avatar />
-            <span>{product.title}</span>
+        <div key={index} className="col-11 mx-auto">
+          <hr></hr>
+          <div className="row">
+            <Image className="img-cart col-4 " src={product.image}  />
+            <div className="col-5">
+              <span className="col-12 row">{product.title} </span>
+              <span className="col-12 row" >1 X ${product.price} </span>
+              <br></br>
+            </div>
+            <Button className="col-3 btn-cart" name="close" onClick={() => removeProduct(index)}> 
+                <IoMdClose></IoMdClose> Quitar</Button>
+            
           </div>
-          <span>{product.price} €</span>
-          <Button name="close" onClick={() => removeProduct(index)} />
+          
         </div>
       ))}
+      <div className="row col-12  div-total">
+        <Button className=" fixed-bottom"  onClick={createOrder}>
+          Total: ${total}
 
-      <Button  onClick={createOrder}>
-        Realizar pedido ({total} €)
-      </Button>
+          <h4>Realizar pedido</h4>
+        </Button>
+      </div>
     </div>
   );
 }

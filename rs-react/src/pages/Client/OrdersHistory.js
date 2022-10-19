@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "semantic-ui-react";
+import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { map, size, forEach } from "lodash";
 import { OrderHistoryItem } from "../../components/Client";
@@ -44,7 +44,7 @@ export function OrdersHistory() {
 
     const paymentData = {
       table: idTable,
-      totalPayment: totalPayment.toFixed(2),
+      totalPayment: totalPayment.toFixed(3),
       paymentType,
       statusPayment: "PENDING",
     };

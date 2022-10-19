@@ -42,7 +42,7 @@ export function ClientLayout(props) {
           <button className='btn btn-outline-primary btns-ini' onClick={goToCart}>
             <BsCart4></BsCart4>
           </button>
-          <button className=' btn btn-outline-primary btns-ini' onClick={goToCart}>
+          <button className=' btn btn-outline-primary btns-ini' onClick={goToOrders}>
             <RiListCheck></RiListCheck>
           </button>
           <button className=' btn btn-outline-primary btns-ini' onClick={closeTable}>

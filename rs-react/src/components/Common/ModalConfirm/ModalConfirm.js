@@ -6,17 +6,17 @@ export function ModalConfirm(props) {
   const { title, show, onClose, onCloseText, onConfirm, onConfirmText } = props;
 
   return (
-    <Modal className="modal-confirm" open={show}>
+    <Modal className="modal-confirm" show={show} onHide={onClose} >
        <Modal.Header>
        {title &&
         <Modal.Title> {title}</Modal.Title> }
        </Modal.Header>
 
       <Modal.Body>
-        <Button negative onClick={onClose}>
+        <Button  onClick={onClose}>
           {onCloseText || "Cancelar"}
         </Button>
-        <Button positive onClick={onConfirm}>
+        <Button  onClick={onConfirm}>
           {onConfirmText || "Aceptar"}
         </Button>
       </Modal.Body>

@@ -3,5 +3,6 @@
 }
 .img-categoria {
   margin-bottom: 15px;
+  height:max-content;
 }
 .categorias:hover{background-color: grey;}

@@ -1,6 +1,8 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
+import { Image } from "react-bootstrap";
 import classNames from "classnames";
+import moment from "moment";
+import "moment/locale/es";
 import { ORDER_STATUS } from "../../../utils/constants";
 import "./OrderHistoryItem.css";
 
@@ -16,7 +18,7 @@ export function OrderHistoryItem(props) {
     >
       <div className="">
         <span>
-          
+        Pedido {moment(order.created_at).startOf("second").fromNow()}
         </span>
       </div>
 

@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  getProductsApi,
-  addProductApi,
-  updateProductApi,
-  deleteProductApi,
-  getProductByIdApi,
-  getProductsByCategoryApi,
-} from "../api/product";
+import {getProductsApi,addProductApi,updateProductApi,deleteProductApi,getProductByIdApi,getProductsByCategoryApi,} from "../api/product";
 import { useAuth } from "./";
 
 export function useProduct() {

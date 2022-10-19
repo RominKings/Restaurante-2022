@@ -20,13 +20,20 @@ export function ListProducts(props) {
       {map(products, (product) => (
         <div key={product.id} className="row col-11 mx-auto">
           <hr></hr>
-          <div className="">
+          <div className="row">
+          
             <Image className="col-4" src={product.image} />
-            <h6 className="co-6 text-center " >{product.title}</h6>
-          </div>
-          <Button className="btn-lis-product row col-3 mx-auto" onClick={() => addCart(product)}>
+         
+            <div className="col-5">
+              <h6 className=" row col-12 ">{product.title}</h6>
+              <h6 className=" row col-12">Precio: ${product.price}</h6>
+            </div>
+            <Button className="btn-lis-product col-3 mx-auto" onClick={() => addCart(product)}>
             <BsCartPlus></BsCartPlus>
+            Agregar
           </Button>
+          </div>
+          
         </div>
       ))}
     </div>

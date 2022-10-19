@@ -23,7 +23,7 @@ export function ListCategories(props) {
           >
           <hr></hr>
           <div className="col-11 row div-categoria container-fluid mx-auto">
-              <Image className="img-categoria col-6" src={category.image}/>
+              <Image className="img-categoria col-4" src={category.image}/>
               <h6 className="text-center align-items-center col-6" >{category.title}</h6>
           </div>
         </div>

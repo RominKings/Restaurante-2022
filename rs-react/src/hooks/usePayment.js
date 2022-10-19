@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  createPaymentApi,
-  getPaymentByTableApi,
-  closePaymentApi,
-  getPaymentsApi,
-} from "../api/payment";
+import {createPaymentApi,getPaymentByTableApi,closePaymentApi,getPaymentsApi,} from "../api/payment";
 
 export function usePayment() {
   const [error, setError] = useState(null);
