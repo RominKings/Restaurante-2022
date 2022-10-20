@@ -1,13 +1,17 @@
 
-.link-inicio{
-    text-decoration: none;
-    color: black;
+.navbar {
+    background-color: #f86060;
 }
 
-.link-inicio:hover{
-    color: rgb(90, 89, 89);
+@font-face {
+    font-family:montserrat ;
+    src: url(../../assets/Montserrat-Regular.ttf);
+  }
+@font-face {
+font-family:montserratbold ;
+src: url(../../assets/Montserrat-Bold.ttf);
 }
 
-.btns-ini{
-  
+.set-client {
+    font-family: montserrat;
 }

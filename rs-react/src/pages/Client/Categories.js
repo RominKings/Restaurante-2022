@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useCategory } from "../../hooks";
 import { ListCategories } from "../../components/Client";
+import {Spinner} from "react-bootstrap";
+import "./categories.css";
 
 
 export function Categories() {
@@ -9,9 +11,9 @@ export function Categories() {
 
 
   return (
-    <div>
-      <h3>Categorias</h3>
-      {loading ? <p>Cargando</p> : <ListCategories categories={categories} />}
+    <div className="text-title-categories">
+      <h3>Categorías</h3>
+      {loading ? <Spinner animation="border" variant="dark" /> : <ListCategories categories={categories} />}
     </div>
   );
 }

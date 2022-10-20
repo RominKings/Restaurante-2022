@@ -4,10 +4,10 @@ import {useParams, useNavigate, Link  } from "react-router-dom";
 import {useTable } from '../../hooks';
 
 import {BsCart4, } from "react-icons/bs";
-import {BiLogOut,} from "react-icons/bi";
+import {BiLogOut, BiHome} from "react-icons/bi";
 import {RiListCheck } from "react-icons/ri";
 
-import {Button} from "react-bootstrap"
+import {Container, Nav, Navbar} from "react-bootstrap"
 
 export function ClientLayout(props) {
   const {children} =props;
@@ -22,6 +22,10 @@ export function ClientLayout(props) {
     })();
   }, [tableNumber]);
 
+  const goToMenu = () => {
+    navigate(`/client/${tableNumber}`);
+  }
+
   const closeTable = () => {
     navigate("/");
   };
@@ -33,22 +37,27 @@ export function ClientLayout(props) {
   };
   return (
     <div className='set-client'>
-      <div className=''>
-        <Link className='link-inicio row' to={`/client/${tableNumber}` }>
-          <h1>Inicio</h1>
-        </Link>
-        <h6 className=' text-center' >Mesa {tableNumber} </h6>
-        <div className='btn-group col-12 ' role="group" aria-label="Basic outlined example">
-          <button className='btn btn-outline-primary btns-ini' onClick={goToCart}>
-            <BsCart4></BsCart4>
-          </button>
-          <button className=' btn btn-outline-primary btns-ini' onClick={goToOrders}>
-            <RiListCheck></RiListCheck>
-          </button>
-          <button className=' btn btn-outline-primary btns-ini' onClick={closeTable}>
-            <BiLogOut></BiLogOut>
-          </button>
-        </div>
+      <div role="group" aria-label="Basic outlined example">
+
+      <Navbar bsPrefix='navbar' variant="light">
+        <Container>
+          <Navbar.Brand href="#home">Estás en la mesa N°{tableNumber}</Navbar.Brand>
+          <Nav variant="tabs" defaultActiveKey="/home">
+              <Nav.Item>
+                <Nav.Link onClick={goToMenu}><BiHome/></Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link onClick={goToCart}><BsCart4/></Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link  onClick={goToOrders}><RiListCheck/></Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link onClick={closeTable}><BiLogOut/></Nav.Link>
+              </Nav.Item>
+            </Nav>
+        </Container>
+      </Navbar>
       </div>
         {children}
       </div>

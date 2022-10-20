@@ -1,5 +1,6 @@
 import React from "react";
-import { Image } from "react-bootstrap";
+import { Image } from "semantic-ui-react";
+import { Card } from "react-bootstrap"
 import { map } from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./ListCategories.css";
@@ -22,10 +23,12 @@ export function ListCategories(props) {
           onClick={() => goToCategory(category.id)}
           >
           <hr></hr>
-          <div className="col-11 row div-categoria container-fluid mx-auto">
-              <Image className="img-categoria col-4" src={category.image}/>
-              <h6 className="text-center align-items-center col-6" >{category.title}</h6>
-          </div>
+          <Card bsPrefix='card-categoria' className="col-11" >
+            <Card.Img bsPrefix='card-image-categoria'src={category.image} alt="Card image" />
+            <Card.ImgOverlay>
+              <Card.Title bsPrefix='card-title-categoria'>{category.title}</Card.Title>
+            </Card.ImgOverlay>
+          </Card>
         </div>
       ))}
     </div>
