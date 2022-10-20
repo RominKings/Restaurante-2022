@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
+import { Image } from "react-bootstrap";
 import { map } from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./ListCategories.css";
