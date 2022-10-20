@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from '../../assets/Spinner';
 import { HeaderPage, TableProductAdmin, AddEditProductForm } from  "../../components/Admin";
 import { useProduct } from '../../hooks';
 import { ModalBasic } from '../../components/Common';
@@ -39,7 +39,7 @@ export function ProductAdmin() {
   return (
     <>
         <HeaderPage title="Productos" btnTitle="Nuevo Producto" btnClick={addProduct}/>
-        {loading ?(<Spinner animation="border" variant="success" />) : (
+        {loading ?(<Spinner></Spinner>) : (
         <TableProductAdmin products={products} updateProduct={updateProduct} deleteProduct={onDeleteProduct}/>)}
         <ModalBasic 
           show={showModal} 

@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from '../../assets/Spinner';
 import {HeaderPage, TablePayments} from "../../components/Admin"
 import {usePayment} from "../../hooks"
 
@@ -12,7 +12,7 @@ export function PaymentsHistory() {
     <>
     <HeaderPage title="Historial de pagos" />
     {loading ? (
-        <Spinner animation="border" />
+        <Spinner></Spinner>
     ) : (
         <TablePayments payments={payments} />
     )}

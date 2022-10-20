@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from '../../assets/Spinner';
 import { HeaderPage, TableListAdmin } from "../../components/Admin";
 import { useTable } from '../../hooks';
 

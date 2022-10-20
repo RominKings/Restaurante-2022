@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-sw1-eok($gsvxyy$vo$b-&+1@j+5bs#t#z1smq4p^17qsz-fo6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', "localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'rs.urls'
@@ -88,10 +89,10 @@ WSGI_APPLICATION = 'rs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'b0ipnzcy7klkkseof5dw',
-        'USER':'utky4yt75ipe66jd',
-        'PASSWORD':'NE4XMXkTkXoIgOxcSKLh',
-        'HOST':'b0ipnzcy7klkkseof5dw-mysql.services.clever-cloud.com',
+        'NAME': 'restaurantxxi',
+        'USER':'admrestaurant',
+        'PASSWORD':'#Duoc2022',
+        'HOST':'restaurantxxi.mysql.database.azure.com',
         'PORT':'3306',
     }
 }
@@ -161,3 +162,16 @@ SIMPLE_JWT ={
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+os.makedirs(STATIC_TMP, exist_ok=True)
+os.makedirs(STATIC_ROOT, exist_ok=True)
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

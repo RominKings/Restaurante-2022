@@ -2,8 +2,7 @@ import React, { useEffect , useState} from "react";
 import { HeaderPage, TableTablesAdmin, AddEditTableForm } from "../../components/Admin";
 import { useTable } from "../../hooks";
 import { ModalBasic } from "../../components/Common/";
-import { Spinner } from "react-bootstrap";
-
+import { Spinner } from '../../assets/Spinner';
 export function TablesAdmin(){
 
     const [showModal, setShowModal] = useState(false);      
@@ -51,9 +50,7 @@ export function TablesAdmin(){
            
             <HeaderPage title="Mesas" btnTitle="Crear nueva mesa" btnClick={addTable}/>
                 {loading? (
-                    <Spinner  active inline="centered" animation="border" role="status">
-                         <span className="visually-hidden">Cargando...</span>
-                    </Spinner>) 
+                    <Spinner></Spinner>) 
                 : (
                     <TableTablesAdmin tables={tables} updateTable={updateTable} deleteTable={onDeleteTable}/>)
                 }

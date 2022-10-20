@@ -5,8 +5,7 @@ import { useOrder, useTable, usePayment } from '../../hooks'
 import {HeaderPage, AddOrderFormAdmin} from '../../components/Admin'
 import {ModalBasic} from '../../components/Common';
 import { ListOrderAdmin, PaymentDetil } from '../../components/Admin/TableDetails';
-import {Spinner} from 'react-bootstrap'
-
+import { Spinner } from '../../assets/Spinner';
 export function TableDetailsAdmin() {
     const [reloadOrders, setReloadOrders] = useState(false)
     const [paymentData, setPaymentData] = useState(null)
@@ -67,7 +66,7 @@ export function TableDetailsAdmin() {
         <HeaderPage title={`Mesa ${table ? table.number : ""}`}
         btnTitle={paymentData ? "Ver cuenta" : "Añadir pedido"} btnClick={openCloseModal} btnTitleTwo={!paymentData ? "Generar cuenta" : null} btnClickTwo={onCreatePayment}/>
         {loading ? (
-            <Spinner animation="border" variant="info" />
+           <Spinner></Spinner>
         ) : (
             <ListOrderAdmin orders={orders} onReloadOrders={onReloadOrders}/>
         )}

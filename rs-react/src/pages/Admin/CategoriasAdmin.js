@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {HeaderPage,TablaCategoriasAdmin, AddEditCategoriaForm } from '../../components/Admin' 
 import { useCategory } from '../../hooks'
 import { ModalBasic } from '../../components/Common'
-import { Spinner } from "react-bootstrap";
+import { Spinner } from '../../assets/Spinner';
 
 export function CategoriesAdmin() {
 
@@ -48,9 +48,7 @@ console.log(categories)
         <HeaderPage title="Categorias" btnTitle="Nueva categoria" btnClick={addCategory}/>
         
       {loading ? (
-       <Spinner  active inline="centered" animation="border" role="status">
-       <span className="visually-hidden">Cargando...</span>
-      </Spinner>
+       <Spinner></Spinner>
       ) : (
         <TablaCategoriasAdmin  
           categories={categories}

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Spinner } from '../../assets/Spinner';
 import { HeaderPage, TableUsers, AddEditUsersForm } from '../../components/Admin';
 import { useUser } from '../../hooks';
 import { ModalBasic } from '../../components/Common';
@@ -46,7 +46,7 @@ export function UsersAdmin() {
   return (
     <>
       <HeaderPage title="Usuarios" btnTitle="Nuevo Usuario" btnClick={addUser}/>
-      {loading ? (<Spinner animation="border" variant="success" />):( 
+      {loading ? (<Spinner></Spinner>):( 
       <TableUsers users ={users} updateUser={updateUser} deleteUser={onDeleteUser}/>)}
       <ModalBasic
         show={showModal}
