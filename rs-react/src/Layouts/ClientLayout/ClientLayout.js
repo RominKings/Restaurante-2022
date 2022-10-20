@@ -32,7 +32,7 @@ export function ClientLayout(props) {
     navigate(`/client/${tableNumber}/orders`);
   };
   return (
-    <div>
+    <div className='set-client'>
       <div className=''>
         <Link className='link-inicio row' to={`/client/${tableNumber}` }>
           <h1>Inicio</h1>

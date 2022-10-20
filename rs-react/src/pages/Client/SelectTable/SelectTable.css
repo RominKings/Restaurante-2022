@@ -4,15 +4,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ;
+    background-color: #C72C41;
     background-image: ;
     padding:0 50px;
   }
   
   .div-login{ 
-      background-color: rgb(176, 188, 188);
+      background-color:#ffaa58;
       border-radius: 10px;
       padding: 15px;
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
       
   }
+
+.color1 {color: #682132;}
+.color2 {color: #862f37;}
+.color3 {color: #b44941;}
+.color4 {color: #f4714d;}
+.color5 {color: #ffaa58;}

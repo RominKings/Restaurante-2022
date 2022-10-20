@@ -11,7 +11,7 @@ export function OrderItemAdmin(props) {
   const {order, onReloadOrders} = props;
   const {title, image} = order.product_data;
   const {checkDeliveredOrder} = useOrder();
- 
+  
   const oncheckDeliveredOrder = async () => {
     await checkDeliveredOrder(order.id);
     onReloadOrders();

@@ -5,7 +5,7 @@ import { size } from "lodash";
 import { useProduct } from "../../hooks";
 import { getProductsCart } from "../../api/cart";
 import { ListProductCart } from "../../components/Client";
-
+import "./Client.css";
 export function Cart() {
   const [products, setProducts] = useState(null);
   const [reloadCart, setReloadCart] = useState(false);
@@ -28,7 +28,7 @@ export function Cart() {
   const onReloadCart = () => setReloadCart((prev) => !prev);
 
   return (
-    <div>
+    <div className="set-container">
       <Link to={`/client/${tableNumber}`}>Volver a categorias</Link>
       <h1>Carrito</h1>
       {!products ? (
@@ -43,6 +43,7 @@ export function Cart() {
       ) : (
         <ListProductCart products={products} onReloadCart={onReloadCart} />
       )}
+      <span className="fixed-bottom">@</span>
     </div>
   );
 }

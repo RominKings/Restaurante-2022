@@ -20,7 +20,7 @@ export function ListProductCart(props) {
     forEach(products, (product) => {
       totalTemp += Number(product.price);
     });
-    setTotal(totalTemp.toFixed(4));
+    setTotal(totalTemp.toFixed(3));
   }, [products]);
 
   const removeProduct = (index) => {
