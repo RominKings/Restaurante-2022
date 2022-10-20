@@ -23,7 +23,7 @@ export function TopMenu(props) {
     }
     return auth.me.email;
   };
-
+  console.log(auth)
   return (
     <>
       {[false].map((expand) => (
@@ -47,8 +47,8 @@ export function TopMenu(props) {
                   <Nav.Link href="/admin" active={pathname === "/admin"}> <HiOutlineStar/> Pedidos  </Nav.Link>
                   <Nav.Link href="/admin/tables" active={pathname === "/admin/tables"}> <GiTable/> Mesas  </Nav.Link>
                   <Nav.Link href="/admin/history" active={pathname === "/admin/history"}> <BiBookBookmark/> Historico  </Nav.Link>
-                  <Nav.Link href="/admin/categories" active={pathname === "/admin/categories"}> <BiCategoryAlt/> Categorias  </Nav.Link>
-                  <Nav.Link href="/admin/products" active={pathname === "/admin/products"}> <GiShoppingCart/> Productos </Nav.Link>
+                  {auth.me.is_staff && (<Nav.Link href="/admin/categories" active={pathname === "/admin/categories"}> <BiCategoryAlt/> Categorias  </Nav.Link>)}
+                  {auth.me.is_staff && (<Nav.Link href="/admin/products" active={pathname === "/admin/products"}> <GiShoppingCart/> Productos </Nav.Link>)}
                   {auth.me.is_staff && (<Nav.Link href="/admin/users" active={pathname === "/admin/users"}> <HiOutlineUserGroup/> Usuarios  </Nav.Link>)}
                 </Nav>
                   <Button variant="danger" size="sm" onClick={logout}><AiOutlinePoweroff/></Button>
