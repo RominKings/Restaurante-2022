@@ -9,6 +9,7 @@
   display:block;
   justify-content: center;
   align-items:center;
+  height: 30vh;
 
 }
 .row .card-categoria {
@@ -45,10 +46,10 @@ src: url(../../../assets/LobsterTwo-Regular.ttf);
   background: rgba(0, 0, 0, 0.274);
   transition: all 500ms ease-out;
   text-align: center;
-  margin-top: 70px;
+  margin-top: 60px;
   margin-bottom: 15px;
   color: white;
-  font-size: .7cm;
+  font-size: .8cm;
 
 
 }

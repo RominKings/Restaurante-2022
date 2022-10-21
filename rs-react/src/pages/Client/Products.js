@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import {GrPrevious} from "react-icons/gr";
+import { Spinner } from "react-bootstrap";
 import { useProduct } from "../../hooks";
 import { ListProducts } from "../../components/Client";
+import "./Products.css";
 
 export function Products() {
   const { idCategory,tableNumber } = useParams();
@@ -10,11 +13,16 @@ export function Products() {
   useEffect(() => {getProductsByCategory(idCategory)}, [idCategory]);
 
   return (
+    <>
     <div>
-      <span>id de la mesa: {idCategory}</span>
-      <Link to={`/client/${tableNumber}`}>Volver a categorias</Link>
+      {/* <span>{idCategory}</span> */}
+      <Link to={`/client/${tableNumber}`}><GrPrevious/><GrPrevious/></Link>
 
-      {loading ? <p>Cargando...</p> : <ListProducts products={products} />}
     </div>
-  );
+    <div className="row-products">
+      {loading ? <Spinner animation="border" variant="dark" /> : <ListProducts products={products} />}
+    </div>
+      </>
+);
+
 }

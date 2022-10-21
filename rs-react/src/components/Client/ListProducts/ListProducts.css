@@ -1,3 +1,10 @@
-.btn-lis-product{
-    margin-bottom: 15px;
+/* .card-listproduct {
+    width: 18rem;
+    border-radius: 19px;
+} */
+
+.card-image-listproduct {
+    height: 100%;
+    width: 100% ;
+    transition: all 500ms ease-out;
 }

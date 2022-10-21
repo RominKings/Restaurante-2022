@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image, Button } from "react-bootstrap";
+import { Image, Button, Card, CardGroup } from "react-bootstrap";
 import {IoMdClose} from "react-icons/io"
 import { map, forEach } from "lodash";
 import { useParams, useNavigate} from "react-router-dom";
@@ -44,7 +44,16 @@ export function ListProductCart(props) {
     <div className="list-product-cart">
       {map(products, (product, index) => (
         <div key={index} className="col-11 mx-auto">
-          <hr></hr>
+          {/* <Card className="bg-dark text-white">
+            <Card.Img src={product.image} alt="Card image" />
+            <Card.ImgOverlay>
+              <Card.Title>{product.title}</Card.Title>
+              <Card.Text>1 X ${product.price}</Card.Text>
+              <Button className="col-3 btn-cart" name="close" onClick={() => removeProduct(index)}> 
+                <IoMdClose></IoMdClose> Quitar</Button>
+            </Card.ImgOverlay>
+            
+          </Card> */}
           <div className="row">
             <Image className="img-cart col-4 " src={product.image}  />
             <div className="col-5">
@@ -67,5 +76,9 @@ export function ListProductCart(props) {
         </Button>
       </div>
     </div>
+
+
+
+
   );
 }

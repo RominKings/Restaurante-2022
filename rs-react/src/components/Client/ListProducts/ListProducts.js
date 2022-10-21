@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Button} from "react-bootstrap";
+import { Image, Button, Card} from "react-bootstrap";
 import {BsCartPlus} from "react-icons/bs"
 import { map } from "lodash";
 import { toast } from "react-toastify";
@@ -20,22 +20,18 @@ export function ListProducts(props) {
     <div className="">
       
       {map(products, (product) => (
-        <div key={product.id} className="row col-11 mx-auto">
-          <hr></hr>
-          <div className="row">
-          
-            <Image className="col-4" src={product.image} />
-         
-            <div className="col-5">
-              <h6 className=" row col-12 ">{product.title}</h6>
-              <h6 className=" row col-12">Precio: ${product.price}</h6>
-            </div>
-            <Button className="btn-lis-product col-3 mx-auto" onClick={() => addCart(product)}>
-            <BsCartPlus></BsCartPlus>
-            Agregar
-          </Button>
-          </div>
-          
+        <div key={product.id} className="row col-11 mx-auto col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+          <Card style={{ width: '18rem'}} >
+            <Card.Img  bsPrefix='card-image-listproduct' src={product.image} />
+            <Card.Body>
+              <Card.Title>{product.title}</Card.Title>
+              {/* <Card.Text>**Descripcion del producto**</Card.Text> */}
+              <Card.Text>Precio: ${product.price}</Card.Text>
+              <div className="d-grid gap-2">
+                <Button variant="success" size="sm" onClick={() => addCart(product)} >Agregar {addCart}<BsCartPlus/> </Button>
+              </div>
+            </Card.Body>
+          </Card>
         </div>
       ))}
     </div>

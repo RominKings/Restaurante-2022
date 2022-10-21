@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { size } from "lodash";
 import { useProduct } from "../../hooks";
 import { getProductsCart } from "../../api/cart";
 import { ListProductCart } from "../../components/Client";
+import {GrPrevious} from "react-icons/gr"
 import "./Client.css";
 export function Cart() {
   const [products, setProducts] = useState(null);
@@ -29,15 +30,15 @@ export function Cart() {
 
   return (
     <div className="set-container">
-      <Link to={`/client/${tableNumber}`}>Volver a categorias</Link>
+      <Link to={`/client/${tableNumber}`}><GrPrevious/><GrPrevious/></Link>
       <h1>Carrito</h1>
       {!products ? (
-        <p>Cargando...</p>
+        <Spinner animation="border" variant="dark" />
       ) : size(products) === 0 ? (
         <div style={{ textAlign: "center" }}>
           <p>Tu carrito esta vacio</p>
           <Link to={`/client/${tableNumber}/orders`}>
-            <Button>Ver pedidos</Button>
+            <Button variant='dark'>Ver pedidos</Button>
           </Link>
         </div>
       ) : (
