@@ -4,13 +4,14 @@ import { useProduct } from "../../hooks";
 import { ListProducts } from "../../components/Client";
 
 export function Products() {
-  const { tableNumber, idCategory } = useParams();
+  const { idCategory,tableNumber } = useParams();
   const { loading, products, getProductsByCategory } = useProduct();
-
+  console.log(products)
   useEffect(() => {getProductsByCategory(idCategory)}, [idCategory]);
 
   return (
     <div>
+      <span>id de la mesa: {idCategory}</span>
       <Link to={`/client/${tableNumber}`}>Volver a categorias</Link>
 
       {loading ? <p>Cargando...</p> : <ListProducts products={products} />}

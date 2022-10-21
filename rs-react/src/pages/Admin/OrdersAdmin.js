@@ -12,7 +12,7 @@ export function OrdersAdmin() {
   return (
     <>
         <HeaderPage title="Restaurante siglo XXI"/>
-        {loading ? (<Spinner animation="border" variant="success" />) : (
+        {loading ? (<Spinner></Spinner>) : (
           <TableListAdmin tables={tables}/>
         )}
     </>

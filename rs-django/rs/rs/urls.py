@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings #PARA QUE MUESTRE IMAGENES
@@ -26,6 +27,7 @@ from categorias.api.router import router_category
 from tables.api.router import router_table
 from payments.api.router import router_payments
 from tables.api.router import router_table
+from products.api.router import router_product
 from orders.api.router import router_orders
 
 schema_view = get_schema_view(
@@ -51,7 +53,8 @@ urlpatterns = [
     path('api/', include(router_category.urls)), #RUTA DE LAS CATEGORIAS
     path('api/', include(router_table.urls)), 
     path('api/', include(router_orders.urls)),
+    path('api/', include(router_product.urls)),
     path('api/', include(router_payments.urls)),
-]   + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+]  
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,6 +12,8 @@ export function ListProducts(props) {
   const addCart = (product) => {
     addProductCart(product.id);
     toast.success(`${product.title} añadido al carrito`);
+
+    console.log(products)
   };
 
   return (

@@ -11,7 +11,7 @@ export function ViewTableTotem() {
 
     return (
       <div className="row">
-        {loading ? (<Spinner animation="border" variant="success" />) : (
+        {loading ? (<Spinner ></Spinner>) : (
           <ViewTable tables={tables}/>
         )}
       </div>
