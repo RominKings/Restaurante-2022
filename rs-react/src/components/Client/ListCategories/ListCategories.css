@@ -1,10 +1,4 @@
-/* .categorias{
-  
-}
-.img-categoria {
-  margin-bottom: 15px;
-  height:max-content;
-} */
+
 .categorias:hover {
   opacity: 0.7;
   transform: scale(1.1);

@@ -60,7 +60,7 @@ export function ClientLayout(props) {
       </Navbar>
       </div>
         {children}
-      </div>
+      </div> 
   );
 }
 

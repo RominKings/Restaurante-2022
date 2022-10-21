@@ -3,7 +3,7 @@ import {ViewTableTotem} from "../pages/Totem";
 
 const routesTotem = [
     {
-      path: "/totem",
+      path: "/totem/tables",
       layout: TotemLayout,
       component: ViewTableTotem,
       exact: true,

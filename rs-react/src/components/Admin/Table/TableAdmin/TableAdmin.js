@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { size } from 'lodash';
-import { ReactComponent as IcTable } from "../../../../assets/mesa3.svg";
-import { Card } from 'react-bootstrap';
+import { ReactComponent as IcTable } from "../../../../assets/mesa2.svg";
+import { Card,Badge } from 'react-bootstrap';
 import {FcViewDetails} from 'react-icons/fc';
 import classNames from "classnames";
 import { getOrdersByTableApi } from '../../../../api/orders';
@@ -45,7 +45,8 @@ export function TableAdmin(props) {
   return (
     <Link className='table-admin col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2' to={`/admin/table/${table.id}`}>
       {size(orders) > 0 ? (
-        <Card bsPrefix='card' ><Card.Body>{size(orders)}</Card.Body></Card>
+        <Badge bg="secondary">{size(orders)}</Badge>
+        // <Card bsPrefix='card' ><Card.Body>{size(orders)}</Card.Body></Card>
       ) : null }
 
         {pendingPayment && (
