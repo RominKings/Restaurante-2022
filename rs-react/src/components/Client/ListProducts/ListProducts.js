@@ -20,7 +20,7 @@ export function ListProducts(props) {
     <div className="">
       
       {map(products, (product) => (
-        <div key={product.id} className="row col-11 mx-auto col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+        <div key={product.id} className="rowww col-11 mx-auto col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
           <Card style={{ width: '18rem'}} >
             <Card.Img  bsPrefix='card-image-listproduct' src={product.image} />
             <Card.Body>

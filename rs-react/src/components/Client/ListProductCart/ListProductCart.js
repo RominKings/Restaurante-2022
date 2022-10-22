@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image, Button, Card, CardGroup } from "react-bootstrap";
 import {IoMdClose} from "react-icons/io"
+import {BsTrash} from "react-icons/bs";
 import { map, forEach } from "lodash";
 import { useParams, useNavigate} from "react-router-dom";
 import { useOrder, useTable } from "../../../hooks";
@@ -41,35 +42,38 @@ export function ListProductCart(props) {
   };
 
   return (
-    <div className="list-product-cart">
+    <div className="row-div-cart">
       {map(products, (product, index) => (
-        <div key={index} className="col-11 mx-auto">
-          {/* <Card className="bg-dark text-white">
-            <Card.Img src={product.image} alt="Card image" />
-            <Card.ImgOverlay>
-              <Card.Title>{product.title}</Card.Title>
-              <Card.Text>1 X ${product.price}</Card.Text>
-              <Button className="col-3 btn-cart" name="close" onClick={() => removeProduct(index)}> 
-                <IoMdClose></IoMdClose> Quitar</Button>
+        <div key={index} 
+        className=""
+        >
+          <Card id="card-card" className="bg-dark text-white col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+            <Card.Img  id="card-img-cart" src={product.image} alt="Card image" />
+            <Card.ImgOverlay >
+              <Card.Title id="card-title-cart">{product.title}</Card.Title>
+              <Card.Text id="card-price-cart" >1 x $ {product.price}</Card.Text>
+              <Button id="card-button-cart" variant="light" name="close" onClick={() => removeProduct(index)}> 
+                <IoMdClose/></Button>
             </Card.ImgOverlay>
-            
-          </Card> */}
-          <div className="row">
+          </Card>
+          {/* <div className="row">
             <Image className="img-cart col-4 " src={product.image}  />
             <div className="col-5">
-              <span className="col-12 row">{product.title} </span>
-              <span className="col-12 row" >1 X ${product.price} </span>
+              <span className="span-title col-12 row">{product.title} </span>
+              <span className="span-price col-12 row" >1 X ${product.price} </span>
               <br></br>
             </div>
             <Button className="col-3 btn-cart" name="close" onClick={() => removeProduct(index)}> 
                 <IoMdClose></IoMdClose> Quitar</Button>
             
-          </div>
+          </div> */}
           
         </div>
       ))}
-      <div className="row col-12  div-total">
-        <Button className=" fixed-bottom"  onClick={createOrder}>
+      <div 
+      className="row div-total"
+      >
+        <Button className=" fixed-bottom" variant="success"onClick={createOrder}>
           Total: ${total}
 
           <h4>Realizar pedido</h4>

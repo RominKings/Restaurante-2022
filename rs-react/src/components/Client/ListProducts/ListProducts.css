@@ -8,3 +8,13 @@
     width: 100% ;
     transition: all 500ms ease-out;
 }
+
+.rowww{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    transition: all 500ms ease-out;
+    height: 100;
+    width: 60;
+    margin: 0.5cm;
+}

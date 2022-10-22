@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { map, size, forEach } from "lodash";
 import { OrderHistoryItem } from "../../components/Client";
@@ -59,13 +59,13 @@ export function OrdersHistory() {
   return (
     <div>
       <h1>Historial de pedidos</h1>
-
+      <div className="row-products">
       {loading ? (
-        <p>Cargando...</p>
+        <Spinner animation="border" variant="dark" />
       ) : (
         <>
           {size(orders) > 0 && (
-            <Button
+            <Button variant='success'
               onClick={() =>
                 size(isRequestAccount) === 0 && setShowTypePayment(true)
               }
@@ -80,7 +80,7 @@ export function OrdersHistory() {
             <OrderHistoryItem key={order.id} order={order} />
           ))}
         </>
-      )}
+      )}</div>
 
       <ModalConfirm
         title="Pagar con tarjeta o efectivo"

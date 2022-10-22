@@ -9,9 +9,7 @@ import "./Products.css";
 export function Products() {
   const { idCategory,tableNumber } = useParams();
   const { loading, products, getProductsByCategory } = useProduct();
-  console.log(products)
   useEffect(() => {getProductsByCategory(idCategory)}, [idCategory]);
-
   return (
     <>
     <div>
@@ -20,6 +18,7 @@ export function Products() {
 
     </div>
     <div className="row-products">
+      <h3>Nuestros productos disponibles</h3>
       {loading ? <Spinner animation="border" variant="dark" /> : <ListProducts products={products} />}
     </div>
       </>

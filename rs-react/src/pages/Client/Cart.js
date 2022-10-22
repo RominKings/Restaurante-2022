@@ -6,7 +6,7 @@ import { useProduct } from "../../hooks";
 import { getProductsCart } from "../../api/cart";
 import { ListProductCart } from "../../components/Client";
 import {GrPrevious} from "react-icons/gr"
-import "./Client.css";
+
 export function Cart() {
   const [products, setProducts] = useState(null);
   const [reloadCart, setReloadCart] = useState(false);
@@ -32,6 +32,7 @@ export function Cart() {
     <div className="set-container">
       <Link to={`/client/${tableNumber}`}><GrPrevious/><GrPrevious/></Link>
       <h1>Carrito</h1>
+      <div style={{ textAlign: "center" }}>
       {!products ? (
         <Spinner animation="border" variant="dark" />
       ) : size(products) === 0 ? (
@@ -43,7 +44,7 @@ export function Cart() {
         </div>
       ) : (
         <ListProductCart products={products} onReloadCart={onReloadCart} />
-      )}
+      )}</div>
       <span className="fixed-bottom">@</span>
     </div>
   );
