@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { size } from 'lodash';
-import { Card, Badge } from 'react-bootstrap';
+import { Card, Badge,Image } from 'react-bootstrap';
 import {FcViewDetails} from 'react-icons/fc';
 import classNames from "classnames";
-import { ReactComponent as IcTable } from "../../../assets/mesa3.svg";
+import { ReactComponent as IcTable } from "../../../assets/mesa3 copia.svg";
+import { Spinner2 } from '../../../assets/Spinner2';
 import { getOrdersByTableApi } from '../../../api/orders';
 import { ORDER_STATUS } from '../../../utils/constants';
 import {usePayment} from "../../../hooks";
@@ -16,6 +17,7 @@ export function ViewTableLis(props) {
     const [tableBusy, setTableBusy] = useState(false)
     const [pendingPayment, setPendingPayment] = useState(false)
     const {getPaymentByTable} = usePayment();
+console.log(orders)
 
     useEffect(() => {
         (async() => {
@@ -40,25 +42,39 @@ export function ViewTableLis(props) {
         })()
       }, [reload])
 
+      console.log(tableBusy)
+
   return (
-    <div>
-        <div className='table-admin col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2' to={`/admin/table/${table.id}`}>
+    <div className='col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 div-atras-mesas '>
+        <div className='table-totem div-mesas'>
+          <h6 className=' text-center'>Mesa {table.number}</h6>
             {size(orders) > 0 ? (
-                <Badge bg="secondary">{size(orders)}</Badge>
+                <div className=''>
+                  <p>Procesado pedido</p>
+                  
+
+                </div>
                 // <Card bsPrefix='card' ><Card.Body>{size(orders)}</Card.Body></Card>
             ) : null }
 
-                {pendingPayment && (
-                <Card bsPrefix='card'><Card.Body><Card.Title><FcViewDetails/></Card.Title></Card.Body></Card>
+                  {pendingPayment && (
+                <div>
+                  <Spinner2 className='row mx-auto spin-totem'></Spinner2>
+                  <p>La mesa se desocupara pronto...</p>
+                
+                  </div>
                 )}
-
-            <IcTable id="mesa"
+                
+            <div className=''>
+            <IcTable
                 className={classNames({
                 pending: size(orders) > 0,
                 busy: tableBusy,
-                "pending-payment": pendingPayment,
-            })} />
-            <p>Mesa {table.number}</p>
+                "pending-payment": pendingPayment
+            }) }
+            /></div>
+            
+            
         </div>
 
     </div>

@@ -1,21 +1,14 @@
-#reload {
-    margin: 50;
-    position: absolute;
-    top: 100px;
-    right: 50px;
+.square-0{color: black;}
+.square-1{color: red;}
+.square-2{color: rgb(0, 255, 55);}
+.square-3{color: orange;}
+
+.div-reaload{visibility: visible;}
+.a-toast {
+    background-color: aqua;}
+.a-reload{
+    background-color: rgb(0, 255, 8);
 }
 
-#check-reload {
-    position:absolute !important;
-    top: 105px;
-    right: 105px;
-    display: flex;
-    align-items: center;
-}
 
-#span-reload {
-    position: absolute !important;
-    top: 103px;
-    right: 130px;
-    display: flex;
-}
+

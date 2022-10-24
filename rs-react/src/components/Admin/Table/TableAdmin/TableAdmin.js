@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { size } from 'lodash';
-import { ReactComponent as IcTable } from "../../../../assets/mesa2.svg";
+import { ReactComponent as IcTable } from "../../../../assets/mesa3.svg";
 import { Card,Badge } from 'react-bootstrap';
 import {FcViewDetails} from 'react-icons/fc';
 import classNames from "classnames";
