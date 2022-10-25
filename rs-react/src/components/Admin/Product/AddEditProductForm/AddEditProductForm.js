@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react'
-import {Form, Image, Button, Row, Col,Dropdown} from "react-bootstrap";
+import { Dropdown } from 'semantic-ui-react';
+import {Form, Image, Button} from "react-bootstrap";
 import { map } from 'lodash';
 import { useDropzone } from "react-dropzone";
 import { useFormik } from "formik"
@@ -48,33 +49,25 @@ export function AddEditProductForm(props) {
 
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <Row>
-
-        <Col>
+    
+   
           <Form.Control 
             name="title" 
             placeholder="Nombre del producto"
             value={formik.values.title} 
             onChange={formik.handleChange}/>
-        </Col>
+        
 
-        <Col>
+        
           <Form.Control 
             name="price" 
             type="number" 
             placeholder="Precio"
             value={formik.values.price} 
             onChange={formik.handleChange}/>
-        </Col>
-
-      </Row>
-
+    
       <br></br>
-
-      <Row>
-
-        <Col>
-        
+       
         {/* <Dropdown value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Categorias
@@ -88,25 +81,29 @@ export function AddEditProductForm(props) {
         {/* <Form.Group name="" controlId="category" 
         value={formik.values.category} onChange={(_, ...data)=>console.log(...data)}
         > */}
-          <Form.Select placeholder='Categoria' option={categoriesFormat} 
-        value={formik.values.category} onChange={(_, ...data)=>console.log(...data)} >
-          <option option={categoriesFormat}></option>
+        <Dropdown
+        placeholder="Categoria"
+        selection
+        options={categoriesFormat}
+        value={formik.values.category}
+        error={formik.errors.category}
+        onChange={(_, data) => formik.setFieldValue("category", data.value)}/>
 
-          </Form.Select>
+        
+
+
         {/* </Form.Group> */}
-        </Col>
 
-        <Col>
+
+
         <Form.Check 
           name="active"
           type="switch"
           id="active"
           label="Producto activo"
-          checked={formik.values.active} onChange={(_, ...data) => formik.setFieldValue('active', ...data.checked)}
-        />
-        </Col>
-
-      </Row>
+          checked={formik.values.active} 
+          onChange={(_, data) => formik.setFieldValue('active',data.checked)}
+        />    
 
       <br></br>
 

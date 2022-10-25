@@ -9,9 +9,9 @@ export function ProductAdmin() {
   const [titleModal, setTitleModal] = useState(null)
   const [contentModal, setContentModal] = useState(null)
   const [refetch, setRefetch] = useState(false);
-  const { loading, products, getProduct, deleteProduct } = useProduct();
+  const { loading, products, getProducts, deleteProduct, } = useProduct();
 
-  useEffect(() => { getProduct() }, [refetch])
+  useEffect(() => { getProducts() }, [refetch])
   
   const openCloseModal = () => setShowModal((prev) => !prev);
   const onRefetch = () => setRefetch((prev) => !prev);

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Spinner, Imagecfx } from "react-bootstrap";
+import { Card, Spinner, Image } from "react-bootstrap";
 import {FcApproval} from "react-icons/fc"
 import classNames from "classnames";
 import moment from "moment";
@@ -9,6 +9,7 @@ import "./OrderHistoryItem.css";
 
 export function OrderHistoryItem(props) {
   const { order } = props;
+  console.log(order.product_data)
   const { title, image } = order.product_data;
 
   return (

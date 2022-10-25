@@ -6,11 +6,11 @@ export function ModalBasic(props) {
 
   return (
     
-      <Modal className='row container-fluid' show={show} onHide={onClose}>
-        <Modal.Header className=' row' closeButton>
-          {title && <Modal.Title className='row'>{title}</Modal.Title>}
+      <Modal className=' container-fluid' show={show} onHide={onClose}>
+        <Modal.Header className=' ' closeButton>
+          {title && <Modal.Title className=''>{title}</Modal.Title>}
         </Modal.Header>
-        <Modal.Body className='row '>{children}</Modal.Body>
+        <Modal.Body className=' '>{children}</Modal.Body>
         {/* <Modal.Footer>
           <Button variant="secondary" onClick={onClose}>
             Cerrar
