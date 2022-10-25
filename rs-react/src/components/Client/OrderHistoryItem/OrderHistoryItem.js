@@ -29,18 +29,6 @@ export function OrderHistoryItem(props) {
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
-          
-      {/* <div className="">
-        <span>
-        Pedido {moment(order.created_at).startOf("second").fromNow()}
-        </span>
-      </div>
-
-      <div className="">
-        <Image src={image} />
-        <p>{title}</p>
-      </div> */}
-
       {order.status === ORDER_STATUS.PENDING ? (
         <span>En marcha <Spinner animation="grow" variant="light" size="sm" /> <Spinner animation="grow" variant="secondary" size="sm" /> <Spinner animation="grow" size="sm" /></span>
       ):(

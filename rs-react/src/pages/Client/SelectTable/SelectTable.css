@@ -4,13 +4,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #C72C41;
-    background-image: ;
+    background-color: black;
+    background-image: linear-gradient(315deg, rgb(172, 90, 90) 0%, rgb(94, 22, 22) 74%);
     padding:0 50px;
   }
   
   .div-login{ 
-      background-color:#ffaa58;
+      background-color:#fdd7b3ab;
       border-radius: 10px;
       padding: 15px;
       box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);

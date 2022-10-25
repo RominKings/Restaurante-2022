@@ -15,6 +15,7 @@ export function ListProductCart(props) {
   const { getTableByNumber } = useTable();
   const { tableNumber } = useParams();
   const navigate = useNavigate();
+  console.log(products);
 
   useEffect(() => {
     let totalTemp = 0;
@@ -41,6 +42,8 @@ export function ListProductCart(props) {
     navigate(`/client/${tableNumber}/orders`);
   };
 
+  
+
   return (
     <div className="row-div-cart">
       {map(products, (product, index) => (
@@ -56,18 +59,6 @@ export function ListProductCart(props) {
                 <IoMdClose/></Button>
             </Card.ImgOverlay>
           </Card>
-          {/* <div className="row">
-            <Image className="img-cart col-4 " src={product.image}  />
-            <div className="col-5">
-              <span className="span-title col-12 row">{product.title} </span>
-              <span className="span-price col-12 row" >1 X ${product.price} </span>
-              <br></br>
-            </div>
-            <Button className="col-3 btn-cart" name="close" onClick={() => removeProduct(index)}> 
-                <IoMdClose></IoMdClose> Quitar</Button>
-            
-          </div> */}
-          
         </div>
       ))}
       <div 

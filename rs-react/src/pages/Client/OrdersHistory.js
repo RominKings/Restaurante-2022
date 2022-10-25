@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import { map, size, forEach } from "lodash";
+import { useParams, Link } from "react-router-dom";
+import { map, size, forEach, wrap } from "lodash";
 import { OrderHistoryItem } from "../../components/Client";
 import { ModalConfirm } from "../../components/Common";
 import { useOrder, useTable, usePayment } from "../../hooks";
@@ -62,7 +62,21 @@ export function OrdersHistory() {
       <div className="row-products">
       {loading ? (
         <Spinner animation="border" variant="dark" />
-      ) : (
+      ) : size(orders) === 0 ?(
+        
+        <div style={{ textAlign: "center"}}>
+          <p> Aún no has pedido algo </p>
+          <Link to={`/client/${tableNumber}/cart`}>
+            <Button variant='dark'>Ver carrito</Button>
+          </Link>
+          <br></br>
+          <br></br>
+          <Link to={`/client/${tableNumber}`}>
+            <Button variant='dark'>Ver categorias</Button>
+          </Link>
+        </div>
+      ) : ( 
+
         <>
           {size(orders) > 0 && (
             <Button variant='success'
@@ -80,6 +94,8 @@ export function OrdersHistory() {
             <OrderHistoryItem key={order.id} order={order} />
           ))}
         </>
+
+
       )}</div>
 
       <ModalConfirm
