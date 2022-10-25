@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "semantic-ui-react";
 import { Card } from "react-bootstrap"
 import { map } from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,13 +15,14 @@ export function ListCategories(props) {
   };
 
   return (
-    <div className="row">
+    <div className="row ">
       {map(categories, (category) => (
         <div
           key={category.id}
-          className="row categorias"
+          className="row categorias col-11 "
           onClick={() => goToCategory(category.id)}
           >
+          
           <Card bsPrefix='card-categoria' className="col-11" >
             <Card.Img bsPrefix='card-image-categoria'src={category.image} alt="Card image" />
             <Card.ImgOverlay>

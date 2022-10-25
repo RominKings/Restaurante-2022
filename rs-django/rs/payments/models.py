@@ -2,7 +2,7 @@ from django.db import models
 
 PaymentTypeEnum = (
     ("CARD", "card"),
-    ("CASH", "cash")
+    ("CASH", "cash"),
 )
 
 StatusPaymentEnum = (
