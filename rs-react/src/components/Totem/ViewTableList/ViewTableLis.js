@@ -4,7 +4,7 @@ import { Card, Badge,Image } from 'react-bootstrap';
 import {FcViewDetails} from 'react-icons/fc';
 import classNames from "classnames";
 import { ReactComponent as IcTable } from "../../../assets/mesa3 copia.svg";
-import { Spinner2 } from '../../../assets/Spinner2';
+// import { Spinner2 } from '../../../assets/Spinner2';
 import { getOrdersByTableApi } from '../../../api/orders';
 import { ORDER_STATUS } from '../../../utils/constants';
 import {usePayment} from "../../../hooks";
@@ -59,7 +59,7 @@ console.log(orders)
 
                   {pendingPayment && (
                 <div>
-                  <Spinner2 className='row mx-auto spin-totem'></Spinner2>
+                  {/* <Spinner2 className='row mx-auto spin-totem'></Spinner2> */}
                   <p>La mesa se desocupara pronto...</p>
                 
                   </div>

@@ -10,10 +10,10 @@ export function ViewTableTotem() {
   console.log(tables);
 
     return (
-      <>
+      <div className="div-totem">
         {loading ? (<Spinner ></Spinner>) : (
           <ViewTable tables={tables}/>
         )}
-      </>
+      </div>
     );
   }

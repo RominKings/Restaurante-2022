@@ -50,7 +50,7 @@ export function ListProductCart(props) {
         <div key={index} 
         className=""
         >
-          <Card id="card-card" className="bg-dark text-white col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+          <Card id="card-card" className="bg-dark text-white">
             <Card.Img  id="card-img-cart" src={product.image} alt="Card image" />
             <Card.ImgOverlay >
               <Card.Title id="card-title-cart">{product.title}</Card.Title>
@@ -62,7 +62,7 @@ export function ListProductCart(props) {
         </div>
       ))}
       <div 
-      className="row div-total"
+      className="div-total"
       >
         <Button className=" fixed-bottom" variant="success"onClick={createOrder}>
           Total: ${total}
