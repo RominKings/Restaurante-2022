@@ -11,7 +11,8 @@ export function OrdersAdmin() {
 
   return (
     <>
-        <HeaderPage title="Restaurante siglo XXI"/>
+        <h1 className='text-center' >"Restaurante Siglo XXI"</h1>
+        <br></br>
         {loading ? (<Spinner></Spinner>) : (
           <TableListAdmin tables={tables}/>
         )}

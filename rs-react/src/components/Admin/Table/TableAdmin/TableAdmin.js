@@ -43,6 +43,8 @@ export function TableAdmin(props) {
   
 
   return (
+
+
     <Link className='table-admin col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2' to={`/admin/table/${table.id}`}>
       {size(orders) > 0 ? (
         <Badge bg="secondary">{size(orders)}</Badge>
@@ -61,5 +63,6 @@ export function TableAdmin(props) {
       })} />
       <p>Mesa {table.number}</p>
     </Link>
+ 
   )
 }

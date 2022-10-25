@@ -1,21 +1,11 @@
 #reload {
-    margin: 50;
-    position: absolute;
-    top: 100px;
-    right: 50px;
+
 }
 
 #check-reload {
-    position:absolute !important;
-    top: 105px;
-    right: 105px;
-    display: flex;
-    align-items: center;
+
 }
 
 #span-reload {
-    position: absolute !important;
-    top: 103px;
-    right: 130px;
-    display: flex;
+
 }

@@ -45,7 +45,7 @@ export function Cart() {
       ) : (
         <ListProductCart products={products} onReloadCart={onReloadCart} />
       )}</div>
-      <span className="fixed-bottom">@</span>
+      <span className="fixed-bottom"></span>
     </div>
   );
 }

@@ -33,19 +33,24 @@ export function TableListAdmin(props) {
       }
     }
 
+
   return (
     <div className='table-list-admin'>
-      <Button variant="info" id='reload' onClick={onReload}><FiRefreshCcw/></Button>
+     
         
-        <div className='reload-toggle' >
-          <span id='span-reload'>Reload automático</span>
-          <Form.Check aria-label="option 1" id='check-reload' toggle="true"
-          
-          onChange={(data) => onReload(data.target.checked)}
-          checked={autoReload} 
-           />
-        </div>
-        <div className="row">
+      <div className=' div-reaload d-flex justify-content-end'  >
+            <h6 className=''>Reload automático  
+              <input
+                type="checkbox"
+                className=''
+                toggle="false"
+                onChange={(data) => onCheckAutoReload(data.target.checked)}
+                checked={autoReload} 
+              />  </h6>
+
+            <Button className='' variant="info" id='reload' onClick={onReload}><FiRefreshCcw/></Button>
+      </div>
+        <div className="row" >
         {map(tables, (table) => (
             <TableAdmin  key={table.number} table={table} reload={reload}/>
         ))}
