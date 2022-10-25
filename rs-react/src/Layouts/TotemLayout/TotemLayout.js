@@ -12,7 +12,7 @@ export function TotemLayout(props) {
     if(!auth) return <LoginAdmin/>;
 
     return (
-      <div className="">
+      <div className="totem-div">
         <ViewTableTotem>{children}</ViewTableTotem>
       </div>
     );
