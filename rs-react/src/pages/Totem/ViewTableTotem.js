@@ -14,6 +14,8 @@ export function ViewTableTotem() {
         {loading ? (<Spinner ></Spinner>) : (
           <ViewTable tables={tables}/>
         )}
+
+       
       </div>
     );
   }

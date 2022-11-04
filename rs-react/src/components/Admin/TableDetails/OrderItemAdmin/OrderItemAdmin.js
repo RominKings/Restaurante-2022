@@ -10,6 +10,8 @@ import "./OrderItemAdmin.css"
 export function OrderItemAdmin(props) {
   const {order, onReloadOrders} = props;
   const {title, image} = order.product_data;
+
+  console.log(order.product_data)
   const {checkDeliveredOrder} = useOrder();
   
   const oncheckDeliveredOrder = async () => {

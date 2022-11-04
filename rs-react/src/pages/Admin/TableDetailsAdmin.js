@@ -4,7 +4,8 @@ import {forEach,size} from "lodash"
 import { useOrder, useTable, usePayment } from '../../hooks'
 import {HeaderPage, AddOrderFormAdmin} from '../../components/Admin'
 import {ModalBasic} from '../../components/Common';
-import { ListOrderAdmin, PaymentDetil } from '../../components/Admin/TableDetails';
+import {  PaymentDetil } from '../../components/Admin/TableDetails';
+import{ListOrderAdmin} from '../../components/Admin/TableDetails/ListOrderAdmin'
 import { Spinner } from '../../assets/Spinner';
 export function TableDetailsAdmin() {
     const [reloadOrders, setReloadOrders] = useState(false)
