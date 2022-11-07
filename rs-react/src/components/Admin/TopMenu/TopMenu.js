@@ -49,7 +49,7 @@ export function TopMenu(props) {
                   <Nav.Link href="/admin/history" active={pathname === "/admin/history"}> <BiBookBookmark/> Historico  </Nav.Link>
                   {auth.me.is_staff && (<Nav.Link href="/admin/categories" active={pathname === "/admin/categories"}> <BiCategoryAlt/> Categorias  </Nav.Link>)}
                   {auth.me.is_staff && (<Nav.Link href="/admin/products" active={pathname === "/admin/products"}> <GiShoppingCart/> Productos </Nav.Link>)}
-                  {auth.me.is_staff && (<Nav.Link href="/admin/users" active={pathname === "/admin/users"}> <HiOutlineUserGroup/> Usuarios  </Nav.Link>)}
+                  {/* {auth.me.is_staff && (<Nav.Link href="/admin/users" active={pathname === "/admin/users"}> <HiOutlineUserGroup/> Usuarios  </Nav.Link>)} */}
                 </Nav>
                   <Button variant="danger" size="sm" onClick={logout}><AiOutlinePoweroff/></Button>
               </Offcanvas.Body>
