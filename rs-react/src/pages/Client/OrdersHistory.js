@@ -5,6 +5,7 @@ import { map, size, forEach, wrap } from "lodash";
 import { OrderHistoryItem } from "../../components/Client";
 import { ModalConfirm } from "../../components/Common";
 import { useOrder, useTable, usePayment } from "../../hooks";
+import Swal from 'sweetalert2'
 
 export function OrdersHistory() {
   const [idTable, setIdTable] = useState(null);
@@ -14,6 +15,10 @@ export function OrdersHistory() {
   const { getTableByNumber } = useTable();
   const { tableNumber } = useParams();
   const { createPayment, getPaymentByTable } = usePayment();
+
+
+
+  const openCloseModal = () => setShowTypePayment((prev) => !prev);
 
   useEffect(() => {
     (async () => {
@@ -25,6 +30,7 @@ export function OrdersHistory() {
     })();
   }, []);
 
+  
   useEffect(() => {
     (async () => {
       if (idTable) {
@@ -56,6 +62,87 @@ export function OrdersHistory() {
     window.location.reload();
   };
 
+  function pagar_efectivo(){
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Estas seguro que quieres pagar con efectivo?',
+      text: "No podras cancelar esta peticion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Quiero esto! c:',
+      cancelButtonText: 'No, Algo ha cambiado...',
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+
+        swalWithBootstrapButtons.fire(
+          'Perfecto!',
+          'Tu cuenta la pagaras en efectivo, pronto un empleado se acercara a pagarse...',
+          'success',          
+        )
+        onCreatePayment("CASH")
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado!',
+          'No se ha realizado tu pedido',
+          'error'
+        )
+      }
+    })
+
+
+   
+  };
+
+  function pagar_tarjeta(){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Estas seguro que quieres pagar con tarjeta?',
+      text: "No podras cancelar esta peticion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Quiero esto! c:',
+      cancelButtonText: 'No, Algo ha cambiado...',
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+
+        swalWithBootstrapButtons.fire(
+          'Perfecto!',
+          'Tu cuenta la pagaras con tarjeta, pronto un empleado se acercara a pagarse...',
+          'success',          
+        )
+        onCreatePayment("CARD")
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado!',
+          'No se ha realizado tu pedido',
+          'error'
+        )
+      }
+    })
+  };
   return (
     <div>
       <h1>Historial de pedidos</h1>
@@ -80,6 +167,7 @@ export function OrdersHistory() {
         <>
           {size(orders) > 0 && (
             <Button variant='success'
+
               onClick={() =>
                 size(isRequestAccount) === 0 && setShowTypePayment(true)
               }
@@ -101,10 +189,11 @@ export function OrdersHistory() {
       <ModalConfirm
         title="Pagar con tarjeta o efectivo"
         show={showTypePayment}
-        onCloseText="Efectivo"
-        onClose={() => onCreatePayment("CASH")}
-        onConfirmText="Tarjeta"
-        onConfirm={() => onCreatePayment("CARD")}
+        txtbtnCash="Efectivo"
+        onCloseCard={pagar_efectivo}
+        onClose={openCloseModal}
+        txtbtnCard="Tarjeta"
+        onCloseCash={pagar_tarjeta}
       />
     </div>
   );

@@ -7,6 +7,7 @@ import {ModalBasic} from '../../components/Common';
 import {  PaymentDetil } from '../../components/Admin/TableDetails';
 import{ListOrderAdmin} from '../../components/Admin/TableDetails/ListOrderAdmin'
 import { Spinner } from '../../assets/Spinner';
+
 export function TableDetailsAdmin() {
     const [reloadOrders, setReloadOrders] = useState(false)
     const [paymentData, setPaymentData] = useState(null)
@@ -72,7 +73,7 @@ export function TableDetailsAdmin() {
             <ListOrderAdmin orders={orders} onReloadOrders={onReloadOrders}/>
         )}
         
-        <ModalBasic  show={showModal} onClose={openCloseModal} title="Generar pedido">
+        <ModalBasic  show={showModal} onClose={openCloseModal} title="Liberar Mesa">
         {paymentData ? (
           <PaymentDetil payment={paymentData} orders={orders} openCloseModal={openCloseModal} onReloadOrders={onReloadOrders}/>
         ) : (

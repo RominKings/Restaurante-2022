@@ -7,6 +7,9 @@ import { useParams, useNavigate} from "react-router-dom";
 import { useOrder, useTable } from "../../../hooks";
 import { removeProductCartApi, cleanProductCartApi } from "../../../api/cart";
 import "./ListProductCart.css";
+import Swal from 'sweetalert2'
+
+// CommonJS
 
 export function ListProductCart(props) {
   const { products, onReloadCart } = props;
@@ -15,6 +18,7 @@ export function ListProductCart(props) {
   const { getTableByNumber } = useTable();
   const { tableNumber } = useParams();
   const navigate = useNavigate();
+  const Swal = require('sweetalert2')
   console.log(products);
 
   useEffect(() => {
@@ -26,23 +30,93 @@ export function ListProductCart(props) {
   }, [products]);
 
   const removeProduct = (index) => {
-    removeProductCartApi(index);
-    onReloadCart();
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Estas seguro que quieres eliminar este producto del carrito?',
+      text: "No podras cancelar esta peticion, pero podras volver a agregar este u otro producto",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Quiero eliminarlo! c:',
+      cancelButtonText: 'No, me he arrepentido',
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Perfecto!',
+          'Haz eliminado este producto exitosamente del carrito',
+          'success',          
+        )
+        removeProductCartApi(index);
+        onReloadCart();
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado!',
+          'No se ha eliminado el producto :)',
+          'error'
+        )
+      }
+    })
   };
 
   const createOrder = async () => {
-    const tableData = await getTableByNumber(tableNumber);
-    const idTable = tableData[0].id;
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
 
-    for await (const product of products) {
-      await addOrderToTable(idTable, product.id);
-    }
+    swalWithBootstrapButtons.fire({
+      title: 'Estas seguro que quieres realizar el pedido?',
+      text: "No podras cancelar esta peticion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, Quiero esto! c:',
+      cancelButtonText: 'No, Algo ha cambiado...',
+      reverseButtons: true
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const tableData = await getTableByNumber(tableNumber);
+        const idTable = tableData[0].id;
 
-    cleanProductCartApi();
-    navigate(`/client/${tableNumber}/orders`);
-  };
-
+        swalWithBootstrapButtons.fire(
+          'Perfecto!',
+          'Tu pedido se ha realizado con exito',
+          'success',          
+        )
+        for await (const product of products) {
+        await addOrderToTable(idTable, product.id);
+        cleanProductCartApi();
+        navigate(`/client/${tableNumber}/orders`);
+        }
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado!',
+          'No se ha realizado tu pedido',
+          'error'
+        )
+      }
+    })
+ 
   
+
+    
+  };
 
   return (
     <div className="row-div-cart">
@@ -61,6 +135,9 @@ export function ListProductCart(props) {
           </Card>
         </div>
       ))}
+      <div className="div-lv">
+        
+      </div>
       <div 
       className="div-total"
       >
