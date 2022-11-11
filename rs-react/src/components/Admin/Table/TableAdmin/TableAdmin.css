@@ -42,6 +42,11 @@
     fill: rgb(226, 223, 43);
 }
 
+.table-admin .preparing{
+    fill: rgb(39, 199, 207);
+}
+
+
 .table-admin .pending-payment{
     fill: rgb(3, 0, 155)
 }
