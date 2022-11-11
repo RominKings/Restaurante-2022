@@ -2,7 +2,9 @@ from django.db import models
 
 StatusEnum = (
     ("PENDING", "pending"),
-    ("DELIVERED", "delivered")
+    ("PREPARING","preparing"),
+    ("DELIVERED", "delivered"),
+
 )
 
 

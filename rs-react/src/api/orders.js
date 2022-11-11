@@ -14,6 +14,26 @@ export async function getOrdersByTableApi(idTable, status = "", ordering = "") {
     throw error;
   }
 }
+export async function PreparandoProductoPreparingApi(id) {
+    try {
+      const url = `${BASE_API}/api/orders/${id}/`;
+      const params = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: ORDER_STATUS.PREPARING,
+        }),
+      };
+  
+      const response = await fetch(url, params);
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 export async function checkDeliveredOrderApi(id) {
   try {
@@ -55,6 +75,7 @@ export async function addOrderToTableApi(idTable, idProduct) {
     throw error;
   }
 }
+
 
 export async function addPaymentToOrderApi(idOrder, idPayment) {
   try {

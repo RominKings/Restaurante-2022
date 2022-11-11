@@ -3,21 +3,21 @@ import { Button, Modal } from "react-bootstrap";
 import "./ModalConfirm.css";
 
 export function ModalConfirm(props) {
-  const { title, show, onClose, onCloseText, onConfirm, onConfirmText } = props;
+  const { title, show, onClose, onCloseCash, onCloseCard, txtbtnCash, txtbtnCard} = props;
 
   return (
-    <Modal className="modal-confirm" show={show} onHide={onClose} >
-       <Modal.Header>
+    <Modal className="modal-confirm" show={show} onHide={onClose}>
+       <Modal.Header closeButton>
        {title &&
         <Modal.Title> {title}</Modal.Title> }
        </Modal.Header>
 
       <Modal.Body>
-        <Button  onClick={onClose}>
-          {onCloseText || "Cancelar"}
+        <Button  onClick={onCloseCash}>
+          {txtbtnCash || "Cancelar"}
         </Button>
-        <Button  onClick={onConfirm}>
-          {onConfirmText || "Aceptar"}
+        <Button  onClick={onCloseCard}>
+          {txtbtnCard || "Aceptar"}
         </Button>
       </Modal.Body>
     </Modal>

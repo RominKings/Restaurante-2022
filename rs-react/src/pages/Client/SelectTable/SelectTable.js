@@ -16,7 +16,7 @@ import { size } from "lodash";
 
     const onSubmit = async () => { setError(null);     
         if (!tableNum) {
-            setError("No has introducido nunguna mesa");     
+            setError("No has introducido ninguna mesa");     
         }   else {       
             const exist = await isExistTable(tableNum);       
             if (exist) navigate(`/client/${tableNum}`);       
