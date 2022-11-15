@@ -41,9 +41,9 @@ export function ListProducts(props) {
               {/* <Card.Text>**Descripcion del producto**</Card.Text> */}
               <Card.Text>Precio: ${product.price}</Card.Text>
               <div className="d-grid gap-2">
-              <Button variant="success" size="sm" onClick={handleDecrement} >Restar <BsCartPlus/> </Button>
+              <Button variant="success" size="sm" onClick={handleDecrement} >Restar <BsCartPlus/></Button>
               <div>{quantity}</div>
-              <Button variant="success" size="sm" onClick={handleIncrment} >Sumar <BsCartPlus/> </Button>
+              <Button variant="success" size="sm" onClick={handleIncrment} >Sumar <BsCartPlus/></Button>
                 <Button variant="success" size="sm" onClick={() => addCart(product)} >Agregar {addCart}<BsCartPlus/> </Button>
               </div>
             </Card.Body>

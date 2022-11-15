@@ -23,7 +23,7 @@ export async function PreparandoProductoPreparingApi(id) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          status: ORDER_STATUS.PREPARING,
+          status: ORDER_STATUS.PREPARANDO,
         }),
       };
   
@@ -44,7 +44,7 @@ export async function checkDeliveredOrderApi(id) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        status: ORDER_STATUS.DELIVERED,
+        status: ORDER_STATUS.ENTREGADO,
       }),
     };
 
@@ -65,7 +65,7 @@ export async function addOrderToTableApi(idTable, idProduct) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        status: ORDER_STATUS.PENDING,
+        status: ORDER_STATUS.PENDIENTE,
         table: idTable,
         product: idProduct,
       }),

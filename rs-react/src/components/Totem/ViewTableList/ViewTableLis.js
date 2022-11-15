@@ -21,14 +21,14 @@ console.log(orders)
 
     useEffect(() => {
         (async() => {
-          const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PENDING)
+          const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PENDIENTE)
           setOrders(response);
         })()
       }, [reload])
     
       useEffect(() => {
         (async() => {
-          const response = await getOrdersByTableApi(table.id, ORDER_STATUS.DELIVERED)
+          const response = await getOrdersByTableApi(table.id, ORDER_STATUS.ENTREGADO)
           if(size(response) > 0) setTableBusy(response);
           else setTableBusy(false);
         })()
@@ -50,7 +50,7 @@ console.log(orders)
           <h6 className=' text-center'>Mesa {table.number}</h6>
             {size(orders) > 0 ? (
                 <div className=''>
-                  <p>Procesado pedido</p>
+                  <p>Procesando pedido</p>
                   
 
                 </div>

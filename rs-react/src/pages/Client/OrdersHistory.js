@@ -179,6 +179,7 @@ export function OrdersHistory() {
           )}
 
           {map(orders, (order) => (
+            
             <OrderHistoryItem key={order.id} order={order} />
           ))}
         </>

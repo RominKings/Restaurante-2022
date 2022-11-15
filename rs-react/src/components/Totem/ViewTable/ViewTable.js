@@ -45,11 +45,11 @@ export function ViewTable(props) {
     <div>
       <div className='navbar-totem'>
           <div className=''>
-              <Button onClick={toggleShowA} className="col-10 a-toast">
+              <Button onClick={toggleShowA} variant='dark' className="col-10 a-toast">
                   Presione para saber la guia de colores
                   
               </Button>
-            <Button className='col-2  a-reload btn-success' onClick={onReload}><FiRefreshCcw/></Button>
+            <Button className='col-2  a-reload' variant='info' onClick={onReload}><FiRefreshCcw/></Button>
             </div>
           <div className=' div-reaload col-11 '  >
             <h6 className='' >Reload automático  <input

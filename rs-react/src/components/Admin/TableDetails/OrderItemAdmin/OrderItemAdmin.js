@@ -31,7 +31,7 @@ export function OrderItemAdmin(props) {
         <Image src={image}/>
         <p>{title}</p>
       </div>
-      {order.status == ORDER_STATUS.PENDING && (
+      {order.status == ORDER_STATUS.PENDIENTE && (
         <Button variant="primary" onClick={oncheckDeliveredOrder}>Marcar entregado</Button>
       )}
     </div>

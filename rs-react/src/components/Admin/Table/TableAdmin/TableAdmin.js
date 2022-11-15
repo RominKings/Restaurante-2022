@@ -14,22 +14,31 @@ export function TableAdmin(props) {
   const {table, reload} = props;
   const [orders, setOrders] = useState([]);
   const [tableBusy, setTableBusy] = useState(false)
+  const [tablePreparing, setTablePreparing] = useState(false)
   const [pendingPayment, setPendingPayment] = useState(false)
   const {getPaymentByTable} = usePayment();
   console.log(orders);
 
   useEffect(() => {
     (async() => {
-      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PENDING)
+      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PENDIENTE)
       setOrders(response);
     })()
   }, [reload])
 
   useEffect(() => {
     (async() => {
-      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.DELIVERED)
+      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.ENTREGADO)
       if(size(response) > 0) setTableBusy(response);
       else setTableBusy(false);
+    })()
+  }, [reload])
+
+  useEffect(() => {
+    (async() => {
+      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PREPARANDO)
+      if(size(response) > 0) setTablePreparing(response);
+      else setTablePreparing(false);
     })()
   }, [reload])
 
@@ -60,6 +69,7 @@ export function TableAdmin(props) {
           pending: size(orders) > 0,
           busy: tableBusy,
           "pending-payment": pendingPayment,
+          preparing:tablePreparing
       })} />
       <p>Mesa {table.number}</p>
     </Link>

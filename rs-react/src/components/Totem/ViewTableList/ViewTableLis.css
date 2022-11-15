@@ -1,4 +1,4 @@
-/* .table-totem .busy{
+.table-totem .busy{
     fill: rgb(0, 255, 55);
 }
 
@@ -23,7 +23,7 @@
 }
 
 .div-atras-mesas{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.082);
     background-image: "../../../../img/vine-food.gif";
     
 
@@ -44,4 +44,4 @@
 
 
 
- */
+
