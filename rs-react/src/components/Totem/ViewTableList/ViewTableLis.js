@@ -45,7 +45,7 @@ console.log(orders)
       console.log(tableBusy)
 
   return (
-    <div className='col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 div-atras-mesas '>
+    <div className='col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 div-atras-mesas'>
         <div className='table-totem div-mesas'>
           <h6 className=' text-center'>Mesa {table.number}</h6>
             {size(orders) > 0 ? (
