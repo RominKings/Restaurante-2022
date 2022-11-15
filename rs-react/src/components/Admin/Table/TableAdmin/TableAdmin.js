@@ -21,14 +21,14 @@ export function TableAdmin(props) {
 
   useEffect(() => {
     (async() => {
-      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PENDING)
+      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PENDIENTE)
       setOrders(response);
     })()
   }, [reload])
 
   useEffect(() => {
     (async() => {
-      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.DELIVERED)
+      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.ENTREGADO)
       if(size(response) > 0) setTableBusy(response);
       else setTableBusy(false);
     })()
@@ -36,7 +36,7 @@ export function TableAdmin(props) {
 
   useEffect(() => {
     (async() => {
-      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PREPARING)
+      const response = await getOrdersByTableApi(table.id, ORDER_STATUS.PREPARANDO)
       if(size(response) > 0) setTablePreparing(response);
       else setTablePreparing(false);
     })()
