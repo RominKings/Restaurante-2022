@@ -3,6 +3,7 @@ export const TOKEN = "token";
 
 export const ORDER_STATUS = {
   PENDING: "PENDING",
+  PREPARING:"PREPARING",
   DELIVERED: "DELIVERED"
 };
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Image, Button, Card} from "react-bootstrap";
 import {BsCartPlus} from "react-icons/bs"
 import { map } from "lodash";
@@ -8,6 +8,7 @@ import "./ListProducts.css";
 
 export function ListProducts(props) {
   const { products } = props;
+  const [quantity, setQuantity] = useState(1)
 
   const addCart = (product) => {
     addProductCart(product.id);
@@ -15,6 +16,18 @@ export function ListProducts(props) {
 
     console.log(products)
   };
+
+  const handleDecrement = () => {
+    if(quantity > 1){
+      setQuantity(prevCount => prevCount -1);
+    }
+  }
+
+  const handleIncrment = () => {
+    if(quantity > 1){
+      setQuantity(prevCount => prevCount +1);
+    }
+  }
 
   return (
     <div className="">
@@ -28,6 +41,9 @@ export function ListProducts(props) {
               {/* <Card.Text>**Descripcion del producto**</Card.Text> */}
               <Card.Text>Precio: ${product.price}</Card.Text>
               <div className="d-grid gap-2">
+              <Button variant="success" size="sm" onClick={handleDecrement} >Restar <BsCartPlus/> </Button>
+              <div>{quantity}</div>
+              <Button variant="success" size="sm" onClick={handleIncrment} >Sumar <BsCartPlus/> </Button>
                 <Button variant="success" size="sm" onClick={() => addCart(product)} >Agregar {addCart}<BsCartPlus/> </Button>
               </div>
             </Card.Body>

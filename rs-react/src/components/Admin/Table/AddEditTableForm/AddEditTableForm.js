@@ -24,14 +24,14 @@ export function AddEditTableForm(props){
     console.log(table)
     return (           
             <Container>
-            <Form noValidate   id="formularioMesas" className='row login-form-admin' onSubmit={formik.handleSubmit}>
+            <Form noValidate   id="formularioMesas" className=' login-form-admin' onSubmit={formik.handleSubmit}>
 
                     <Form.Label className="text-center">Numero de mesa</Form.Label>
 
                     <Form.Control 
                         required
                         id="numMesa"
-                        className="input-formulario row mx-auto"
+                        className="input-formulario mx-auto"
                         type="number" 
                         name="number" 
                         placeholder="Ingrese un Numero de mesa"
@@ -50,7 +50,7 @@ export function AddEditTableForm(props){
                     </Form.Control.Feedback>
                     <br></br>
                     <button 
-                        className="btn btn-primary row btn-formulario mx-auto col-4 "
+                        className="btn btn-primary  btn-formulario mx-auto col-4 "
                         type="submit"
                     > 
                         Confirmar 
@@ -68,7 +68,7 @@ function initialValues(data){
 }
 function validationSchema(){
     return {
-      number: Yup.number("Debe ingresar un numero").required("Este Campo debe estar relleno y debe ser un entero"),
+      number: Yup.number("Debe ingresar un numero").required("Este campo no debe estar vacio..."),
     };
   }
   
