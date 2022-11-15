@@ -34,6 +34,26 @@ export async function PreparandoProductoPreparingApi(id) {
       throw error;
     }
   }
+  export async function ProductoListoApi(id) {
+    try {
+      const url = `${BASE_API}/api/orders/${id}/`;
+      const params = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: ORDER_STATUS.LISTO,
+        }),
+      };
+  
+      const response = await fetch(url, params);
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
 
 export async function checkDeliveredOrderApi(id) {
   try {

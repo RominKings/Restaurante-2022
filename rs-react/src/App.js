@@ -8,12 +8,13 @@ import { AuthProvider } from "./context/AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css'       
 //import { AdminLoyout, ClientLayout } from "./Layouts";
 import ReactDOM from 'react-dom';
+import background from "../src/assets/restaurante.jpg"
 export default function App(){
   return (
+    
     <AuthProvider>
       <div className="app">
-        <Navegacion/>
-
+       <Navegacion>
         <ToastContainer
           position="bottom-center"
           autoClose={5000}
@@ -25,7 +26,8 @@ export default function App(){
           draggable
           pauseOnHover={false}
         />
-      </div>
+        </Navegacion>
+        </div>
     </AuthProvider>
   )
 }

@@ -6,7 +6,8 @@ import {
   addPaymentToOrderApi,
   closeOrderApi,
   getOrdersByPaymentApi,
-  PreparandoProductoPreparingApi
+  PreparandoProductoPreparingApi,
+  ProductoListoApi,
 } from "../api/orders";
 
 export function useOrder() {
@@ -49,6 +50,14 @@ export function useOrder() {
       setError(error);
     }
   }
+  const cambiarEstadoProductoListo=async(idOrder) =>{
+    try {
+      await ProductoListoApi(idOrder);
+    }catch (error) {
+      setError(error);
+    }
+  }
+
 
   const addPaymentToOrder = async (idOrder, idPayment) => {
     try {
@@ -85,6 +94,7 @@ export function useOrder() {
     addPaymentToOrder,
     closeOrder,
     getOrdersByPayment,
-    cambiarEstadoCocinaPreparing
+    cambiarEstadoCocinaPreparing,
+    cambiarEstadoProductoListo
   };
 }

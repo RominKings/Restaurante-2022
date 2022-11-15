@@ -1,4 +1,4 @@
-.table-totem .busy{
+ .table-totem .busy{
     fill: rgb(0, 255, 55);
 }
 
@@ -23,22 +23,46 @@
 }
 
 .div-atras-mesas{
-    background-color: rgba(0, 0, 0, 0.082);
-    background-image: "../../../../img/vine-food.gif";
-    
+    background-image: "../../../../img/vine-food.gif";  
 
 }
 .div-mesas{
     background-color: aliceblue;
     padding: 8px;
-    width:minmax(200px,300px);
-    height:350px;
-    margin-bottom: 25px;
     border-radius: 10%;
-    box-shadow: rgba(0, 0, 0, 0.027) 5px 15px;
+    /* box-shadow: rgba(122, 0, 116, 0.027) 5px 15px; */
+    box-shadow: 0px 15px 25px black;
+    position: relative;
+    height: 310px;
+    width: 190px;
+    overflow: hidden;
+    border-radius: 19px;
+    transition: all 500ms ease-out;
+    margin: 20px;
+    padding: 0;
     }
+
+
+
+.div-mesas .ubi-cap{
+    position: relative;
+    display: flex;
+    flex: 5%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
 .div-mesas:hover{
-    background-color: aqua;
+    background-color: aqua;    
+}
+
+.div-mesas .procesos-totem{
+    position: absolute;
+    top:10%;
+    right: 40%;
+    font-size: 5ch;
 }
 
 

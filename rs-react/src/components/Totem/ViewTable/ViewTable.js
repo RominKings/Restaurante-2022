@@ -3,7 +3,7 @@ import { Button, Form, Col } from 'react-bootstrap';
 import { FiRefreshCcw } from 'react-icons/fi';
 import { BsSquareFill } from 'react-icons/bs';
 import Toast from 'react-bootstrap/Toast';
-
+import background from "../../../assets/restaurante.jpg"
 import { map } from 'lodash';
 import "./ViewTable.css";
 import { ViewTableLis } from '../ViewTableList/ViewTableLis';
@@ -42,6 +42,8 @@ export function ViewTable(props) {
     }
 
   return (
+    
+    
     <div>
       <div className='navbar-totem'>
           <div className=''>
@@ -65,13 +67,13 @@ export function ViewTable(props) {
           </div>
         </div>
         <div>
-              <h1>Bienvenido a "Restorant XXI"</h1>
+              <h1>Bienvenido a "Restaurante siglo XXI"</h1>
               <br></br>
         </div>
 
         <Toast show={showA} onClose={toggleShowA}>
               <Toast.Header>
-                <strong>Aqui puedes saber el significado de los colores de las mesas</strong>
+                <strong>Aquí puedes saber el significado de los colores de las mesas</strong>
               </Toast.Header>
               <Toast.Body>
               <div>
@@ -95,8 +97,6 @@ export function ViewTable(props) {
                 <p>Recuerda que puedes estar pendiente del estado de la mesa mediante el link ...</p>
               </Toast.Body>
             </Toast>
-       
-
         {/*  */}
         <div className="row col-11 mx-auto">
           {map(tables, (table) => (

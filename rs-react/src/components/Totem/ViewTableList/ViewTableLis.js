@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { size } from 'lodash';
 import { Card, Badge,Image } from 'react-bootstrap';
-import {FcViewDetails} from 'react-icons/fc';
+import {FcClock} from 'react-icons/fc';
 import classNames from "classnames";
 import { ReactComponent as IcTable } from "../../../assets/mesa3 copia.svg";
 // import { Spinner2 } from '../../../assets/Spinner2';
@@ -48,11 +48,10 @@ console.log(orders)
     <div className='col-6 col-sm-6 col-md-4 col-lg-4 col-xl-2 div-atras-mesas '>
         <div className='table-totem div-mesas'>
           <h6 className=' text-center'>Mesa {table.number}</h6>
+          
             {size(orders) > 0 ? (
-                <div className=''>
-                  <p>Procesando pedido</p>
-                  
-
+                <div className='procesos-totem'>
+                  <p><FcClock/></p>
                 </div>
                 // <Card bsPrefix='card' ><Card.Body>{size(orders)}</Card.Body></Card>
             ) : null }
@@ -60,7 +59,7 @@ console.log(orders)
                   {pendingPayment && (
                 <div>
                   {/* <Spinner2 className='row mx-auto spin-totem'></Spinner2> */}
-                  <p>La mesa se desocupara pronto...</p>
+                  <span>La mesa se desocupara pronto...</span>
                 
                   </div>
                 )}
@@ -73,6 +72,13 @@ console.log(orders)
                 "pending-payment": pendingPayment
             }) }
             /></div>
+            <hr></hr>
+            <div className='ubi-cap'>
+              
+              <h10 > <b>Ubicación:</b>  {table.ubicacion}</h10>
+              <h11 > <b>Capacidad de mesa:</b> {table.cantidad_sillas}</h11>
+            </div>
+            <hr></hr>
             
             
         </div>
