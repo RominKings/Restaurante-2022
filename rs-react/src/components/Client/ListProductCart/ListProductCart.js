@@ -40,18 +40,18 @@ export function ListProductCart(props) {
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Estas seguro que quieres eliminar este producto del carrito?',
-      text: "No podras cancelar esta peticion, pero podras volver a agregar este u otro producto",
+      title: '¿Estás seguro que quieres eliminar este producto del carrito?',
+      text: "No podrás cancelar esta petición, pero podrás volver a agregar este u otro producto",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, Quiero eliminarlo! c:',
+      confirmButtonText: 'Si, ¡Quiero eliminarlo!',
       cancelButtonText: 'No, me he arrepentido',
       reverseButtons: true
     }).then(async (result) => {
       if (result.isConfirmed) {
         swalWithBootstrapButtons.fire(
-          'Perfecto!',
-          'Haz eliminado este producto exitosamente del carrito',
+          '¡Perfecto!',
+          'Has eliminado este producto exitosamente del carrito',
           'success',          
         )
         removeProductCartApi(index);
@@ -61,8 +61,8 @@ export function ListProductCart(props) {
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelado!',
-          'No se ha eliminado el producto :)',
+          '¡Cancelado!',
+          'No se ha eliminado el producto',
           'error'
         )
       }
@@ -79,12 +79,12 @@ export function ListProductCart(props) {
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Estas seguro que quieres realizar el pedido?',
-      text: "No podras cancelar esta peticion",
+      title: '¿Estás seguro que quieres realizar el pedido?',
+      text: "No podrás cancelar esta petición",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, Quiero esto! c:',
-      cancelButtonText: 'No, Algo ha cambiado...',
+      confirmButtonText: 'Si, ¡Quiero esto!',
+      cancelButtonText: 'No, algo ha cambiado...',
       reverseButtons: true
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -92,8 +92,8 @@ export function ListProductCart(props) {
         const idTable = tableData[0].id;
 
         swalWithBootstrapButtons.fire(
-          'Perfecto!',
-          'Tu pedido se ha realizado con exito',
+          '¡Perfecto!',
+          'Tu pedido se ha realizado con éxito',
           'success',          
         )
         for await (const product of products) {
@@ -106,7 +106,7 @@ export function ListProductCart(props) {
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelado!',
+          '¡Cancelado!',
           'No se ha realizado tu pedido',
           'error'
         )

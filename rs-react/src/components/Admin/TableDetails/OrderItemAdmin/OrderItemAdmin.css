@@ -8,15 +8,7 @@
     justify-content: space-between;
 }
 
-.order-item-admin.pending {
-    background-color: rgb(152, 231, 231);
-}
-.order-item-admin.preparing {
-    background-color: rgb(152, 231, 152);
-}
-.order-item-admin.delivered {
-    background-color: rgb(152, 231, 152);
-}
+
 
 .order-item-admin .order-item-admin-time {
     position: absolute;
@@ -43,4 +35,13 @@
     font-weight: bold;
     font-size: 20px;
     
+}
+.order-item-admin.pending {
+    background-color: rgb(152, 231, 231);
+}
+.order-item-admin.preparing {
+    background-color: rgb(152, 231, 152);
+}
+.order-item-admin.delivered {
+    background-color: rgb(152, 231, 152);
 }

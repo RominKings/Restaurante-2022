@@ -15,9 +15,11 @@ export function ViewTableLis(props) {
     const {table, reload} = props;
     const [orders, setOrders] = useState([]);
     const [tableBusy, setTableBusy] = useState(false)
+    const [tableOrderDone, setTableOrderDone] = useState(false)
+
     const [pendingPayment, setPendingPayment] = useState(false)
     const {getPaymentByTable} = usePayment();
-console.log(orders)
+    console.log(orders)
 
     useEffect(() => {
         (async() => {
@@ -33,7 +35,13 @@ console.log(orders)
           else setTableBusy(false);
         })()
       }, [reload])
-    
+      useEffect(() => {
+        (async() => {
+          const response = await getOrdersByTableApi(table.id, ORDER_STATUS.LISTO)
+          if(size(response) > 0) setTableOrderDone(response);
+          else setTableOrderDone(false);
+        })()
+      }, [reload])
       useEffect(() => {
         (async () => {
           const response = await getPaymentByTable(table.id)
@@ -69,7 +77,8 @@ console.log(orders)
                 className={classNames({
                 pending: size(orders) > 0,
                 busy: tableBusy,
-                "pending-payment": pendingPayment
+                "pending-payment": pendingPayment,
+                done:tableOrderDone
             }) }
             /></div>
             <hr></hr>

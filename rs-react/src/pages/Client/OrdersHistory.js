@@ -73,19 +73,19 @@ export function OrdersHistory() {
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Estas seguro que quieres pagar con efectivo?',
-      text: "No podras cancelar esta peticion",
+      title: '¿Estás seguro que quieres pagar con efectivo?',
+      text: "No podras cancelar esta petición",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, Quiero esto! c:',
-      cancelButtonText: 'No, Algo ha cambiado...',
+      confirmButtonText: 'Si, ¡Quiero esto!',
+      cancelButtonText: 'No, algo ha cambiado...',
       reverseButtons: true
     }).then(async (result) => {
       if (result.isConfirmed) {
 
         swalWithBootstrapButtons.fire(
-          'Perfecto!',
-          'Tu cuenta la pagaras en efectivo, pronto un empleado se acercara a pagarse...',
+          '¡Perfecto!',
+          'Tu cuenta la pagarás en efectivo, pronto un empleado se acercará...',
           'success',          
         )
         onCreatePayment("CASH")
@@ -94,15 +94,13 @@ export function OrdersHistory() {
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelado!',
+          '¡Cancelado!',
           'No se ha realizado tu pedido',
           'error'
         )
       }
     })
 
-
-   
   };
 
   function pagar_tarjeta(){
@@ -115,19 +113,19 @@ export function OrdersHistory() {
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Estas seguro que quieres pagar con tarjeta?',
-      text: "No podras cancelar esta peticion",
+      title: '¿Estás seguro que quieres pagar con tarjeta?',
+      text: "No podrás cancelar esta petición",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, Quiero esto! c:',
-      cancelButtonText: 'No, Algo ha cambiado...',
+      confirmButtonText: 'Si, ¡Quiero esto!',
+      cancelButtonText: 'No, algo ha cambiado...',
       reverseButtons: true
     }).then(async (result) => {
       if (result.isConfirmed) {
 
         swalWithBootstrapButtons.fire(
           'Perfecto!',
-          'Tu cuenta la pagaras con tarjeta, pronto un empleado se acercara a pagarse...',
+          'Tu cuenta la pagarás con tarjeta, pronto un empleado se acercará...',
           'success',          
         )
         onCreatePayment("CARD")
@@ -136,7 +134,7 @@ export function OrdersHistory() {
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelado!',
+          '¡Cancelado!',
           'No se ha realizado tu pedido',
           'error'
         )
@@ -159,7 +157,7 @@ export function OrdersHistory() {
           <br></br>
           <br></br>
           <Link to={`/client/${tableNumber}`}>
-            <Button variant='dark'>Ver categorias</Button>
+            <Button variant='dark'>Ver categorías</Button>
           </Link>
         </div>
       ) : ( 
@@ -173,7 +171,7 @@ export function OrdersHistory() {
               }
             >
               {size(isRequestAccount) > 0
-                ? "La cuenta ya esta pedida"
+                ? "La cuenta ya está pedida"
                 : "Pedir la cuenta"}
             </Button>
           )}

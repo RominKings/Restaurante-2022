@@ -26,13 +26,16 @@ export function OrderItemAdmin(props) {
       <div className='order-item-admin-time'>
         <span>{moment(order.created_at).format("HH:mm")}</span>{" - "}
         <span>{moment(order.created_at).startOf('second').fromNow()}</span>
+
       </div>
+  
       <div className='order-item-admin-product'>
         <Image src={image}/>
         <p>{title}</p>
       </div>
-      {order.status == ORDER_STATUS.PENDIENTE && (
-        <Button variant="primary" onClick={oncheckDeliveredOrder}>Marcar entregado</Button>
+       <p>{ order.status.toLowerCase()}</p>
+      {(order.status == (ORDER_STATUS.LISTO)) && (
+        <Button variant="primary" onClick={oncheckDeliveredOrder}> Marcar entregado</Button>
       )}
     </div>
   )

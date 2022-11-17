@@ -47,7 +47,10 @@ INSTALLED_APPS = [
     'products',
     'tables',
     'orders',
-    'payments'
+    'payments',
+    'producto',
+    'pedidos_cocina'
+  
 ]
 
 

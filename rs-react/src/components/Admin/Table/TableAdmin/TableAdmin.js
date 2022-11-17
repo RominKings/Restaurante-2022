@@ -15,6 +15,7 @@ export function TableAdmin(props) {
   const [orders, setOrders] = useState([]);
   const [tableBusy, setTableBusy] = useState(false)
   const [tablePreparing, setTablePreparing] = useState(false)
+  const [tableOrderDone, setTableOrderDone] = useState(false)
   const [pendingPayment, setPendingPayment] = useState(false)
   const {getPaymentByTable} = usePayment();
   console.log(orders);
@@ -41,7 +42,13 @@ export function TableAdmin(props) {
       else setTablePreparing(false);
     })()
   }, [reload])
-
+    useEffect(() => {
+      (async() => {
+        const response = await getOrdersByTableApi(table.id, ORDER_STATUS.LISTO)
+        if(size(response) > 0) setTableOrderDone(response);
+        else setTableOrderDone(false);
+      })()
+    }, [reload])
   useEffect(() => {
     (async () => {
       const response = await getPaymentByTable(table.id)
@@ -69,7 +76,8 @@ export function TableAdmin(props) {
           pending: size(orders) > 0,
           busy: tableBusy,
           "pending-payment": pendingPayment,
-          preparing:tablePreparing
+          preparing:tablePreparing,
+          done:tableOrderDone
       })} />
       <p>Mesa {table.number}</p>
     </Link>

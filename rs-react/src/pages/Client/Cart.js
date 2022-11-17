@@ -37,7 +37,7 @@ export function Cart() {
         <Spinner animation="border" variant="dark" />
       ) : size(products) === 0 ? (
         <div style={{ textAlign: "center" }}>
-          <p>Tu carrito esta vacio</p>
+          <p>Tu carrito está vacío</p>
           <Link to={`/client/${tableNumber}/orders`}>
             <Button variant='dark'>Ver pedidos</Button>
           </Link>

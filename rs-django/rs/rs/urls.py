@@ -28,7 +28,9 @@ from tables.api.router import router_table
 from payments.api.router import router_payments
 from tables.api.router import router_table
 from products.api.router import router_product
+from producto.api.router import router_producto
 from orders.api.router import router_orders
+from pedidos_cocina.api.router import router_Pedidos_cocina
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -55,6 +57,8 @@ urlpatterns = [
     path('api/', include(router_orders.urls)),
     path('api/', include(router_product.urls)),
     path('api/', include(router_payments.urls)),
+    path('api/', include(router_producto.urls)), 
+    path('api/', include(router_Pedidos_cocina.urls)),
 ]  
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,13 +1,17 @@
  .table-totem .busy{
-    fill: rgb(0, 255, 55);
+    fill: red;
 }
 
 .table-totem .pending{
     fill: red;
 }
+.table-totem .done{
+    fill: red;
+}
+
 
 .table-totem .pending-payment{
-    fill: orange;
+    fill: red;
 }
 .table-totem #mesa {
     height: 200px;
