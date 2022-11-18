@@ -11,5 +11,5 @@ class Producto(models.Model):
     STOCK_CRITICO=models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'producto'

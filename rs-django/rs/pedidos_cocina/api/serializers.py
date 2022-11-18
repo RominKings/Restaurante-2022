@@ -1,13 +1,13 @@
 from rest_framework.serializers import ModelSerializer
 
-from pedidos_cocina.models import Pedidos_cocina
+from pedidos_cocina.models import PedidosCocina
 from producto.api.serializers import ProductoSerializer
 
 
 
-class Pedidos_cocinaSerializer(ModelSerializer):
+class PedidosCocinaSerializer(ModelSerializer):
     producto_data = ProductoSerializer(source='producto', read_only=True)
 
     class Meta:
-        model = Pedidos_cocina
-        fields = ['id', 'producto','created_at','close']
+        model = PedidosCocina
+        fields = ['idpedidos_cocina', 'producto','producto_data']

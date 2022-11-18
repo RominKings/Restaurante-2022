@@ -1,7 +1,7 @@
 from django.contrib import admin
-from pedidos_cocina.models import Pedidos_cocina
+from pedidos_cocina.models import PedidosCocina 
 
 
-@admin.register(Pedidos_cocina)
+@admin.register(PedidosCocina)
 class PedidosCocinaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'producto','created_at','close']
+    list_display = ['idpedidos_cocina', 'producto']

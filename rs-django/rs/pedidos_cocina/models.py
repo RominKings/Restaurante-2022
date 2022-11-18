@@ -1,12 +1,10 @@
 from django.db import models
 
 # Create your models here.
-class Pedidos_cocina(models.Model):
-    
-    producto=models.ForeignKey(
-        'producto.Producto', on_delete=models.SET_NULL, null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    close = models.BooleanField(default=False)
+class PedidosCocina(models.Model):
 
-    def __str__(self):
-        return str(self.producto)
+    idpedidos_cocina=models.IntegerField(primary_key=True)
+    producto=models.ForeignKey('producto.Producto', on_delete=models.SET_NULL, null=True, blank=True)
+    class Meta:
+        managed = True
+        db_table = 'pedidos_cocina'
