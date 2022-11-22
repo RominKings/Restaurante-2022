@@ -18,3 +18,11 @@
     width: 60;
     margin: 0.5cm;
 }
+.altura-msj {
+    height: auto;
+    font-size: small;
+}
+.icon-toast{width: 20px;}
+.title-toast{
+    color: '#FFFFFF';
+}

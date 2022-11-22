@@ -124,6 +124,7 @@ export function ListProductCart(props) {
             <Card.ImgOverlay >
               <Card.Title id="card-title-cart">{product.title}</Card.Title>
               <Card.Text id="card-price-cart" >1 x $ {product.price}</Card.Text>
+              
               <Button id="card-button-cart" variant="light" name="close" onClick={() => removeProduct(index)}> 
                 <IoMdClose/></Button>
             </Card.ImgOverlay>

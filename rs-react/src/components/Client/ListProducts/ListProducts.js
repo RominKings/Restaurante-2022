@@ -9,12 +9,22 @@ import "./ListProducts.css";
 export function ListProducts(props) {
   const { products } = props;
   // const [quantity, setQuantity] = useState(1)
-
+  const Swal = require('sweetalert2')
+  console.log(products);
   const addCart = (product) => {
     addProductCart(product.id);
-    toast.success(`${product.title} añadido al carrito`);
 
-    console.log(products)
+    Swal.fire({
+      position: 'bottom',
+      icon: 'success',
+      heightAuto:false,
+      title: 'Producto agregado al carrito',
+      toast:true,
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+    console.log(product)
   };
 
   // const handleDecrement = () => {
@@ -40,12 +50,14 @@ export function ListProducts(props) {
               <Card.Title>{product.title}</Card.Title>
               {/* <Card.Text>**Descripcion del producto**</Card.Text> */}
               <Card.Text>Precio: ${product.price}</Card.Text>
+              <Card.Text id="card-price-cart" >Descripcion: {product.desc}</Card.Text>
               <div className="d-grid gap-2">
               {/* <Button variant="success" size="sm" onClick={handleDecrement} >Restar <BsCartPlus/></Button>
               <div>{quantity}</div>
               <Button variant="success" size="sm" onClick={handleIncrment} >Sumar <BsCartPlus/></Button> */}
                 <Button variant="success" size="sm" onClick={() => addCart(product)} >Agregar {addCart}<BsCartPlus/> </Button>
               </div>
+              <script>{console.log(product)}</script>
             </Card.Body>
           </Card>
         </div>
