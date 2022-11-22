@@ -31,7 +31,7 @@ export function TableTablesAdmin(props) {
        <Table className='table-tables-admin'>
         <thead>
           <tr>
-            <th>Mesa Numero</th>
+            <th>Mesa número</th>
             
           </tr>
         </thead>

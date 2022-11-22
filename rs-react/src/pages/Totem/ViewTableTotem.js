@@ -11,13 +11,13 @@ export function ViewTableTotem() {
   console.log(tables);
 
     return (
-      <div style={{ backgroundImage: `url(${background})`,
+      // <div id="div-fondo" style={{ backgroundImage: `url(${background})`,
                     
-                    display: "flex",
-                    top: "100%",
-                    width: "100%",
-                    height: "100%"
-                    }}>
+      //               display: "block",
+      //               display: "inline-block",
+      //               lineheight: "0", 
+      //               top: "100%"
+      //               }}>
       
     
       <div className="div-totem">
@@ -26,10 +26,10 @@ export function ViewTableTotem() {
         )}
 
       </div>
-      <html style={{ backgroundImage: `url(${background})` }}>
+      // <html style={{ backgroundImage: `url(${background})` }}>
 
-      </html>
-      </div>
+      // </html>
+      // </div>
       
     );
   }

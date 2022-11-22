@@ -36,12 +36,15 @@
     font-size: 20px;
     
 }
-.order-item-admin.pending {
-    background-color: rgb(152, 231, 231);
+.order-item-admin.pendiente {
+    background-color: rgb(231, 152, 152);
 }
-.order-item-admin.preparing {
-    background-color: rgb(152, 231, 152);
+.order-item-admin.preparando {
+    background-color: rgb(250, 238, 127);
 }
-.order-item-admin.delivered {
-    background-color: rgb(152, 231, 152);
+.order-item-admin.listo {
+    background-color: rgb(152, 202, 231);
+}
+.order-item-admin.entregado {
+    background-color: rgb(170, 231, 152);
 }

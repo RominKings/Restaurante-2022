@@ -26,7 +26,7 @@ export function AddEditTableForm(props){
             <Container>
             <Form noValidate   id="formularioMesas" className=' login-form-admin' onSubmit={formik.handleSubmit}>
 
-                    <Form.Label className="text-center">Numero de mesa</Form.Label>
+                    <Form.Label className="text-center">Número de mesa</Form.Label>
 
                     <Form.Control 
                         required
@@ -68,7 +68,7 @@ function initialValues(data){
 }
 function validationSchema(){
     return {
-      number: Yup.number("Debe ingresar un numero").required("Este campo no debe estar vacio..."),
+      number: Yup.number("Debe ingresar un número").required("Este campo no debe estar vacío..."),
     };
   }
   

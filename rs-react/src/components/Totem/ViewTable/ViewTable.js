@@ -3,7 +3,7 @@ import { Button, Form, Col } from 'react-bootstrap';
 import { FiRefreshCcw } from 'react-icons/fi';
 import { BsSquareFill } from 'react-icons/bs';
 import Toast from 'react-bootstrap/Toast';
-import background from "../../../assets/restaurante.jpg"
+// import background from "../../../assets/restaurante.jpg"
 import { map } from 'lodash';
 import "./ViewTable.css";
 import { ViewTableLis } from '../ViewTableList/ViewTableLis';
@@ -71,30 +71,29 @@ export function ViewTable(props) {
               <br></br>
         </div>
 
-        <Toast show={showA} onClose={toggleShowA}>
+        <Toast id="toas-de-totem" show={showA} onClose={toggleShowA}>
               <Toast.Header>
                 <strong>Aquí puedes saber el significado de los colores de las mesas</strong>
               </Toast.Header>
               <Toast.Body>
               <div>
                 <BsSquareFill className='square-0'> </BsSquareFill>
-                <strong className="me-auto">  La mesa esta libre</strong>
+                <strong className="me-auto">  La mesa está libre</strong>
                 </div>
                 <div>
                 <BsSquareFill className='square-1'> </BsSquareFill>
-                <strong className="me-auto">  El pedido de la mesa esta siendo procesado</strong>
+                <strong className="me-auto">Mesa ocupada</strong>
                 </div>
-                <div>
+                {/* <div>
                 <BsSquareFill className='square-2'> </BsSquareFill>
                 <strong className="me-auto">  Comiendo...</strong>
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                 <BsSquareFill className='square-3'> </BsSquareFill>
                 <strong className="me-auto">  La mesa se desocupara en los proximos minutos</strong>
-                </div>
+                </div> */}
                 <br></br>
-                <br></br>
-                <p>Recuerda que puedes estar pendiente del estado de la mesa mediante el link ...</p>
+                <p> Al seleccionar una mesa desocupada puedes escanear el código QR que aparece. Ten paciencia, pronto se desocupará una mesa para tí.</p>
               </Toast.Body>
             </Toast>
         {/*  */}

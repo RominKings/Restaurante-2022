@@ -4,6 +4,8 @@ import "./HeaderPage.css";
 
 export function HeaderPage(props) {
     const {title, btnTitle, btnClick, btnTitleTwo, btnClickTwo} = props;
+
+    //EN LO QUE ESTA COMENTADO ES EL BOTON PARA AGREGAR PEDIDOS DESDE LA VISTA DEL GARZON
   return (
     <div className='header-page-admin'>
         <h1>{title}</h1>

@@ -36,9 +36,7 @@ export function TableListAdmin(props) {
 
   return (
     <div className='table-list-admin'>
-     
-        
-      <div className=' div-reaload d-flex justify-content-end'  >
+      <div className='div-reaload'  >
             <h6 className=''>Reload automático  
               <input
                 type="checkbox"
@@ -48,7 +46,7 @@ export function TableListAdmin(props) {
                 checked={autoReload} 
               />  </h6>
 
-            <Button className='' variant="info" id='reload' onClick={onReload}><FiRefreshCcw/></Button>
+            <Button variant="info" id='reload' onClick={onReload}><FiRefreshCcw/></Button>
       </div>
         <div className="row" >
         {map(tables, (table) => (

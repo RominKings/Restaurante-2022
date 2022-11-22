@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Image, Button, Card, CardGroup } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import {IoMdClose} from "react-icons/io"
-import {BsTrash} from "react-icons/bs";
 import { map, forEach } from "lodash";
 import { useParams, useNavigate} from "react-router-dom";
 import { useOrder, useTable } from "../../../hooks";
 import { removeProductCartApi, cleanProductCartApi } from "../../../api/cart";
 import "./ListProductCart.css";
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
 // CommonJS
 
@@ -111,11 +110,7 @@ export function ListProductCart(props) {
           'error'
         )
       }
-    })
- 
-  
-
-    
+    }) 
   };
 
   return (
@@ -141,16 +136,12 @@ export function ListProductCart(props) {
       <div 
       className="div-total"
       >
-        <Button className=" fixed-bottom" variant="success"onClick={createOrder}>
+        <Button className="fixed-bottom" variant="success" onClick={createOrder}>
           Total: ${total}
 
           <h4>Realizar pedido</h4>
         </Button>
       </div>
     </div>
-
-
-
-
   );
 }

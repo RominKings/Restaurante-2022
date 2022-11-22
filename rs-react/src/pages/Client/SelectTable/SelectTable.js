@@ -3,7 +3,6 @@ import { useTable } from "../../../hooks";
 import "./SelectTable.css";
 import { Form, Button } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom"; 
-import { size } from "lodash";
  
     export function SelectTable(){
 

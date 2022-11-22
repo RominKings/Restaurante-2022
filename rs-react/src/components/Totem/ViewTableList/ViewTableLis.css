@@ -1,75 +1,138 @@
- .table-totem .busy{
+ .div-mesas-totem .busy{
     fill: red;
 }
 
-.table-totem .pending{
+.div-mesas-totem  .pending{
     fill: red;
 }
-.table-totem .done{
+.div-mesas-totem  .done{
     fill: red;
 }
 
-
-.table-totem .pending-payment{
+.div-mesas-totem  .pending-payment{
     fill: red;
 }
-.table-totem #mesa {
-    height: 200px;
-    width: 200px;
-    opacity: ;
-    
-}
 
-.table-totem:hover {
+/* .div-mesas:hover {
     opacity: 0.1;
     cursor: pointer;
     background-color: aqua
-}
+} */
 
-.div-atras-mesas{
-    background-image: "../../../../img/vine-food.gif";  
 
-}
-.div-mesas{
-    background-color: aliceblue;
-    padding: 8px;
-    border-radius: 10%;
-    /* box-shadow: rgba(122, 0, 116, 0.027) 5px 15px; */
-    box-shadow: 0px 15px 25px black;
-    position: relative;
-    height: 310px;
-    width: 190px;
-    overflow: hidden;
-    border-radius: 19px;
+.div-mesas-totem{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     transition: all 500ms ease-out;
-    margin: 20px;
+    margin: 50px;
     padding: 0;
+    height: 300px;
+    width: 250px;
+    position: relative;
     }
 
+.card{
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center; */
+    /* padding: 100px; */
+    box-shadow: 0px 15px 25px black;
+    overflow: hidden;
+}
 
-
-.div-mesas .ubi-cap{
+.div-mesas-totem #ubi-cap{
     position: relative;
-    display: flex;
-    flex: 5%;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-
-.div-mesas:hover{
-    background-color: aqua;    
+.div-mesas-totem #title-card-totem{
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-.div-mesas .procesos-totem{
+.div-mesas-totem #mesa-totem {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    
+}
+
+.div-mesas-totem .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
     position: absolute;
-    top:10%;
-    right: 40%;
+    width: 250px;
+    height: 300px;
+    margin: 150px;
+    /* margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 50px;
+    margin-right: 10px; */
+    backface-visibility: hidden;
+    transition: 1s;
+}
+
+.div-mesas-totem #flip-back-totem {
+    font-size: 0.90rem;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    border-radius: 10%;
+    padding: 32px;
+    background-color: rgb(255, 131, 131);
+    height: 300px;
+    width: 250px;
+    transform: perspective(500px) rotateY(180deg);
+}
+
+.div-mesas-totem:hover #flip-back-totem {
+    transform: perspective(500px) rotateY(360deg);
+}
+
+.div-mesas-totem #flip-front-totem {
+    text-align: center;
+    display: grid;
+    height: 300px;
+    width: 250px;
+    border-radius: 10%;
+    background-color: white;
+    transform: perspective(500px) rotateY(0deg);
+}
+
+.div-mesas-totem:hover #flip-front-totem {
+    transform: perspective(500px) rotateY(180deg);
+}
+
+
+.div-mesas-totem .procesos-totem{
+    position: absolute;
+    top:30%;
+    right: 42%;
     font-size: 5ch;
 }
 
-
-
-
-
+/* .div-mesas .flip-back-totem{
+    height: 310px;
+    width: 190px;
+    border-radius: 19px;
+    position: absolute;
+} */
+/* .div-mesas .flip-front-totem{
+    height: 310px;
+    width: 190px;
+    border-radius: 19px;
+    height: 310px;
+    width: 190px;
+    border-radius: 19px;
+    position: absolute;
+} */

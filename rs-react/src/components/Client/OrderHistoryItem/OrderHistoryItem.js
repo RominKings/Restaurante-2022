@@ -6,7 +6,7 @@ import moment from "moment";
 import "moment/locale/es";
 import { ORDER_STATUS } from "../../../utils/constants";
 import "./OrderHistoryItem.css";
-import {GiCampCookingPot} from "react-icons/gi"
+import {GiCook} from "react-icons/gi"
 
 export function OrderHistoryItem(props) {
   const { order } = props;
@@ -15,9 +15,11 @@ export function OrderHistoryItem(props) {
   
   function loader_status(order){
     if (order.status == ORDER_STATUS.PENDIENTE){
-      return(<span>En marcha <Spinner animation="grow" variant="light" size="sm" /> <Spinner animation="grow" variant="secondary" size="sm" /> <Spinner animation="grow" size="sm" /></span>);
+      return(<span>Enviado a cocina <Spinner animation="grow" variant="light" size="sm" /> <Spinner animation="grow" variant="secondary" size="sm" /> <Spinner animation="grow" size="sm" /></span>);
     }else if (order.status == ORDER_STATUS.PREPARANDO){
-      return(<span>En preparacion <>GiCampCookingPot</><Spinner animation="grow" variant="light" size="sm" /> <Spinner animation="grow" variant="secondary" size="sm" /> <Spinner animation="grow" size="sm" /></span>); 
+      return(<span>Preparando <GiCook/><Spinner animation="grow" variant="light" size="sm" /> <Spinner animation="grow" variant="secondary" size="sm" /> <Spinner animation="grow" size="sm" /></span>); 
+    }else if (order.status == ORDER_STATUS.LISTO){
+      return(<span>¡Listo en cocina! <GiCook/><FcApproval/></span>); 
     }else {
       return(<span>Entregado <FcApproval/></span>);
     }
@@ -30,7 +32,7 @@ export function OrderHistoryItem(props) {
       })}
     >
       <div className="row-div-history">
-          <Card id="card-history" className="bg-dark text-white col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2">
+          <Card id="card-history" className="bg-dark text-white">
             <Card.Img  id="card-img-history" src={image} alt="Card image" />
             <Card.ImgOverlay >
               <Card.Title id="card-title-history">{title}</Card.Title>
@@ -41,7 +43,7 @@ export function OrderHistoryItem(props) {
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
-          { loader_status(order)}
+          <span>{ loader_status(order)}</span>
       {/* {order.status === ORDER_STATUS.PENDING ? (
         <span>En marcha <Spinner animation="grow" variant="light" size="sm" /> <Spinner animation="grow" variant="secondary" size="sm" /> <Spinner animation="grow" size="sm" /></span>
       ):

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router-dom"
 import {forEach,size} from "lodash"
+import { Alert, Button } from 'react-bootstrap'
 import { useOrder, useTable, usePayment } from '../../hooks'
 import {HeaderPage, AddOrderFormAdmin} from '../../components/Admin'
 import {ModalBasic} from '../../components/Common';
@@ -66,19 +67,22 @@ export function TableDetailsAdmin() {
   return (
     <div>
         <HeaderPage title={`Mesa ${table ? table.number : ""}`}
-        btnTitle={paymentData ? "Ver cuenta" : "Añadir pedido"} btnClick={openCloseModal} btnTitleTwo={!paymentData ? "Generar cuenta" : null} btnClickTwo={onCreatePayment}/>
+        btnTitle={paymentData ? "Ver cuenta" : null } btnClick={openCloseModal} btnTitleTwo={size(orders) === 0 ?(null): !paymentData ? ("Generar cuenta") : (null) } btnClickTwo={onCreatePayment}/>
+        
+        
         {loading ? (
            <Spinner></Spinner>
-        ) : (
+        ) : size(orders) > 0 ?(
             <ListOrderAdmin orders={orders} onReloadOrders={onReloadOrders}/>
-        )}
-        
-        <ModalBasic  show={showModal} onClose={openCloseModal} title="Liberar Mesa">
-        {paymentData ? (
-          <PaymentDetil payment={paymentData} orders={orders} openCloseModal={openCloseModal} onReloadOrders={onReloadOrders}/>
         ) : (
-            <AddOrderFormAdmin idTable={id} openCloseModal={openCloseModal}/>
-            )}
+          <div>
+            <Alert variant='danger'> En esta mesa no se han generado pedidos. </Alert>
+          </div>
+        )}
+        <ModalBasic  show={showModal} onClose={openCloseModal} title="Liberar Mesa">
+        {paymentData ? ( <PaymentDetil payment={paymentData} orders={orders} openCloseModal={openCloseModal} onReloadOrders={onReloadOrders}/>
+        ) : ( <AddOrderFormAdmin idTable={id} openCloseModal={openCloseModal}/>
+        )}
         </ModalBasic>
     </div>
   )

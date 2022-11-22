@@ -74,7 +74,7 @@ export function OrdersHistory() {
 
     swalWithBootstrapButtons.fire({
       title: '¿Estás seguro que quieres pagar con efectivo?',
-      text: "No podras cancelar esta petición",
+      text: "No podras cancelar esta petición.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, ¡Quiero esto!',
@@ -95,7 +95,7 @@ export function OrdersHistory() {
       ) {
         swalWithBootstrapButtons.fire(
           '¡Cancelado!',
-          'No se ha realizado tu pedido',
+          'No se ha realizado tu pedido.',
           'error'
         )
       }
@@ -114,7 +114,7 @@ export function OrdersHistory() {
 
     swalWithBootstrapButtons.fire({
       title: '¿Estás seguro que quieres pagar con tarjeta?',
-      text: "No podrás cancelar esta petición",
+      text: "No podrás cancelar esta petición.",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si, ¡Quiero esto!',
@@ -135,7 +135,7 @@ export function OrdersHistory() {
       ) {
         swalWithBootstrapButtons.fire(
           '¡Cancelado!',
-          'No se ha realizado tu pedido',
+          'No se ha realizado tu pedido.',
           'error'
         )
       }
@@ -171,7 +171,7 @@ export function OrdersHistory() {
               }
             >
               {size(isRequestAccount) > 0
-                ? "La cuenta ya está pedida"
+                ? "La cuenta ya está pedida."
                 : "Pedir la cuenta"}
             </Button>
           )}
@@ -189,10 +189,10 @@ export function OrdersHistory() {
         title="Pagar con tarjeta o efectivo"
         show={showTypePayment}
         txtbtnCash="Efectivo"
-        onCloseCard={pagar_efectivo}
+        onCloseCard={pagar_tarjeta}
         onClose={openCloseModal}
         txtbtnCard="Tarjeta"
-        onCloseCash={pagar_tarjeta}
+        onCloseCash={pagar_efectivo}
       />
     </div>
   );

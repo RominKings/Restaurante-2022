@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Image, Button, Card} from "react-bootstrap";
+import React from "react";
+import { Button, Card} from "react-bootstrap";
 import {BsCartPlus} from "react-icons/bs"
 import { map } from "lodash";
 import { toast } from "react-toastify";

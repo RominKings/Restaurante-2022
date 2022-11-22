@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import { size } from 'lodash';
-import { ReactComponent as IcTable } from "../../../../assets/mesa3.svg";
+import { Link } from "react-router-dom";
+import classNames from "classnames";
 import { Card,Badge } from 'react-bootstrap';
 import {FcViewDetails} from 'react-icons/fc';
-import classNames from "classnames";
+import { ReactComponent as IcTable } from "../../../../assets/mesa3.svg";
 import { getOrdersByTableApi } from '../../../../api/orders';
 import { ORDER_STATUS } from '../../../../utils/constants';
 import {usePayment} from "../../../../hooks";
-import { Link } from "react-router-dom";
 import "./TableAdmin.css";
 
 export function TableAdmin(props) {
@@ -68,7 +68,7 @@ export function TableAdmin(props) {
       ) : null }
 
         {pendingPayment && (
-          <Card bsPrefix='card'><Card.Body><Card.Title><FcViewDetails/></Card.Title></Card.Body></Card>
+          <Card bsPrefix='card'><Card.Title><FcViewDetails/></Card.Title></Card>
         )}
 
       <IcTable id="mesa"
